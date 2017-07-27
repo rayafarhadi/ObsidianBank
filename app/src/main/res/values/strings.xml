@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">UI Test</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_id">ID</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_login">The ID or password is invalid</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- Strings related to admin options -->
+    <string name="admin_option_messages">Messages</string>
+    <string name="admin_option_balance">Total Balance</string>
+    <string name="admin_option_create">Create User</string>
+    <string name="admin_option_view">View Users</string>
+    <string name="admin_option_promote">Promote Teller</string>
+
+    <!-- Strings related to teller options -->
+    <string name="teller_option_create_account">Create Account</string>
+    <string name="teller_option_give_interest">Give Interest</string>
+    <string name="teller_option_deposit">Deposit</string>
+    <string name="teller_option_withdraw">Withdraw</string>
+    <string name="teller_option_check_balance">Check Balance</string>
+    <string name="teller_option_close_session">Log Out User</string>
+
+    <!-- Strings related to atm options -->
+    <string name="atm_option_list_account_balance">Log Out User</string>
+    <string name="atm_option_deposit">Deposit</string>
+    <string name="atm_option_withdraw">Withdraw</string>
+    <string name="atm_option_check_balance">Check Balance</string>
+
+    <!-- Strings related to total bank balance fragment -->
+    <string name="total_balance">Total Balance: $</string>
+    <!-- Temp holder for the balance -->
+    <string name="temp_balance">0.00</string>
+
+    <!-- Strings related to user creation -->
+    <string name="prompt_name">Name</string>
+    <string name="prompt_age">Age</string>
+    <string name="prompt_address">Address</string>
+    <string name="prompt_type">Type</string>
+    <string name="action_create_user">Create User</string>
+
+    <!-- Strings related to teller promotion -->
+    <string name="teller_names">Tellers</string>
+    <string name="action_promote">Promote</string>
+
+    <!-- Strings related to account creation -->
+    <string name="prompt_account_name">Account Name</string>
+    <string name="prompt_account_balance">Balance</string>
+    <string name="prompt_account_type">Type</string>
+    <string name="action_create_account">Create Account</string>
+
+    <!-- Strings related to giving interest -->
+    <string name="action_give_interest_one">Give Interest To This Account</string>
+    <string name="action_give_interest_all">Give Interest To All Accounts</string>
+
+    <!-- Strings related to depositing -->
+    <string name="prompt_amount">Amount</string>
+    <string name="action_deposit">Deposit</string>
+
+    <!-- Strings related to withdrawing -->
+    <string name="action_withdraw">Withdraw</string>
+
+    <!-- Strings related to viewing account balance -->
+    <string name="account_balance">Balance: $</string>
+    <string name="action_check_balance">Check Balance</string>
+
+</resources>
