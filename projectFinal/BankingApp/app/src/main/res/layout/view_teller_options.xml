@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+
+    </Space>
+
+    <ImageButton
+        android:id="@+id/teller_create_account_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_round"
+
+        android:contentDescription="@string/teller_option_create_account"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@mipmap/create" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+
+    </Space>
+
+    <ImageButton
+        android:id="@+id/teller_give_interest_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_round"
+
+        android:contentDescription="@string/teller_option_give_interest"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@mipmap/interest" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+
+    </Space>
+
+    <ImageButton
+        android:id="@+id/teller_deposit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_round"
+
+        android:contentDescription="@string/teller_option_deposit"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@mipmap/deposit" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+
+    </Space>
+
+    <ImageButton
+        android:id="@+id/teller_withdraw_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_round"
+
+        android:contentDescription="@string/teller_option_withdraw"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@mipmap/withdraw" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+
+    </Space>
+
+    <ImageButton
+        android:id="@+id/teller_check_balance_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+
+        android:background="@drawable/button_round"
+        android:contentDescription="@string/teller_option_check_balance"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@mipmap/balance" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+
+    </Space>
+
+    <ImageButton
+        android:id="@+id/teller_log_out_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+
+        android:background="@drawable/button_round"
+        android:contentDescription="@string/teller_option_close_session"
+        android:gravity="center_horizontal|center_vertical"
+        android:src="@mipmap/log_out" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+
+    </Space>
+
+</LinearLayout>
