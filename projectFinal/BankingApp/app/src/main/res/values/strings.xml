@@ -14,18 +14,18 @@
     <string name="admin_option_promote">Promote \nTeller</string>
 
     <!-- Strings related to teller options -->
-    <string name="teller_option_create_account">Create Account</string>
-    <string name="teller_option_give_interest">Give Interest</string>
+    <string name="teller_option_create_account">Create \nAccount</string>
+    <string name="teller_option_give_interest">Give \nInterest</string>
     <string name="teller_option_deposit">Deposit</string>
     <string name="teller_option_withdraw">Withdraw</string>
-    <string name="teller_option_check_balance">Check Balance</string>
-    <string name="teller_option_close_session">Log Out User</string>
+    <string name="teller_option_check_balance">Check \nBalance</string>
+    <string name="teller_option_close_session">Log Out \nUser</string>
 
     <!-- Strings related to atm options -->
-    <string name="atm_option_list_account_balance">Log Out User</string>
+    <string name="atm_option_list_account_balance">List\nAccounts</string>
     <string name="atm_option_deposit">Deposit</string>
     <string name="atm_option_withdraw">Withdraw</string>
-    <string name="atm_option_check_balance">Check Balance</string>
+    <string name="atm_option_check_balance">Check \nBalance</string>
 
     <!-- Strings related to total bank balance fragment -->
     <string name="total_balance">Total Balance: $</string>

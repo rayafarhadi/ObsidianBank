@@ -12,16 +12,32 @@
     </Space>
 
     <!-- Create Account Button -->
-    <ImageButton
-        android:id="@+id/teller_create_account_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/button_round"
+        android:orientation="vertical">
 
-        android:gravity="center_horizontal|center_vertical"
-        android:onClick="displayCreateAccount"
-        android:src="@mipmap/create" />
+        <ImageButton
+            android:id="@+id/teller_create_account_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+
+            android:background="@drawable/button_round"
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="displayCreateAccount"
+            android:src="@mipmap/create" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/teller_option_create_account"
+            android:textAlignment="center"
+            android:textColor="@color/colorText" />
+
+    </LinearLayout>
 
     <Space
         android:layout_width="0dp"
@@ -31,16 +47,31 @@
     </Space>
 
     <!-- Give Interest Button -->
-    <ImageButton
-        android:id="@+id/teller_give_interest_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/button_round"
+        android:orientation="vertical">
 
-        android:gravity="center_horizontal|center_vertical"
-        android:onClick="displayGiveInterest"
-        android:src="@mipmap/interest" />
+        <ImageButton
+            android:id="@+id/teller_give_interest_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_round"
+
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="displayGiveInterest"
+            android:src="@mipmap/interest" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/teller_option_give_interest"
+            android:textAlignment="center"
+            android:textColor="@color/colorText" />
+
+    </LinearLayout>
 
     <Space
         android:layout_width="0dp"
@@ -50,16 +81,32 @@
     </Space>
 
     <!-- Deposit Button -->
-    <ImageButton
-        android:id="@+id/teller_deposit_button"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/button_round"
+        android:orientation="vertical">
 
-        android:gravity="center_horizontal|center_vertical"
-        android:onClick="displayTellerDeposit"
-        android:src="@mipmap/deposit" />
+        <ImageButton
+            android:id="@+id/teller_deposit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_round"
+
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="displayTellerDeposit"
+            android:src="@mipmap/deposit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/teller_option_deposit"
+            android:textAlignment="center"
+            android:textColor="@color/colorText" />
+
+    </LinearLayout>
 
     <Space
         android:layout_width="0dp"
@@ -69,16 +116,32 @@
     </Space>
 
     <!-- Withdraw Button -->
-    <ImageButton
-        android:id="@+id/teller_withdraw_button"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/button_round"
+        android:orientation="vertical">
 
-        android:gravity="center_horizontal|center_vertical"
-        android:onClick="displayTellerWithdraw"
-        android:src="@mipmap/withdraw" />
+        <ImageButton
+            android:id="@+id/teller_withdraw_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_round"
+
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="displayTellerWithdraw"
+            android:src="@mipmap/withdraw" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/teller_option_withdraw"
+            android:textAlignment="center"
+            android:textColor="@color/colorText" />
+
+    </LinearLayout>
 
     <Space
         android:layout_width="0dp"
@@ -88,16 +151,31 @@
     </Space>
 
     <!-- Check Balance Button -->
-    <ImageButton
-        android:id="@+id/teller_check_balance_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
-        android:background="@drawable/button_round"
-        android:gravity="center_horizontal|center_vertical"
-        android:onClick="displayBalance"
-        android:src="@mipmap/balance" />
+        <ImageButton
+            android:id="@+id/teller_check_balance_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            android:background="@drawable/button_round"
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="displayBalance"
+            android:src="@mipmap/balance" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/teller_option_check_balance"
+            android:textAlignment="center"
+            android:textColor="@color/colorText" />
+
+    </LinearLayout>
 
     <Space
         android:layout_width="0dp"
@@ -107,16 +185,31 @@
     </Space>
 
     <!-- Close Customer Session Button -->
-    <ImageButton
-        android:id="@+id/teller_log_out_button"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
-        android:background="@drawable/button_round"
-        android:gravity="center_horizontal|center_vertical"
-        android:onClick="closeSession"
-        android:src="@mipmap/log_out" />
+        <ImageButton
+            android:id="@+id/teller_log_out_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            android:background="@drawable/button_round"
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="closeSession"
+            android:src="@mipmap/log_out" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/teller_option_close_session"
+            android:textAlignment="center"
+            android:textColor="@color/colorText" />
+
+    </LinearLayout>
 
     <Space
         android:layout_width="0dp"
