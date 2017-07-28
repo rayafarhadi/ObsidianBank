@@ -1,9 +1,9 @@
-package com.bank.uitest.terminal.admin;
+package com.bank.bankingapp.terminal.admin;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.bank.uitest.R;
+import com.bank.bankingapp.R;
 
 /**
  * Created by rayafarhadi on 24/07/17.

@@ -11,6 +11,7 @@
 
     </Space>
 
+    <!-- Create Account Button -->
     <ImageButton
         android:id="@+id/teller_create_account_button"
         android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
 
     </Space>
 
+    <!-- Give Interest Button -->
     <ImageButton
         android:id="@+id/teller_give_interest_button"
         android:layout_width="wrap_content"
@@ -47,6 +49,7 @@
 
     </Space>
 
+    <!-- Deposit Button -->
     <ImageButton
         android:id="@+id/teller_deposit_button"
         android:layout_width="wrap_content"
@@ -65,6 +68,7 @@
 
     </Space>
 
+    <!-- Withdraw Button -->
     <ImageButton
         android:id="@+id/teller_withdraw_button"
         android:layout_width="wrap_content"
@@ -83,6 +87,7 @@
 
     </Space>
 
+    <!-- Check Balance Button -->
     <ImageButton
         android:id="@+id/teller_check_balance_button"
         android:layout_width="wrap_content"
@@ -101,6 +106,7 @@
 
     </Space>
 
+    <!-- Close Customer Session Button -->
     <ImageButton
         android:id="@+id/teller_log_out_button"
         android:layout_width="wrap_content"

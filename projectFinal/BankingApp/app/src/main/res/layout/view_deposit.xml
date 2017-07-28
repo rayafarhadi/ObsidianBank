@@ -9,6 +9,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- ID Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,8 +30,9 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="0.5" />
 
+    <!-- Amount Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,8 +54,9 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="3" />
 
+    <!-- Deposit Button -->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,11 +65,6 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_deposit"
         android:textColor="@color/colorText" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
 
 </LinearLayout>

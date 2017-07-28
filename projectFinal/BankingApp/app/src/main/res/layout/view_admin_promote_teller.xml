@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- Spinner that will show the name of all tellers to be selected by the admin -->
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,6 +15,10 @@
         android:layout_height="0dp"
         android:layout_weight="0.3" />
 
+    <!-- All text views will be auto filled depending on which name is selected on the
+    spinner -->
+
+    <!-- ID field-->
     <TextView
         android:id="@+id/promote_id"
         android:layout_width="match_parent"
@@ -29,6 +34,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.3" />
 
+    <!-- Age field-->
     <TextView
         android:id="@+id/promote_age"
         android:layout_width="match_parent"
@@ -44,6 +50,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.3" />
 
+    <!-- Address field-->
     <TextView
         android:id="@+id/promote_address"
         android:layout_width="match_parent"
@@ -59,6 +66,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.3" />
 
+    <!-- Promote Teller Button-->
     <Button
         android:id="@+id/teller_promote_button"
         style="?android:textAppearanceSmall"
