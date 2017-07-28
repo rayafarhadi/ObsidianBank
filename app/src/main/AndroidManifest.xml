@@ -23,6 +23,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".terminal.admin.AdminActivity"
+            android:label="@string/app_name">
+
+        </activity>
+
+        <fragment
+            android:name=".terminal.admin.AdminInfoFragment"
+            android:label="@string/app_name">
+
+        </fragment>
+
     </application>
 
 </manifest>
