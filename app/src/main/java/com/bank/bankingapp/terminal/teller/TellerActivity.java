@@ -53,7 +53,7 @@ public class TellerActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void displayDeposit(View view) {
+    public void displayTellerDeposit(View view) {
         TellerDepositFragment depositFragment = new TellerDepositFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
@@ -63,7 +63,7 @@ public class TellerActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void displayWithdraw(View view) {
+    public void displayTellerWithdraw(View view) {
         TellerWithdrawFragment withdrawFragment = new TellerWithdrawFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
