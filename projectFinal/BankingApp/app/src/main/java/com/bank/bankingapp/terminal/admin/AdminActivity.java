@@ -1,12 +1,16 @@
 package com.bank.bankingapp.terminal.admin;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.terminal.admin.fragments.AdminBalanceFragment;
+import com.bank.bankingapp.terminal.admin.fragments.AdminCreateUserFragment;
+import com.bank.bankingapp.terminal.admin.fragments.AdminMessagesFragment;
+import com.bank.bankingapp.terminal.admin.fragments.AdminPromoteFragment;
+import com.bank.bankingapp.terminal.admin.fragments.AdminViewUserFragment;
 
 /**
  * Created by rayafarhadi on 24/07/17.

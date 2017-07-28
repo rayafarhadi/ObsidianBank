@@ -8,7 +8,7 @@
     <!-- Options Fragment -->
     <fragment
         android:id="@+id/teller_options_fragment"
-        android:name="com.bank.bankingapp.terminal.teller.TellerOptionsFragment"
+        android:name="com.bank.bankingapp.terminal.teller.fragments.TellerOptionsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="12"
@@ -17,7 +17,7 @@
     <!-- Info Fragment -->
     <fragment
         android:id="@+id/teller_info_fragment"
-        android:name="com.bank.bankingapp.terminal.teller.TellerInfoFragment"
+        android:name="com.bank.bankingapp.terminal.teller.fragments.TellerInfoFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="88"
