@@ -12,7 +12,7 @@ import com.bank.bankingapp.R;
  * Created by rayafarhadi on 26/07/17.
  */
 
-public class AdminInfoFragment extends Fragment {
+public class AdminMessagesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
