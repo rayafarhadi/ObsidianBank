@@ -26,7 +26,6 @@
             android:id="@+id/login_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_id"
             android:inputType="number"
             android:maxLines="1" />
@@ -42,7 +41,6 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
             android:maxLines="1" />
