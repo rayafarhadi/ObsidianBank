@@ -8,19 +8,17 @@
     <!-- Options Fragment -->
     <fragment
         android:id="@+id/atm_options_fragment"
-        android:name="com.bank.bankingapp.terminal.atm.ATMOptionsFragment"
+        android:name="com.bank.bankingapp.terminal.atm.fragments.ATMOptionsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12"
+        android:layout_weight="1"
         tools:layout="@layout/view_atm_options" />
 
     <!-- Info Fragment -->
-    <fragment
-        android:id="@+id/teller_info_fragment"
-        android:name="com.bank.bankingapp.terminal.atm.ATMInfoFragment"
+    <FrameLayout
+        android:id="@+id/atm_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="88"
-        tools:layout="@layout/view_atm_list_account_balance" />
+        android:layout_weight="6.5" />
 
 </LinearLayout>
