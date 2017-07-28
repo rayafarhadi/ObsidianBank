@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="goToAuthenticateCustomer"
         android:text="@string/action_login_customer"
         android:textColor="@color/colorText" />
 
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="goToCreateCustomer"
         android:text="@string/action_create_customer"
         android:textColor="@color/colorText" />
 
@@ -43,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="goToMessages"
         android:text="@string/action_teller_messages"
         android:textColor="@color/colorText" />
 
