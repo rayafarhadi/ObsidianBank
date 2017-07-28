@@ -11,16 +11,14 @@
         android:name="com.bank.bankingapp.terminal.teller.fragments.TellerOptionsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12"
+        android:layout_weight="1"
         tools:layout="@layout/view_teller_options" />
 
     <!-- Info Fragment -->
-    <fragment
-        android:id="@+id/teller_info_fragment"
-        android:name="com.bank.bankingapp.terminal.teller.fragments.TellerInfoFragment"
+    <FrameLayout
+        android:id="@+id/teller_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="88"
-        tools:layout="@layout/view_withdraw" />
+        android:layout_weight="6.5" />
 
 </LinearLayout>

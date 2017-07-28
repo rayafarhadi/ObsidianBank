@@ -12,10 +12,10 @@ import com.bank.bankingapp.R;
  * Created by rayafarhadi on 26/07/17.
  */
 
-public class TellerOptionsFragment extends Fragment {
+public class TellerCreateAccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.view_teller_options, container, false);
+        return inflater.inflate(R.layout.view_teller_create_account, container, false);
     }
 }

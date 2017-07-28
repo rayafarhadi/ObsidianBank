@@ -106,6 +106,7 @@
         android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="create"
         android:text="@string/action_create_customer"
         android:textColor="@color/colorText"
         android:textStyle="bold" />
