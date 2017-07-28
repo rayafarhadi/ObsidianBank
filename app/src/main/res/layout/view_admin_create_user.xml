@@ -10,7 +10,8 @@
     <!-- Name Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/admin_create_name"
@@ -24,15 +25,11 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
     <!-- Age Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/admin_create_age"
@@ -46,15 +43,11 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
     <!-- Address Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/admin_Create_address"
@@ -67,15 +60,11 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
     <!-- Password Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/admin_create_password"
@@ -89,15 +78,12 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
     <!-- Type Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
 
         <EditText
             android:id="@+id/admin_create_type"
@@ -106,14 +92,10 @@
             android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_type"
             android:maxLines="1"
+
             android:textColor="@color/colorText" />
 
     </android.support.design.widget.TextInputLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
     <!-- Create User Button -->
     <Button
@@ -127,10 +109,5 @@
         android:text="@string/action_create_user"
         android:textColor="@color/colorText"
         android:textStyle="bold" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
 </LinearLayout>

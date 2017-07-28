@@ -19,8 +19,8 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/button_round"
 
-        android:contentDescription="@string/admin_option_messages"
         android:gravity="center_horizontal|center_vertical"
+        android:onClick="displayMessages"
         android:src="@mipmap/messages" />
 
     <Space
@@ -38,8 +38,8 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/button_round"
 
-        android:contentDescription="@string/admin_option_create"
         android:gravity="center_horizontal|center_vertical"
+        android:onClick="displayCreateUser"
         android:src="@mipmap/create" />
 
     <Space
@@ -57,8 +57,8 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/button_round"
 
-        android:contentDescription="@string/admin_option_view"
         android:gravity="center_horizontal|center_vertical"
+        android:onClick="displayViewUser"
         android:src="@mipmap/list" />
 
     <Space
@@ -76,8 +76,8 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/button_round"
 
-        android:contentDescription="@string/admin_option_balance"
         android:gravity="center_horizontal|center_vertical"
+        android:onClick="displayTotalBalance"
         android:src="@mipmap/balance" />
 
     <Space
@@ -95,8 +95,8 @@
         android:layout_marginTop="5dp"
 
         android:background="@drawable/button_round"
-        android:contentDescription="@string/admin_option_promote"
         android:gravity="center_horizontal|center_vertical"
+        android:onClick="displayPromote"
         android:src="@mipmap/promote" />
 
     <Space
