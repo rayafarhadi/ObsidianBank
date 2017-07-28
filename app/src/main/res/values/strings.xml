@@ -64,7 +64,9 @@
     <string name="account_balance">Balance: $</string>
     <string name="action_check_balance">Check Balance</string>
 
-    <!-- Strings related to customer creation -->
+    <!-- Strings related to teller starting menu -->
+    <string name="action_login_customer">Authenticate Customer</string>
     <string name="action_create_customer">Create Customer</string>
+    <string name="action_teller_messages">Check Messages</string>
 
 </resources>
