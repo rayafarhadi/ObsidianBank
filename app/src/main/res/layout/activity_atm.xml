@@ -19,6 +19,6 @@
         android:id="@+id/atm_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6.5" />
+        android:layout_weight="4.65" />
 
 </LinearLayout>
