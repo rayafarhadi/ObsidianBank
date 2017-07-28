@@ -1,9 +1,9 @@
-package com.bank.uitest.login;
+package com.bank.bankingapp.login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.bank.uitest.R;
+import com.bank.bankingapp.R;
 
 /**
  * A login screen that offers login via email/password.

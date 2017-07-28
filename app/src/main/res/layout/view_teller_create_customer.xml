@@ -5,7 +5,12 @@
     android:orientation="vertical"
     android:theme="@style/LoginTheme">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
+    <!-- Customer Name Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,6 +32,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Customer Age Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -48,6 +54,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Customer Address Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -68,6 +75,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Customer Password Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -89,6 +97,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Create Customer Button -->
     <Button
         android:id="@+id/teller_customer_create_button"
         style="?android:textAppearanceSmall"
@@ -97,13 +106,8 @@
         android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
-        android:text="@string/action_create_user"
+        android:text="@string/action_create_customer"
         android:textColor="@color/colorText"
         android:textStyle="bold" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
 </LinearLayout>

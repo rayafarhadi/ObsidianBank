@@ -1,4 +1,4 @@
-package com.bank.uitest;
+package com.bank.bankingapp;
 
 import org.junit.Test;
 

@@ -5,17 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- Options Fragment -->
     <fragment
         android:id="@+id/atm_options_fragment"
-        android:name="com.bank.uitest.terminal.atm.ATMOptionsFragment"
+        android:name="com.bank.bankingapp.terminal.atm.ATMOptionsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="12"
         tools:layout="@layout/view_atm_options" />
 
+    <!-- Info Fragment -->
     <fragment
         android:id="@+id/teller_info_fragment"
-        android:name="com.bank.uitest.terminal.atm.ATMInfoFragment"
+        android:name="com.bank.bankingapp.terminal.atm.ATMInfoFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="88"

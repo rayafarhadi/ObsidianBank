@@ -1,4 +1,4 @@
-package com.bank.uitest.terminal.atm;
+package com.bank.bankingapp.terminal.atm;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bank.uitest.R;
+import com.bank.bankingapp.R;
 
 /**
  * Created by rayafarhadi on 26/07/17.

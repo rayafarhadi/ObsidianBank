@@ -1,16 +1,10 @@
 <resources>
-    <string name="app_name">UI Test</string>
+    <string name="app_name">Banking App</string>
 
     <!-- Strings related to login -->
     <string name="prompt_id">ID</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_login">The ID or password is invalid</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
 
     <!-- Strings related to admin options -->
     <string name="admin_option_messages">Messages</string>
@@ -69,5 +63,8 @@
     <!-- Strings related to viewing account balance -->
     <string name="account_balance">Balance: $</string>
     <string name="action_check_balance">Check Balance</string>
+
+    <!-- Strings related to customer creation -->
+    <string name="action_create_customer">Create Customer</string>
 
 </resources>
