@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_account_type"
+            android:inputType="number"
             android:maxLines="1"
             android:textColor="@color/colorText" />
 
