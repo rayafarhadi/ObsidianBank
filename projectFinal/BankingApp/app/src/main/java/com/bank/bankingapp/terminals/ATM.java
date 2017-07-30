@@ -45,7 +45,7 @@ public class ATM extends Terminal {
      * @param accountId of account
      * @return if the deposit was successful or not
      */
-    public boolean makeDeposit(BigDecimal deposit, int accountId, Context context)
+    public boolean makeDeposit(BigDecimal deposit, int accountId)
             throws IllegalAmountException, ConnectionFailedException {
         // Check to see if customer is authenticated.
         if (!authenticated) {
