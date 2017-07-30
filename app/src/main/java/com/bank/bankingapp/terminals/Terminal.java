@@ -1,20 +1,35 @@
 package com.bank.bankingapp.terminals;
 
+import android.content.Context;
+
 import com.bank.bankingapp.account.Account;
-import com.bank.bankingapp.database.DatabaseSelectHelper;
+import com.bank.bankingapp.bank.Bank;
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.database.PasswordHelpers;
+import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.messages.Message;
+import com.bank.bankingapp.user.Customer;
 import com.bank.bankingapp.user.User;
 
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Terminal {
+
+public abstract class Terminal {
 
     protected User currentUser;
     protected boolean authenticated;
     protected int designatedUserId;
+
+    protected DatabaseHelper db;
+
+    public Terminal(Context context) {
+        db = new DatabaseHelper(context);
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
 
     /**
      * Authenticates user with password, and verifies user role Id
@@ -25,9 +40,9 @@ public class Terminal {
      * returns true.
      */
     public boolean logIn(int userId, String password) {
-        currentUser = DatabaseSelectHelper.getUserDetails(userId);
+        currentUser = db.getUserDetails(userId);
         authenticated = (PasswordHelpers
-                .comparePassword(DatabaseSelectHelper.getPassword(userId), password)) && (
+                .comparePassword(db.getPassword(userId), password)) && (
                 currentUser.getRoleId() == designatedUserId);
         return this.authenticated;
     }
@@ -45,7 +60,7 @@ public class Terminal {
         }
 
         BigDecimal sum = new BigDecimal(0);
-        User customer = DatabaseSelectHelper.getUserDetails(userId);
+        User customer = db.getUserDetails(userId);
 
         // check that the customer is a customer, and makes sure it returns null if the account doesn't exist
         if ((customer == null) || (customer.getRoleId() != Bank.rolesMap.get(Roles.CUSTOMER).getId())) {
@@ -63,16 +78,17 @@ public class Terminal {
      * @return the sum of all balances
      */
     public BigDecimal addAllBalances() {
+
         BigDecimal sum = new BigDecimal(0);
         int accountId = 1;
         // Make sure terminal is authenticated
         if (!authenticated) {
             return null;
         }
-        Account account = DatabaseSelectHelper.getAccountDetails(accountId);
+        Account account = db.getAccountDetails(accountId);
         while (account != null) {
             sum = sum.add(account.getBalance());
-            account = DatabaseSelectHelper.getAccountDetails(accountId);
+            account = db.getAccountDetails(accountId);
             accountId++;
         }
         return sum;
@@ -82,18 +98,14 @@ public class Terminal {
      * Gets an array list of current messages.
      *
      * @return list of messages.
-     * @throws SQLException
      */
     public ArrayList<Message> viewAllMessages() {
+
         if (!authenticated) {
             System.out.println("User not authenticated!");
             return null;
         }
-        try {
-            return DatabaseSelectHelper.getAllMessages(currentUser.getId());
-        } catch (SQLException e) {
-            System.out.println("Current user's user id does not exist in the database.");
-            return null;
-        }
+
+        return db.getAllMessages(currentUser.getId());
     }
 }

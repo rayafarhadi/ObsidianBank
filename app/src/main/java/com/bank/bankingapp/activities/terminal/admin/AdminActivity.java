@@ -34,7 +34,7 @@ public class AdminActivity extends AppCompatActivity {
 
     //----------------Create User----------------------------
     public void displayCreateUser(View view) {
-        AdminTerminal at = new AdminTerminal();
+        AdminTerminal at = new AdminTerminal(this);
         createUserFragment = new AdminCreateUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
@@ -45,8 +45,8 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     public void createUser(View view) {
-        AdminTerminal at = new AdminTerminal();
-        at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(), createUserFragment.getAddress(), createUserFragment.getType(), createUserFragment.getPassword(), this);
+        AdminTerminal at = new AdminTerminal(this);
+        at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(), createUserFragment.getAddress(), createUserFragment.getType(), createUserFragment.getPassword());
     }
 
     //------------- Display Messages ------------------
@@ -62,7 +62,7 @@ public class AdminActivity extends AppCompatActivity {
         messagesFragment.occupyList();
     }
 
-    
+    //----------- Display Users --------------------------
     public void displayViewUser(View view) {
         AdminViewUserFragment viewUserFragment = new AdminViewUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

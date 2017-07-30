@@ -1,6 +1,8 @@
 package com.bank.bankingapp.maps;
 
-import com.bank.bankingapp.databasehelper.DatabaseSelectHelper;
+import android.content.Context;
+
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.generics.Roles;
 
 import java.sql.SQLException;
@@ -21,9 +23,9 @@ public class RolesMap extends EnumMap<Roles, RoleValues> {
      *
      * @throws SQLException When connection to the database is lost
      */
-    public RolesMap() throws SQLException {
+    public RolesMap(Context context) {
         super(Roles.class);
-        update();
+        update(context);
     }
 
     /**
@@ -60,11 +62,14 @@ public class RolesMap extends EnumMap<Roles, RoleValues> {
      *
      * @throws SQLException When connection with the database is lost
      */
-    public void update() throws SQLException {
+    public void update(Context context) {
+
+        DatabaseHelper db = new DatabaseHelper(context);
+
         int id = 1;
 
         for (Roles role : Roles.values()) {
-            put(role, new RoleValues(id, DatabaseSelectHelper.getRole(id)));
+            put(role, new RoleValues(id, db.getRole(id)));
             id++;
         }
     }

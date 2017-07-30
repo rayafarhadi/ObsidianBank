@@ -9,10 +9,13 @@ import java.math.RoundingMode;
 
 public class DatabaseUpdateHelper {
 
-    DatabaseDriverA db;
+    private DatabaseDriverA db;
+    private DatabaseValueCheckerHelper checker = new DatabaseValueCheckerHelper();
+    private Context context;
 
     public DatabaseUpdateHelper(Context context) {
         db = new DatabaseDriverA(context);
+        this.context = context;
     }
 
     /**
@@ -25,7 +28,7 @@ public class DatabaseUpdateHelper {
     public boolean updateRoleName(String name, int id) {
 
         // Validate Input
-        boolean valid = (name != null && !name.equals("")) && DatabaseValueCheckerHelper.roleIdChecker(id);
+        boolean valid = (name != null && !name.equals("")) && checker.roleIdChecker(id);
 
         boolean complete;
 
@@ -36,7 +39,7 @@ public class DatabaseUpdateHelper {
         } else {
             complete = false;
         }
-        Bank.rolesMap.update();
+        Bank.rolesMap.update(context);
         return complete;
     }
 
@@ -100,7 +103,7 @@ public class DatabaseUpdateHelper {
     public boolean updateUserRole(int roleId, int id) {
 
         // Validate input
-        boolean valid = DatabaseValueCheckerHelper.roleIdChecker(roleId);
+        boolean valid = checker.roleIdChecker(roleId);
 
         boolean complete;
 
@@ -126,7 +129,7 @@ public class DatabaseUpdateHelper {
 
         // Validate input
         boolean valid = address != null && !address.equals("")
-                && DatabaseValueCheckerHelper.addressLengthChecker(address);
+                && checker.addressLengthChecker(address);
 
         boolean complete;
 
@@ -175,7 +178,7 @@ public class DatabaseUpdateHelper {
     public boolean updateAccountBalance(BigDecimal balance, int id) {
 
         // round balance to 2 decimal places
-        balance = DatabaseValueCheckerHelper.balanceRounding(balance);
+        balance = checker.balanceRounding(balance);
 
         return db.updateAccountBalance(balance, id);
     }
@@ -191,7 +194,7 @@ public class DatabaseUpdateHelper {
     public boolean updateAccountType(int typeId, int id) {
 
         // Validate input
-        boolean valid = DatabaseValueCheckerHelper.accountTypeIdChecker(typeId);
+        boolean valid = checker.accountTypeIdChecker(typeId);
 
         boolean complete;
 
@@ -217,7 +220,7 @@ public class DatabaseUpdateHelper {
 
         // Validate input
         boolean valid =
-                (name != null && !name.equals("")) && DatabaseValueCheckerHelper.accountTypeIdChecker(id);
+                (name != null && !name.equals("")) && checker.accountTypeIdChecker(id);
 
         boolean complete;
 
@@ -228,7 +231,7 @@ public class DatabaseUpdateHelper {
         } else {
             complete = false;
         }
-        Bank.accountsMap.update();
+        Bank.accountsMap.update(context);
         return complete;
     }
 
@@ -243,7 +246,7 @@ public class DatabaseUpdateHelper {
     public boolean updateAccountTypeInterestRate(BigDecimal interestRate, int id) {
 
         // Validate input
-        boolean valid = DatabaseValueCheckerHelper.interestRateChecker(interestRate);
+        boolean valid = checker.interestRateChecker(interestRate);
 
         boolean complete;
 
@@ -256,7 +259,7 @@ public class DatabaseUpdateHelper {
         } else {
             complete = false;
         }
-        Bank.accountsMap.update();
+        Bank.accountsMap.update(context);
         return complete;
     }
 

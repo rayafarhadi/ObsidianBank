@@ -16,8 +16,9 @@ import java.util.List;
 
 public class DatabaseSelectHelper {
 
-    DatabaseDriverA db;
-    Context context;
+    private DatabaseDriverA db;
+    private Context context;
+    private DatabaseValueCheckerHelper checker = new DatabaseValueCheckerHelper();
 
     public DatabaseSelectHelper(Context context) {
         db = new DatabaseDriverA(context);
@@ -31,7 +32,7 @@ public class DatabaseSelectHelper {
      * @return a String containing the role.
      */
     public String getRole(int id) {
-        if (DatabaseValueCheckerHelper.roleIdChecker(id)) {
+        if (checker.roleIdChecker(id)) {
             String role = db.getRole(id);
             return role;
         }
@@ -138,7 +139,7 @@ public class DatabaseSelectHelper {
      * @return the interest rate if successful, -1 if not
      */
     public BigDecimal getInterestRate(int accountType) {
-        if (DatabaseValueCheckerHelper.accountTypeIdChecker(accountType)) {
+        if (checker.accountTypeIdChecker(accountType)) {
             return db.getInterestRate(accountType);
         }
         return new BigDecimal(-1);
@@ -169,7 +170,7 @@ public class DatabaseSelectHelper {
      * @return The name of the account type.
      */
     public String getAccountTypeName(int accountTypeId) {
-        if (DatabaseValueCheckerHelper.accountTypeIdChecker(accountTypeId)) {
+        if (checker.accountTypeIdChecker(accountTypeId)) {
             return db.getAccountTypeName(accountTypeId);
         }
         return null;

@@ -1,17 +1,20 @@
 package com.bank.bankingapp.bank;
 
-import com.bank.bankingapp.database.DatabaseInsertHelper;
-import com.bank.bankingapp.database.DatabaseSelectHelper;
+import android.content.Context;
+
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.DatabaseInsertException;
 import com.bank.bankingapp.maps.AccountsMap;
 import com.bank.bankingapp.maps.RolesMap;
+import com.bank.bankingapp.terminals.ATM;
+import com.bank.bankingapp.terminals.AdminTerminal;
+import com.bank.bankingapp.terminals.TellerTerminal;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 
@@ -19,21 +22,24 @@ public class Bank {
     public static AccountsMap accountsMap;
     public static RolesMap rolesMap;
 
+    private DatabaseHelper db;
+    private Context context;
+
     /**
      * This is the main method to run your entire program! Follow the Candy Cane instructions to
      * finish this off.
      *
-     * @param argv unused.
      * @throws IOException
      * @throws DatabaseInsertException
      * @throws SQLException
      * @throws ConnectionFailedException
      */
-    public void main(String[] argv)
-            throws ConnectionFailedException, SQLException, DatabaseInsertException, IOException {
-        if (argv.length != 1) {
-            runNormally();
-        } else if (argv[0].equals("-1")) {
+    public void main(int mode, Context context)
+            throws ConnectionFailedException, DatabaseInsertException, IOException {
+
+        db = new DatabaseHelper(context);
+
+        if (mode == -1) {
             runAdminMode();
         }
         // If anything else - including nothing
@@ -43,31 +49,29 @@ public class Bank {
     }
 
     private void runAdminMode() {
-        Connection connection = DatabaseDriverExtender.connectOrCreateDataBase();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         try {
             // Initialize database
-            DatabaseDriverExtender.initialize(connection);
             // Add User Roles to database.
-            DatabaseInsertHelper.insertRole("ADMIN");
-            DatabaseInsertHelper.insertRole("TELLER");
-            DatabaseInsertHelper.insertRole("CUSTOMER");
+            db.insertRole("ADMIN");
+            db.insertRole("TELLER");
+            db.insertRole("CUSTOMER");
             // Add Account Types to database.
-            DatabaseInsertHelper.insertAccountType("CHEQUING", new BigDecimal("0.1"));
-            DatabaseInsertHelper.insertAccountType("SAVING", new BigDecimal("0.2"));
-            DatabaseInsertHelper.insertAccountType("TFSA", new BigDecimal("0.3"));
-            DatabaseInsertHelper.insertAccountType("RSA", new BigDecimal("0.4"));
-            DatabaseInsertHelper.insertAccountType("BOA", new BigDecimal("0.2"));
+            db.insertAccountType("CHEQUING", new BigDecimal("0.1"));
+            db.insertAccountType("SAVING", new BigDecimal("0.2"));
+            db.insertAccountType("TFSA", new BigDecimal("0.3"));
+            db.insertAccountType("RSA", new BigDecimal("0.4"));
+            db.insertAccountType("BOA", new BigDecimal("0.2"));
 
 
-            accountsMap = new AccountsMap();
-            rolesMap = new RolesMap();
+            accountsMap = new AccountsMap(context);
+            rolesMap = new RolesMap(context);
 
             // Find out the accountTypeId for Administrators.
             int adminTypeId = getRoleId("ADMIN");
-            for (int typeId : DatabaseSelectHelper.getRoles()) {
-                System.out.println(DatabaseSelectHelper.getRole(typeId));
-                if (DatabaseSelectHelper.getRole(typeId).equals("ADMIN")) {
+            for (int typeId : db.getRoles()) {
+                System.out.println(db.getRole(typeId));
+                if (db.getRole(typeId).equals("ADMIN")) {
                     adminTypeId = typeId;
                     break;
                 }
@@ -84,7 +88,7 @@ public class Bank {
             String password = br.readLine();
             // Create account.
             System.out.print("Now creating your administrator account... ");
-            int newID = DatabaseInsertHelper.insertNewUser(userName, age, address, adminTypeId, password);
+            int newID = (int) db.insertNewUser(userName, age, address, adminTypeId, password);
             if (newID == -1) {
                 System.out.println("Account creation failed. Delete database and try again.");
             } else {
@@ -99,8 +103,8 @@ public class Bank {
 
     private void runNormally() {
         try {
-            accountsMap = new AccountsMap();
-            rolesMap = new RolesMap();
+            accountsMap = new AccountsMap(context);
+            rolesMap = new RolesMap(context);
 
             int menu = 0;
             do {
@@ -122,15 +126,15 @@ public class Bank {
             } while (true);
             // If the user entered 1
             if (menu == 1) {
-                UserInterface ui = new UserInterface(new AdminTerminal());
+                UserInterface ui = new UserInterface(new AdminTerminal(context), context);
                 ui.displayInterface();
             }
             // If the user entered 2
             else if (menu == 2) {
-                UserInterface ui = new UserInterface(new TellerTerminal());
+                UserInterface ui = new UserInterface(new TellerTerminal(context), context);
                 ui.displayInterface();
             } else if (menu == 3) {
-                UserInterface ui = new UserInterface(new ATM());
+                UserInterface ui = new UserInterface(new ATM(context), context);
                 ui.displayInterface();
             } else {
                 System.out.println("Exiting program :)");
@@ -169,8 +173,8 @@ public class Bank {
      */
     private int getRoleId(String roleName) throws SQLException {
         // Find out the Role ID for roleName.
-        for (int roleId : DatabaseSelectHelper.getRoles()) {
-            if (DatabaseSelectHelper.getRole(roleId).equalsIgnoreCase(roleName)) {
+        for (int roleId : db.getRoles()) {
+            if (db.getRole(roleId).equalsIgnoreCase(roleName)) {
                 return roleId;
             }
         }
