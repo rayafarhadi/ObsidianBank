@@ -87,6 +87,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_create_account"
         android:textColor="@color/colorText"
+        android:onClick="tellerCreateAccount"
         android:textStyle="bold" />
 
 </LinearLayout>

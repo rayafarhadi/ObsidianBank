@@ -30,7 +30,7 @@ public class DatabaseHelper {
      * @param typeId  the id of the type of the account.
      * @return accountId of inserted account, -1 otherwise
      */
-    public long insertAccount(String name, BigDecimal balance, int typeId) {
+    public long insertAccount(String name, BigDecimal balance, long typeId) {
         return inserter.insertAccount(name, balance, typeId);
     }
 

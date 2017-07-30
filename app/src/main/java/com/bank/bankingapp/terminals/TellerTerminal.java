@@ -29,9 +29,8 @@ public class TellerTerminal extends ATM {
      * @param balance of the account
      * @param type    of the account
      */
-    public int makeNewAccount(String name, BigDecimal balance, int type) {
+    public int makeNewAccount(String name, BigDecimal balance, long type) {
         // Insert the account into the database
-        DatabaseHelper dbh = new DatabaseHelper(context);
         try {
             if (!authenticated) {
                 return -1;

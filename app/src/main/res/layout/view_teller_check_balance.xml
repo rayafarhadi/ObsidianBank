@@ -56,6 +56,7 @@
 
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_check_balance"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorText"
+        android:onClick="tellerCheckBalance"/>
 
 </LinearLayout>
