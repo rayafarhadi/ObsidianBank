@@ -1,21 +1,23 @@
-package com.bank.user;
+package com.bank.bankingapp.user;
 
 import android.content.Context;
+
 import java.io.Serializable;
+
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.database.PasswordHelpers;
 
 import java.sql.SQLException;
 
-public abstract class User implements Serializable{
+public abstract class User implements Serializable {
 
-  private static final long serialVersionUID = -6186838150151744131L;
-  protected transient int id;
-  protected String name;
-  protected int age;
-  protected String address;
-  protected int roleId;
-  protected boolean authenticated = false;
+    private static final long serialVersionUID = -6186838150151744131L;
+    protected transient int id;
+    protected String name;
+    protected int age;
+    protected String address;
+    protected int roleId;
+    protected boolean authenticated = false;
 
     public int getId() {
         return id;

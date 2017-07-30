@@ -1,13 +1,17 @@
-package com.bank.user;
+package com.bank.bankingapp.user;
 
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.generics.Roles;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A class that represents a bank's customer
  */
-public class Customer extends User implements Serializable{
+public class Customer extends User implements Serializable {
 
     private List<Account> accounts = new ArrayList<>();
 
@@ -50,7 +54,6 @@ public class Customer extends User implements Serializable{
      * Returns a list the customer's accounts
      *
      * @return a list of accounts
-     * @throws SQLException if connection fails
      */
     public List<Account> getAccounts() {
         return accounts;
@@ -60,7 +63,6 @@ public class Customer extends User implements Serializable{
      * Add's an account to this customer
      *
      * @param account account to add
-     * @throws SQLException if connection fails
      */
     public void addAccount(Account account) {
         this.accounts.add(account);
