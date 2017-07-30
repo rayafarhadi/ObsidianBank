@@ -1,7 +1,7 @@
 package com.bank.bankingapp.database;
 
-import com.bank.generics.AccountTypes;
-import com.bank.generics.Roles;
+import com.bank.bankingapp.generics.AccountTypes;
+import com.bank.bankingapp.generics.Roles;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

@@ -1,4 +1,4 @@
-package com.bank.user;
+package com.bank.bankingapp.user;
 
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.generics.Roles;
