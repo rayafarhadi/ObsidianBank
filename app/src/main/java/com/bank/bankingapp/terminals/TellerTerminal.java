@@ -1,6 +1,15 @@
 package com.bank.bankingapp.terminals;
 
 import com.bank.bankingapp.bank.Bank;
+import java.math.BigDecimal;
+import java.sql.SQLException;
+
+import android.content.Context;
+
+import com.bank.bankingapp.bank.Bank;
+import com.bank.bankingapp.database.DatabaseInsertHelper;
+import com.bank.bankingapp.database.DatabaseHelper;
+import com.bank.bankingapp.exceptions.DatabaseInsertException;
 import com.bank.bankingapp.database.DatabaseInsertHelper;
 import com.bank.bankingapp.database.DatabaseSelectHelper;
 import com.bank.bankingapp.database.DatabaseUpdateHelper;
@@ -8,8 +17,6 @@ import com.bank.bankingapp.database.PasswordHelpers;
 import com.bank.bankingapp.exceptions.DatabaseInsertException;
 import com.bank.bankingapp.generics.Roles;
 
-import java.math.BigDecimal;
-import java.sql.SQLException;
 
 public class TellerTerminal extends ATM {
 
@@ -26,12 +33,13 @@ public class TellerTerminal extends ATM {
      * @param balance of the account
      * @param type    of the account
      */
-    public int makeNewAccount(String name, BigDecimal balance, int type)
+    public int makeNewAccount(String name, BigDecimal balance, int type, Context context)
             throws SQLException, DatabaseInsertException {
         // Insert the account into the database
+        DatabaseHelper dbh = new DatabaseHelper(context);
         try {
-            int accountId = DatabaseInsertHelper.insertAccount(name, balance, type);
-            int result = DatabaseInsertHelper.insertUserAccount(this.currentUser.getId(), accountId);
+            long accountId = dbh.insertAccount(name, balance, type);
+            int result = dbh.insertUserAccount(this.currentUser.getId(), accountId);
             if (result != -1) {
                 return result;
             }
