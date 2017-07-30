@@ -3,11 +3,11 @@ package com.bank.bankingapp.database;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.bank.account.Account;
-import com.bank.account.AccountFactory;
-import com.bank.messages.Message;
-import com.bank.user.User;
-import com.bank.user.UserFactory;
+import com.bank.bankingapp.account.Account;
+import com.bank.bankingapp.account.AccountFactory;
+import com.bank.bankingapp.messages.Message;
+import com.bank.bankingapp.user.User;
+import com.bank.bankingapp.user.UserFactory;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;

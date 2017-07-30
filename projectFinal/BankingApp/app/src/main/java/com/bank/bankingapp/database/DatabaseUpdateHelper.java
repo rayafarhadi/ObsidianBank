@@ -3,12 +3,9 @@ package com.bank.bankingapp.database;
 import android.content.Context;
 
 import com.bank.bank.Bank;
-import com.bank.database.DatabaseUpdater;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 public class DatabaseUpdateHelper {
 

@@ -20,6 +20,8 @@
     <string name="teller_option_withdraw">Withdraw</string>
     <string name="teller_option_check_balance">Check \nBalance</string>
     <string name="teller_option_close_session">Log Out \nUser</string>
+    <string name="teller_option_update_info">Update \nInformation</string>
+    <string name="teller_messages">View \nMessages</string>
 
     <!-- Strings related to atm options -->
     <string name="atm_option_list_account_balance">List\nAccounts</string>
