@@ -1,15 +1,15 @@
 package com.bank.bankingapp.terminals;
 
-import java.math.BigDecimal;
-import java.sql.SQLException;
-
 import com.bank.bankingapp.bank.Bank;
-import com.bank.bankingapp.exceptions.DatabaseInsertException;
 import com.bank.bankingapp.database.DatabaseInsertHelper;
 import com.bank.bankingapp.database.DatabaseSelectHelper;
 import com.bank.bankingapp.database.DatabaseUpdateHelper;
-import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.database.PasswordHelpers;
+import com.bank.bankingapp.exceptions.DatabaseInsertException;
+import com.bank.bankingapp.generics.Roles;
+
+import java.math.BigDecimal;
+import java.sql.SQLException;
 
 public class TellerTerminal extends ATM {
 

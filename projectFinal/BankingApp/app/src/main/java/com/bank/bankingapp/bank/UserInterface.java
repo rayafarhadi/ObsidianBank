@@ -31,12 +31,52 @@ import java.util.List;
 
 public class UserInterface {
 
-    private Terminal terminal;
     DatabaseHelper db;
+    private Terminal terminal;
 
     public UserInterface(Terminal terminal, Context context) {
         this.terminal = terminal;
         db = new DatabaseHelper(context);
+    }
+
+    /**
+     * This function continually prompts the user for a integer until a valid integer is given.
+     * Returns integer.
+     *
+     * @param br Buffered Reader
+     * @return an integer
+     */
+    private static int getValidInt(BufferedReader br) {
+        int userInput = 0;
+        do {
+            try {
+                userInput = Integer.parseInt(br.readLine());
+                return userInput;
+            } catch (NumberFormatException e) {
+                System.out.println("Your input cannot be recognized as a valid integer. Please try again.");
+            } catch (IOException e) {
+                System.out.println("IO Exception, Please try again.");
+            }
+        } while (true);
+    }
+
+    /**
+     * This function continually prompts the user for a BigDecimal until a valid BigDecimal is given.
+     * Returns BigDecimal.
+     *
+     * @param br Buffered Reader
+     * @return a BigDecimal
+     */
+    private static BigDecimal getValidBigDecimal(BufferedReader br) throws IOException {
+        BigDecimal userInput;
+        do {
+            try {
+                userInput = new BigDecimal(br.readLine());
+                return userInput;
+            } catch (NumberFormatException e) {
+                System.out.println("Your input cannot be recognized as a BigDecimal. Please try again.");
+            }
+        } while (true);
     }
 
     /**
@@ -490,7 +530,7 @@ public class UserInterface {
                     String password = br.readLine();
                     // Create Admin account
                     System.out.print("Now creating an Admin... ");
-                    int newId = adminTerminal.createAdmin(userName, age, address, adminTypeId, password);
+                    int newId = adminTerminal.createUser(userName, age, address, adminTypeId, password);
                     if (newId > 0) {
                         System.out.println("Admin created. The new user Id for your Admin is: " + newId);
                     } else {
@@ -630,46 +670,6 @@ public class UserInterface {
                     break;
             }
         } while (!exit);
-    }
-
-    /**
-     * This function continually prompts the user for a integer until a valid integer is given.
-     * Returns integer.
-     *
-     * @param br Buffered Reader
-     * @return an integer
-     */
-    private static int getValidInt(BufferedReader br) {
-        int userInput = 0;
-        do {
-            try {
-                userInput = Integer.parseInt(br.readLine());
-                return userInput;
-            } catch (NumberFormatException e) {
-                System.out.println("Your input cannot be recognized as a valid integer. Please try again.");
-            } catch (IOException e) {
-                System.out.println("IO Exception, Please try again.");
-            }
-        } while (true);
-    }
-
-    /**
-     * This function continually prompts the user for a BigDecimal until a valid BigDecimal is given.
-     * Returns BigDecimal.
-     *
-     * @param br Buffered Reader
-     * @return a BigDecimal
-     */
-    private static BigDecimal getValidBigDecimal(BufferedReader br) throws IOException {
-        BigDecimal userInput;
-        do {
-            try {
-                userInput = new BigDecimal(br.readLine());
-                return userInput;
-            } catch (NumberFormatException e) {
-                System.out.println("Your input cannot be recognized as a BigDecimal. Please try again.");
-            }
-        } while (true);
     }
 
     /**

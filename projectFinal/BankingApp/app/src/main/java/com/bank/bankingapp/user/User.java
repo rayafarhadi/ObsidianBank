@@ -2,11 +2,10 @@ package com.bank.bankingapp.user;
 
 import android.content.Context;
 
-import java.io.Serializable;
-
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.database.PasswordHelpers;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 
 public abstract class User implements Serializable {

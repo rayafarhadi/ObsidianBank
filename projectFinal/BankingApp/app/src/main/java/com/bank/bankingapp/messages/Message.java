@@ -1,8 +1,6 @@
 package com.bank.bankingapp.messages;
 
 
-import com.bank.bankingapp.database.DatabaseUpdater;
-import com.bank.bankingapp.databasehelper.DatabaseUpdateHelper;
 import android.content.Context;
 
 import com.bank.bankingapp.database.DatabaseHelper;

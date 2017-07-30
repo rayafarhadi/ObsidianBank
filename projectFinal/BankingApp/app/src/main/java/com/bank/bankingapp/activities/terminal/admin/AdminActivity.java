@@ -11,8 +11,12 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminCreateUserFr
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
+import com.bank.bankingapp.terminals.AdminTerminal;
 
 public class AdminActivity extends AppCompatActivity {
+
+    AdminCreateUserFragment createUserFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +32,10 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
+    //----------------Create User----------------------------
     public void displayCreateUser(View view) {
-        AdminCreateUserFragment createUserFragment = new AdminCreateUserFragment();
+        AdminTerminal at = new AdminTerminal();
+        createUserFragment = new AdminCreateUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.admin_fragment_container, createUserFragment);
@@ -38,6 +44,12 @@ public class AdminActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    public void createUser(View view) {
+        AdminTerminal at = new AdminTerminal();
+        at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(), createUserFragment.getAddress(), createUserFragment.getType(), createUserFragment.getPassword(), this);
+    }
+
+    //------------- Display Messages ------------------
     public void displayMessages(View view) {
         AdminMessagesFragment messagesFragment = new AdminMessagesFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
