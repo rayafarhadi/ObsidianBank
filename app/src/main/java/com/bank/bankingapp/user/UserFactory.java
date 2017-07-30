@@ -1,17 +1,10 @@
-package com.bank.user;
+package com.bank.bankingapp.user;
 
 import android.content.Context;
 
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
-import com.bank.bankingapp.database.DatabaseSelectHelper;
 import com.bank.bankingapp.generics.Roles;
-
-import java.sql.SQLException;
-
-import com.bank.bank.Bank;
-import com.bank.databasehelper.DatabaseSelectHelper;
-import com.bank.generics.Roles;
 
 public class UserFactory {
 
@@ -33,9 +26,9 @@ public class UserFactory {
         if (roleId == Bank.rolesMap.get(Roles.ADMIN).getId()) {
             return new Admin(userId, name, age, address);
 
-      // If the role id matches to teller then build an teller account
-    } else if (roleId == Bank.rolesMap.get(Roles.TELLER).getId()) {
-      return new Teller(userId, name, age, address);
+            // If the role id matches to teller then build an teller account
+        } else if (roleId == Bank.rolesMap.get(Roles.TELLER).getId()) {
+            return new Teller(userId, name, age, address);
 
             // If the role id matches to customer then build an customer account
         } else if (roleId == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
@@ -45,9 +38,9 @@ public class UserFactory {
             }
             return ret;
 
-      // Otherwise return an exception
-    } else {
-      return null;
+            // Otherwise return an exception
+        } else {
+            return null;
+        }
     }
-  }
 }
