@@ -34,7 +34,6 @@ public class Bank {
         if (argv.length != 1) {
             runNormally();
         } else if (argv[0].equals("-1")) {
-
             runAdminMode();
         }
         // If anything else - including nothing
