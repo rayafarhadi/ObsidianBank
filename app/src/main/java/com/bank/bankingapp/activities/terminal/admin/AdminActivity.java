@@ -58,8 +58,11 @@ public class AdminActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
+
+        messagesFragment.occupyList();
     }
 
+    
     public void displayViewUser(View view) {
         AdminViewUserFragment viewUserFragment = new AdminViewUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
