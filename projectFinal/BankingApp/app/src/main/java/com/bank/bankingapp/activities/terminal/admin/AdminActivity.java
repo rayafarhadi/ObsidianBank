@@ -12,10 +12,6 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFrag
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
 
-/**
- * Created by rayafarhadi on 24/07/17.
- */
-
 public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +66,8 @@ public class AdminActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
+
+        balanceFragment.updateBalance();
     }
 
     public void displayPromote(View view) {

@@ -5,20 +5,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.terminals.AdminTerminal;
 
 public class AdminBalanceFragment extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        AdminTerminal adminTerminal = new AdminTerminal();
-
-        // Show total balance of all accounts
-        System.out.println(
-                "The total balance of all accounts is: " + adminTerminal.addAllBalances().toString());
-
         return inflater.inflate(R.layout.view_admin_balance, container, false);
+    }
+
+    public void updateBalance() {
+        AdminTerminal at = new AdminTerminal();
+        TextView balance = (TextView) getView().findViewById(R.id.balance);
+        balance.setText(at.addAllBalances().toString());
     }
 }

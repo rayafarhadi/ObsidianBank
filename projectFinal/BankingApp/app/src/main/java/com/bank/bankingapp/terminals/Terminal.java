@@ -1,7 +1,9 @@
 package com.bank.bankingapp.terminals;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
+import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.database.DatabaseSelectHelper;
 import com.bank.bankingapp.database.PasswordHelpers;
 import com.bank.bankingapp.user.User;
@@ -20,7 +22,7 @@ public class Terminal {
      * @return if the user was authenticated or not. If the user was already authenticated still
      * returns true.
      */
-    public boolean logIn(int userId, String password) throws SQLException {
+    public boolean logIn(int userId, String password) {
         currentUser = DatabaseSelectHelper.getUserDetails(userId);
         authenticated = (PasswordHelpers
                 .comparePassword(DatabaseSelectHelper.getPassword(userId), password)) && (
@@ -34,7 +36,7 @@ public class Terminal {
      * @param userId id of the user
      * @return the sum of all balances
      */
-    public BigDecimal addBalances(int userId) throws SQLException {
+    public BigDecimal addBalances(int userId) {
         // Make sure terminal is authenticated
         if (!authenticated) {
             return null;
@@ -58,7 +60,7 @@ public class Terminal {
      *
      * @return the sum of all balances
      */
-    public BigDecimal addAllBalances() throws SQLException {
+    public BigDecimal addAllBalances() {
         BigDecimal sum = new BigDecimal(0);
         int accountId = 1;
         // Make sure terminal is authenticated
