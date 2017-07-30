@@ -1,7 +1,10 @@
 package com.bank.bankingapp.terminals;
 
+import android.content.Context;
+
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.bank.Bank;
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.database.DatabaseSelectHelper;
 import com.bank.bankingapp.database.DatabaseUpdateHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
@@ -43,9 +46,10 @@ public class ATM extends Terminal {
      * @param accountId of account
      * @return if the deposit was successful or not
      */
-    public boolean makeDeposit(BigDecimal deposit, int accountId)
+    public boolean makeDeposit(BigDecimal deposit, int accountId, Context context)
             throws IllegalAmountException, SQLException, ConnectionFailedException {
-        currentUser = DatabaseSelectHelper.getUserDetails(currentUser.getId());
+        DatabaseHelper dbh = new DatabaseHelper(context);
+        currentUser = dbh.getUserDetails(currentUser.getId());
         // Check to see if customer is authenticated.
         if (!authenticated) {
             throw new ConnectionFailedException();
@@ -59,9 +63,9 @@ public class ATM extends Terminal {
             throw new IllegalAmountException();
         }
         // Determine what new balance is
-        BigDecimal balance = DatabaseSelectHelper.getBalance(accountId).add(deposit);
+        BigDecimal balance = dbh.getBalance(accountId).add(deposit);
         // Update the account balance in the database
-        boolean success = DatabaseUpdateHelper.updateAccountBalance(balance, accountId);
+        boolean success = dbh.updateAccountBalance(balance, accountId);
         // Return whether the deposit was successful
         return success;
     }
@@ -72,8 +76,9 @@ public class ATM extends Terminal {
      *
      * @return balance of account with account id
      */
-    public BigDecimal checkBalance(int accountId) throws SQLException, ConnectionFailedException {
-        currentUser = DatabaseSelectHelper.getUserDetails(currentUser.getId());
+    public BigDecimal checkBalance(int accountId, Context context) throws SQLException, ConnectionFailedException {
+        DatabaseHelper dbh = new DatabaseHelper(context);
+        currentUser = dbh.getUserDetails(currentUser.getId());
         // Check to see if customer is authenticated.
         if (!authenticated) {
             throw new ConnectionFailedException();
@@ -84,7 +89,7 @@ public class ATM extends Terminal {
             throw new ConnectionFailedException();
         }
         // Get the balance from the database and return it
-        BigDecimal balance = DatabaseSelectHelper.getBalance(accountId);
+        BigDecimal balance = dbh.getBalance(accountId);
         return balance;
     }
 
@@ -96,9 +101,10 @@ public class ATM extends Terminal {
      * @param withdrawal amount be withdrawn.
      * @return If the funds were withdrawn or not.
      */
-    public boolean makeWithdrawal(BigDecimal withdrawal, int accountId) throws IllegalAmountException,
+    public boolean makeWithdrawal(BigDecimal withdrawal, int accountId, Context context) throws IllegalAmountException,
             SQLException, ConnectionFailedException, InsuffiecintFundsException {
-        currentUser = DatabaseSelectHelper.getUserDetails(currentUser.getId());
+        DatabaseHelper dbh = new DatabaseHelper(context);
+        currentUser = dbh.getUserDetails(currentUser.getId());
         // Check to see if customer is authenticated.
         if (!authenticated) {
             throw new ConnectionFailedException();
@@ -112,13 +118,13 @@ public class ATM extends Terminal {
             throw new IllegalAmountException();
         }
         // Determine what new balance is
-        BigDecimal balance = DatabaseSelectHelper.getBalance(accountId).subtract(withdrawal);
+        BigDecimal balance = dbh.getBalance(accountId).subtract(withdrawal);
         // Make sure the account balance is above 0 before making a withdrawal
         if (balance.longValue() < 0) {
             throw new InsuffiecintFundsException();
         }
         // Update the account balance in the database
-        boolean success = DatabaseUpdateHelper.updateAccountBalance(balance, accountId);
+        boolean success = dbh.updateAccountBalance(balance, accountId);
         // Return whether the deposit was successful
         return success;
     }
