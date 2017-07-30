@@ -3,10 +3,12 @@ package com.bank.bankingapp.terminals;
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.database.DatabaseSelectHelper;
 import com.bank.bankingapp.database.PasswordHelpers;
+import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.user.User;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Terminal {
 
