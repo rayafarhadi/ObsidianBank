@@ -1,5 +1,16 @@
 package com.bank.bankingapp.terminals;
 
+import android.content.Context;
+
+import com.bank.bankingapp.account.Account;
+import com.bank.bankingapp.bank.Bank;
+import com.bank.bankingapp.database.DatabaseHelper;
+import com.bank.bankingapp.database.DatabaseInsertHelper;
+import com.bank.bankingapp.database.DatabaseSelectHelper;
+import com.bank.bankingapp.database.DatabaseUpdateHelper;
+import com.bank.bankingapp.generics.Roles;
+import com.bank.bankingapp.user.User;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,15 +19,6 @@ import java.io.ObjectOutputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.bank.bankingapp.account.Account;
-import com.bank.bankingapp.bank.Bank;
-import com.bank.bankingapp.exceptions.DatabaseInsertException;
-import com.bank.bankingapp.database.DatabaseInsertHelper;
-import com.bank.bankingapp.database.DatabaseSelectHelper;
-import com.bank.bankingapp.database.DatabaseUpdateHelper;
-import com.bank.bankingapp.generics.Roles;
-import com.bank.bankingapp.user.User;
 
 
 public class AdminTerminal extends Terminal {
@@ -28,17 +30,16 @@ public class AdminTerminal extends Terminal {
     /**
      * Adds a new admin to the database
      *
-     * @param userName    admin's userName
-     * @param age         admin's age
-     * @param address     admin's address
-     * @param adminTypeId admin's typeId
-     * @param password    admin's password
+     * @param userName admin's userName
+     * @param age      admin's age
+     * @param address  admin's address
+     * @param typeId   admin's typeId
+     * @param password admin's password
      * @return the new admin's id if successful, -1 if not
-     * @throws SQLException if connection error
      */
-    public int createAdmin(String userName, int age, String address, int adminTypeId, String password)
-            throws SQLException, DatabaseInsertException {
-        return DatabaseInsertHelper.insertNewUser(userName, age, address, adminTypeId, password);
+    public int createUser(String userName, int age, String address, int typeId, String password, Context context) {
+        DatabaseHelper db = new DatabaseHelper(context);
+        return (int) db.insertNewUser(userName, age, address, typeId, password);
     }
 
     /**
@@ -47,7 +48,7 @@ public class AdminTerminal extends Terminal {
      * @return a list of all users of type roleId, or null if not authenticated
      * @throws SQLException if connection error
      */
-    public List<User> getUserType(int roleId) throws SQLException {
+    public List<User> getUserType(int roleId) {
         // make sure admin is authenticated
         if (!authenticated) { // TODO: use helper method to make sure 1 <= roleId <= 3
             return null;
@@ -72,7 +73,7 @@ public class AdminTerminal extends Terminal {
      * @throws IOException
      * @throws SQLException
      */
-    public void serializeDatabase() throws IOException, SQLException {
+    public void serializeDatabase() throws IOException {
         FileOutputStream file = new FileOutputStream("database.ser");
         ObjectOutputStream out = new ObjectOutputStream(file);
 
@@ -113,8 +114,7 @@ public class AdminTerminal extends Terminal {
 
     }
 
-    public void deserializeDatabase()
-            throws IOException, ClassNotFoundException, SQLException, DatabaseInsertException {
+    public void deserializeDatabase() throws IOException, ClassNotFoundException {
         FileInputStream file = new FileInputStream("database.ser");
         ObjectInputStream in = new ObjectInputStream(file);
 

@@ -1,12 +1,12 @@
 package com.bank.bankingapp.terminals;
 
-import java.math.BigDecimal;
-import java.sql.SQLException;
-
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.database.DatabaseSelectHelper;
 import com.bank.bankingapp.database.PasswordHelpers;
 import com.bank.bankingapp.user.User;
+
+import java.math.BigDecimal;
+import java.sql.SQLException;
 
 public class Terminal {
 

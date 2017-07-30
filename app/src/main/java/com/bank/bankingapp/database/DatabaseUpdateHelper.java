@@ -267,7 +267,7 @@ public class DatabaseUpdateHelper {
      * @param userId   The users id
      * @return true if successful, false otherwise
      */
-    public boolean updateUserPassword(String password, int userId){
+    public boolean updateUserPassword(String password, int userId) {
         return db.updateUserPassword(password, userId);
     }
 
