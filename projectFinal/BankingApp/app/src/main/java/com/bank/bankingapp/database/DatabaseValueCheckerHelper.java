@@ -1,11 +1,12 @@
 package com.bank.bankingapp.database;
 
+import android.content.Context;
+
 import com.bank.bankingapp.generics.AccountTypes;
 import com.bank.bankingapp.generics.Roles;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.SQLException;
 import java.util.List;
 
 public class DatabaseValueCheckerHelper {
@@ -78,12 +79,14 @@ public class DatabaseValueCheckerHelper {
      * @param userId    - current user
      * @param accountId - account that needs to be verified
      * @return true if the user owns the account
-     * @throws SQLException
      */
-    public boolean userHasAccountChecker(int userId, int accountId) {
+    public boolean userHasAccountChecker(int userId, int accountId, Context context) {
+
+        DatabaseHelper db = new DatabaseHelper(context);
+
         boolean valid = false;
         // Check if input is valid
-        List<Integer> IDs = DatabaseSelectHelper.getAccountIds(userId);
+        List<Integer> IDs = db.getAccountIds(userId);
         for (int i = 0; i < IDs.size(); i++) {
             if (accountId == IDs.get(i)) {
                 valid = true;

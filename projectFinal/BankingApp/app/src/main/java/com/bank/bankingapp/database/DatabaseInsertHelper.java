@@ -10,10 +10,13 @@ import java.math.BigDecimal;
  */
 public class DatabaseInsertHelper {
 
-    DatabaseDriverA db;
+    private DatabaseDriverA db;
+    private DatabaseValueCheckerHelper checker = new DatabaseValueCheckerHelper();
+    private Context context;
 
     public DatabaseInsertHelper(Context context) {
         db = new DatabaseDriverA(context);
+        this.context = context;
     }
 
     /**
@@ -28,7 +31,7 @@ public class DatabaseInsertHelper {
 
         // Check if input is valid
         boolean valid =
-                (name != null && !name.equals("")) && DatabaseValueCheckerHelper.accountTypeIdChecker(typeId);
+                (name != null && !name.equals("")) && checker.accountTypeIdChecker(typeId);
 
         long result;
 
@@ -36,7 +39,7 @@ public class DatabaseInsertHelper {
         // Otherwise return -1
         if (valid) {
             result = db.insertAccount(name,
-                    DatabaseValueCheckerHelper.balanceRounding(balance), typeId);
+                    checker.balanceRounding(balance), typeId);
         } else {
             result = -1;
         }
@@ -53,9 +56,9 @@ public class DatabaseInsertHelper {
      */
     public long insertAccountType(String name, BigDecimal interestRate) {
 
-        // Check if input is valid
-        boolean valid = DatabaseValueCheckerHelper.accountTypeChecker(name)
-                && DatabaseValueCheckerHelper.interestRateChecker(interestRate);
+        // Check if input is vahlid
+        boolean valid = checker.accountTypeChecker(name)
+                && checker.interestRateChecker(interestRate);
 
         long result;
 
@@ -84,8 +87,8 @@ public class DatabaseInsertHelper {
 
         // Check if input is valid
         boolean valid = (name != null && !name.equals("")) && (age > 0)
-                && DatabaseValueCheckerHelper.addressLengthChecker(address)
-                && DatabaseValueCheckerHelper.roleIdChecker(roleId);
+                && checker.addressLengthChecker(address)
+                && checker.roleIdChecker(roleId);
 
         long result;
 
@@ -109,7 +112,7 @@ public class DatabaseInsertHelper {
     public long insertRole(String role) {
 
         // Check if input is valid
-        boolean valid = DatabaseValueCheckerHelper.roleTypeChecker(role);
+        boolean valid = checker.roleTypeChecker(role);
 
 
         long result;
@@ -136,7 +139,7 @@ public class DatabaseInsertHelper {
 
         // Check if input is valid
 
-        boolean valid = !DatabaseValueCheckerHelper.userHasAccountChecker(userId, accountId);
+        boolean valid = !checker.userHasAccountChecker(userId, accountId, context);
 
         long result;
 

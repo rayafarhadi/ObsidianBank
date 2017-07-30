@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.database.DatabaseHelper;
-import com.bank.bankingapp.database.DatabaseInsertHelper;
-import com.bank.bankingapp.database.DatabaseSelectHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.DatabaseInsertException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
@@ -299,22 +297,13 @@ public class UserInterface {
                                     "\nPlease enter the account id of the account you are giving interest too.");
                     System.out.print("ACCOUNTID: ");
                     int accountId = getValidInt(br);
-                    try {
-                        tellerTerminal.giveInterest(accountId);
-                        System.out.println("Interest has been successfully added to account.");
-                    } catch (SQLException e) {
-                        System.out.println("That is not a valid account id for the current customer.");
-                    }
+                    tellerTerminal.giveInterest(accountId);
+                    System.out.println("Interest has been successfully added to account.");
                     break;
                 case 5:
                     // Give interest to all accounts owned by user.
-                    try {
-                        tellerTerminal.giveInterestAll();
-                        System.out.println("\nInterest has been successfully added to all users accounts.");
-                    } catch (SQLException e) {
-                        System.out.println(
-                                "One of users accounts does not contain a valid account Id. Operation failed.");
-                    }
+                    tellerTerminal.giveInterestAll();
+                    System.out.println("\nInterest has been successfully added to all users accounts.");
                     break;
                 case 6:
                     // Deposit to account
@@ -454,7 +443,7 @@ public class UserInterface {
                             System.out.println("That is not a valid message number. Please try again.");
                         }
                     } while (!valid_number);
-                    System.out.println(messages.get(n).viewMessage());
+                    //System.out.println(messages.get(n).viewMessage());
                     System.out.println();
                     break;
                 case 13:
@@ -556,7 +545,7 @@ public class UserInterface {
                     // Create teller account
                     System.out.print("Now creating a Teller... ");
                     newId =
-                            DatabaseInsertHelper.insertNewUser(userName, age, address, tellerTypeId, password);
+                            (int) db.insertNewUser(userName, age, address, tellerTypeId, password);
                     if (newId > 0) {
                         System.out.println("Teller created. The new user Id for the Teller is: " + newId);
                     } else {
@@ -698,7 +687,7 @@ public class UserInterface {
 
             if (terminal instanceof ATM && success) {
                 System.out.println("Logged in successfully.");
-                Customer curr_user = (Customer) DatabaseSelectHelper.getUserDetails(userId);
+                Customer curr_user = (Customer) db.getUserDetails(userId);
                 System.out.println("\nNAME: " + curr_user.getName());
                 System.out.println("ADDRESS: " + curr_user.getAddress());
                 System.out.println("ACCOUNTS: <name>   <balance>   <type>");
@@ -706,7 +695,7 @@ public class UserInterface {
                 if (accounts.size() != 0) {
                     for (Account account : accounts) {
                         System.out.println("  - " + account.getName() + "   " + account.getBalance().toString()
-                                + "   " + DatabaseSelectHelper.getAccountTypeName(account.getType()));
+                                + "   " + db.getAccountTypeName(account.getType()));
                     }
                 } else {
                     System.out.println("  EMPTY");
@@ -759,7 +748,7 @@ public class UserInterface {
                 System.out.println("That is not a valid message number. Please try again.");
             }
         } while (!valid_number);
-        System.out.println(messages.get(n).viewMessage());
+        //System.out.println(messages.get(n).viewMessage());
         System.out.println();
         return true;
     }

@@ -24,7 +24,7 @@ public class AccountsMap extends EnumMap<AccountTypes, AccountTypeValues> {
      *
      * @throws SQLException When connection to the database is lost
      */
-    public AccountsMap(Context context) throws SQLException {
+    public AccountsMap(Context context) {
         super(AccountTypes.class);
         update(context);
     }
@@ -78,7 +78,7 @@ public class AccountsMap extends EnumMap<AccountTypes, AccountTypeValues> {
      *
      * @throws SQLException When connection with the database is lost
      */
-    public void update(Context context) throws SQLException {
+    public void update(Context context) {
         DatabaseHelper db = new DatabaseHelper(context);
         int id = 1;
 

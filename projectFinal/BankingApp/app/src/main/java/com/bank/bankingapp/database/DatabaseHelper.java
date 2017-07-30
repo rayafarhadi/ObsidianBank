@@ -354,7 +354,7 @@ public class DatabaseHelper {
      * @param userId   The users id
      * @return true if successful, false otherwise
      */
-    public boolean updateUserPassword(String password, int userId) throws SQLException {
+    public boolean updateUserPassword(String password, int userId) {
         return updater.updateUserPassword(password, userId);
     }
 

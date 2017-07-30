@@ -4,12 +4,10 @@ import android.content.Context;
 
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.bank.Bank;
-import com.bank.bankingapp.database.DatabaseHelper;
-import com.bank.bankingapp.database.DatabaseSelectHelper;
-import com.bank.bankingapp.database.DatabaseUpdateHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
 import com.bank.bankingapp.exceptions.InsuffiecintFundsException;
+import com.bank.bankingapp.generics.AccountTypes;
 import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.user.Customer;
 
@@ -19,7 +17,8 @@ import java.util.List;
 
 public class ATM extends Terminal {
 
-    public ATM() {
+    public ATM(Context context) {
+        super(context);
         designatedUserId = Bank.rolesMap.get(Roles.CUSTOMER).getId();
     }
 
@@ -47,13 +46,18 @@ public class ATM extends Terminal {
      * @return if the deposit was successful or not
      */
     public boolean makeDeposit(BigDecimal deposit, int accountId, Context context)
-            throws IllegalAmountException, SQLException, ConnectionFailedException {
-        DatabaseHelper dbh = new DatabaseHelper(context);
-        currentUser = dbh.getUserDetails(currentUser.getId());
+            throws IllegalAmountException, ConnectionFailedException {
         // Check to see if customer is authenticated.
         if (!authenticated) {
             throw new ConnectionFailedException();
         }
+
+        // Check that the account is a RSA, and makes sure a teller is accessing it
+        if (db.getAccountType(accountId) == Bank.accountsMap.get(AccountTypes.RSA)
+                .getId() && !(this instanceof TellerTerminal)) {
+            return false;
+        }
+
         // Check to see if the customer owns the account
         if (!accountOwned((Customer) currentUser, accountId)) {
             return false;
@@ -63,33 +67,37 @@ public class ATM extends Terminal {
             throw new IllegalAmountException();
         }
         // Determine what new balance is
-        BigDecimal balance = dbh.getBalance(accountId).add(deposit);
+        BigDecimal balance = db.getBalance(accountId).add(deposit);
         // Update the account balance in the database
-        boolean success = dbh.updateAccountBalance(balance, accountId);
+        boolean success = db.updateAccountBalance(balance, accountId);
         // Return whether the deposit was successful
         return success;
+
+
     }
 
     /**
      * Checks the balance of an account. If user is not authenticated throws
-     * ConnectionFailedException. If Account Not owned throws ConnectionFailedException.
+     * ConnectionFailedException. If Account Not owned throws
+     * ConnectionFailedException.
      *
      * @return balance of account with account id
      */
-    public BigDecimal checkBalance(int accountId, Context context) throws SQLException, ConnectionFailedException {
-        DatabaseHelper dbh = new DatabaseHelper(context);
-        currentUser = dbh.getUserDetails(currentUser.getId());
+
+    public BigDecimal checkBalance(int accountId) throws ConnectionFailedException {
         // Check to see if customer is authenticated.
         if (!authenticated) {
             throw new ConnectionFailedException();
         }
+        currentUser = db.getUserDetails(currentUser.getId());
+
         // Check to see if the customer owns the account
         // accountOwned(currentUser, accountId)
         if (!accountOwned((Customer) currentUser, accountId)) {
             throw new ConnectionFailedException();
         }
         // Get the balance from the database and return it
-        BigDecimal balance = dbh.getBalance(accountId);
+        BigDecimal balance = db.getBalance(accountId);
         return balance;
     }
 
@@ -102,13 +110,19 @@ public class ATM extends Terminal {
      * @return If the funds were withdrawn or not.
      */
     public boolean makeWithdrawal(BigDecimal withdrawal, int accountId, Context context) throws IllegalAmountException,
-            SQLException, ConnectionFailedException, InsuffiecintFundsException {
-        DatabaseHelper dbh = new DatabaseHelper(context);
-        currentUser = dbh.getUserDetails(currentUser.getId());
+            ConnectionFailedException, InsuffiecintFundsException {
+        currentUser = db.getUserDetails(currentUser.getId());
         // Check to see if customer is authenticated.
         if (!authenticated) {
             throw new ConnectionFailedException();
         }
+
+        // Check that the account is a RSA, and makes sure a teller is accessing it
+        if (db.getAccountType(accountId) == Bank.accountsMap.get(AccountTypes.RSA)
+                .getId() && !(this instanceof TellerTerminal)) {
+            return false;
+        }
+
         // Check to see if the customer owns the account
         if (!accountOwned((Customer) currentUser, accountId)) {
             return false;
@@ -118,15 +132,30 @@ public class ATM extends Terminal {
             throw new IllegalAmountException();
         }
         // Determine what new balance is
-        BigDecimal balance = dbh.getBalance(accountId).subtract(withdrawal);
+        BigDecimal balance = db.getBalance(accountId).subtract(withdrawal);
         // Make sure the account balance is above 0 before making a withdrawal
         if (balance.longValue() < 0) {
             throw new InsuffiecintFundsException();
         }
         // Update the account balance in the database
-        boolean success = dbh.updateAccountBalance(balance, accountId);
+        boolean success = db.updateAccountBalance(balance, accountId);
+
+        // If account is Chequing, switch to savings if balance < 1000
+        boolean isSavings =
+                db.getAccountType(accountId) == Bank.accountsMap.get(AccountTypes.SAVING)
+                        .getId();
+        if (db.getBalance(accountId).compareTo(new BigDecimal(1000)) < 0
+                && isSavings) {
+            db.updateAccountType(Bank.accountsMap.get(AccountTypes.CHEQUING)
+                    .getId(), accountId);
+            db.insertMessage(currentUser.getId(),
+                    "Your Savings account with account id: " + accountId
+                            + " has been transitioned into a Chequing account because the accounts balance was less then 1000$.");
+        }
+
         // Return whether the deposit was successful
         return success;
+
     }
 
     /**
@@ -134,7 +163,7 @@ public class ATM extends Terminal {
      *
      * @return if the account is owned by customer or not
      */
-    protected boolean accountOwned(Customer customer, int accountId) throws SQLException {
+    protected boolean accountOwned(Customer customer, int accountId) {
         // Check to see if the account is owned by the user
         boolean accountOwned = false;
         for (Account account : customer.getAccounts()) {

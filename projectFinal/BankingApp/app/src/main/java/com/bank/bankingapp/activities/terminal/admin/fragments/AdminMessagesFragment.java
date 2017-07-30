@@ -22,9 +22,9 @@ public class AdminMessagesFragment extends Fragment {
     }
 
     public void occupyList() {
-        AdminTerminal at = new AdminTerminal();
+        AdminTerminal at = new AdminTerminal(this.getContext());
 
-        ArrayAdapter adapter = new ArrayAdapter(this, R.id.messages, new ArrayList<Message>);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), R.layout.view_messages, new ArrayList<String>());
         for (Message message : at.viewAllMessages()) {
             adapter.add(message.getMessage());
         }

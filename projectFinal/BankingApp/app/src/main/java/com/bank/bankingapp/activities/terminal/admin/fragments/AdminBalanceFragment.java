@@ -18,7 +18,7 @@ public class AdminBalanceFragment extends Fragment {
     }
 
     public void updateBalance() {
-        AdminTerminal at = new AdminTerminal();
+        AdminTerminal at = new AdminTerminal(this.getContext());
         TextView balance = (TextView) getView().findViewById(R.id.balance);
         balance.setText(at.addAllBalances().toString());
     }
