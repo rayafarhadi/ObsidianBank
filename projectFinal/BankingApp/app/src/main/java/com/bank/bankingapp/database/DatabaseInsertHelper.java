@@ -27,11 +27,11 @@ public class DatabaseInsertHelper {
      * @param typeId  the id of the type of the account.
      * @return accountId of inserted account, -1 otherwise
      */
-    public long insertAccount(String name, BigDecimal balance, int typeId) {
+    public long insertAccount(String name, BigDecimal balance, long typeId) {
 
         // Check if input is valid
         boolean valid =
-                (name != null && !name.equals("")) && checker.accountTypeIdChecker(typeId);
+                (name != null && !name.equals("")) && checker.accountTypeIdChecker((int)typeId);
 
         long result;
 
@@ -39,7 +39,7 @@ public class DatabaseInsertHelper {
         // Otherwise return -1
         if (valid) {
             result = db.insertAccount(name,
-                    checker.balanceRounding(balance), typeId);
+                    checker.balanceRounding(balance), (int)typeId);
         } else {
             result = -1;
         }
