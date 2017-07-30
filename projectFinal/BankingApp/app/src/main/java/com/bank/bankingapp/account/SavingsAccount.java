@@ -1,12 +1,14 @@
-package com.bank.bankingapp.account;
+package com.bank.account;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 import com.bank.bank.Bank;
 import com.bank.generics.AccountTypes;
 
-import java.math.BigDecimal;
+public class SavingsAccount extends Account implements Serializable{
 
-public class SavingsAccount extends Account {
-
+  private static final long serialVersionUID = 553499615876333440L;
 
   /**
    * Constructor for SavingsAccount

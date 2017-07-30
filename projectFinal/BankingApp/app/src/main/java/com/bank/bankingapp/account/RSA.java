@@ -1,15 +1,13 @@
-package com.bank.bankingapp.account;
+package com.bank.account;
 
 import com.bank.bank.Bank;
 import com.bank.generics.AccountTypes;
-
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- * Created by wesle on 2017-07-23.
- */
-public class RSA extends Account{
+public class RSA extends Account implements Serializable{
 
+  private static final long serialVersionUID = 4335923625922600246L;
   protected boolean tellerAuthenticated = false;
 
   /**

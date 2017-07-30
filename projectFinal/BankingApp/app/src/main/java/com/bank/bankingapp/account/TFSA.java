@@ -1,12 +1,14 @@
-package com.bank.bankingapp.account;
+package com.bank.account;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 import com.bank.bank.Bank;
 import com.bank.generics.AccountTypes;
 
-import java.math.BigDecimal;
+public class TFSA extends Account implements Serializable{
 
-public class TFSA extends Account {
-
+  private static final long serialVersionUID = -1352980863389787560L;
 
   /**
    * Constructor for TSFA

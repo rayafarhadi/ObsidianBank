@@ -1,9 +1,9 @@
-package com.bank.bankingapp.account;
+package com.bank.account;
+
+import java.math.BigDecimal;
 
 import com.bank.bank.Bank;
 import com.bank.generics.AccountTypes;
-
-import java.math.BigDecimal;
 
 public class AccountFactory {
 

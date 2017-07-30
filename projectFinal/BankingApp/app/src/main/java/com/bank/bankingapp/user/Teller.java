@@ -1,10 +1,12 @@
-package com.bank.bankingapp.user;
+package com.bank.user;
 
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.generics.Roles;
+import java.io.Serializable;
 
-public class Teller extends User {
+public class Teller extends User implements Serializable{
 
+  private static final long serialVersionUID = 5775504761772512942L;
 
   /**
    * Constructs a teller
