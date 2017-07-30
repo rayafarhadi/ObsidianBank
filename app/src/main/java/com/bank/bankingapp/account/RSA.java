@@ -1,7 +1,7 @@
-package com.bank.account;
+package com.bank.bankingapp.account;
 
-import com.bank.bank.Bank;
-import com.bank.generics.AccountTypes;
+import com.bank.bankingapp.bank.Bank;
+import com.bank.bankingapp.generics.AccountTypes;
 import java.io.Serializable;
 import java.math.BigDecimal;
 

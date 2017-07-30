@@ -1,11 +1,11 @@
-package com.bank.account;
+package com.bank.bankingapp.account;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 import java.sql.SQLException;
 
-import com.bank.maps.AccountTypeValues;
+import com.bank.bankingapp.maps.AccountTypeValues;
 
 public abstract class Account implements Serializable{
 
