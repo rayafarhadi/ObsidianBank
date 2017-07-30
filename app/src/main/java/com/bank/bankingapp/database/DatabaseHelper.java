@@ -2,6 +2,10 @@ package com.bank.bankingapp.database;
 
 import android.content.Context;
 
+import com.bank.bankingapp.account.Account;
+import com.bank.bankingapp.messages.Message;
+import com.bank.bankingapp.user.User;
+
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;

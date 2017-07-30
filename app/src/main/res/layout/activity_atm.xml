@@ -8,7 +8,7 @@
     <!-- Options Fragment -->
     <fragment
         android:id="@+id/atm_options_fragment"
-        android:name="com.bank.bankingapp.terminal.atm.fragments.ATMOptionsFragment"
+        android:name="com.bank.bankingapp.activities.terminal.atm.fragments.ATMOptionsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

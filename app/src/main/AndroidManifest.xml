@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".activities.login.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,49 +25,49 @@
         </activity>
 
         <activity
-            android:name=".terminal.admin.AdminActivity"
+            android:name=".activities.terminal.admin.AdminActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan">
 
         </activity>
 
         <activity
-            android:name=".terminal.teller.TellerActivity"
+            android:name=".activities.terminal.teller.TellerActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan">
 
         </activity>
 
         <activity
-            android:name=".terminal.teller.TellerAuthenticateCustomerActivity"
+            android:name=".activities.terminal.teller.TellerAuthenticateCustomerActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan">
 
         </activity>
 
         <activity
-            android:name=".terminal.teller.TellerCreateCustomerActivity"
+            android:name=".activities.terminal.teller.TellerCreateCustomerActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan">
 
         </activity>
 
         <activity
-            android:name=".terminal.teller.TellerMessagesActivity"
+            android:name=".activities.terminal.teller.TellerMessagesActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan">
 
         </activity>
 
         <activity
-            android:name=".terminal.teller.TellerStartingMenuActivity"
+            android:name=".activities.terminal.teller.TellerStartingMenuActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan">
 
         </activity>
 
         <activity
-            android:name=".terminal.atm.ATMActivity"
+            android:name=".activities.terminal.atm.ATMActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustPan">
 
