@@ -151,6 +151,7 @@
     </Space>
 
     <!-- Check Balance Button -->
+    <!-- TODO: Check Balance for All Accounts -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -217,5 +218,9 @@
         android:layout_weight="1">
 
     </Space>
+
+    <!-- TODO: Update user info -->
+    <!-- TODO: View Customers Messages -->
+    <!-- TODO: View Tellers Messages -->
 
 </LinearLayout>
