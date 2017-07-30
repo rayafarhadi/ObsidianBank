@@ -17,9 +17,11 @@ import java.util.List;
 public class DatabaseSelectHelper {
 
     DatabaseDriverA db;
+    Context context;
 
     public DatabaseSelectHelper(Context context) {
         db = new DatabaseDriverA(context);
+        this.context = context;
     }
 
     /**
@@ -69,7 +71,7 @@ public class DatabaseSelectHelper {
             } while (results.moveToNext());
 
 
-            return UserFactory.getUser(roleId, userId, name, age, address);
+            return UserFactory.getUser(roleId, userId, name, age, address, context);
         } else {
             return null;
         }
