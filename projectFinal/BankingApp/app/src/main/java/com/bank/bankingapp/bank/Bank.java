@@ -29,7 +29,7 @@ public class Bank {
      * @throws SQLException
      * @throws ConnectionFailedException
      */
-    public static void main(String[] argv)
+    public void main(String[] argv)
             throws ConnectionFailedException, SQLException, DatabaseInsertException, IOException {
         if (argv.length != 1) {
             runNormally();
@@ -42,7 +42,7 @@ public class Bank {
         }
     }
 
-    private static void runAdminMode() {
+    private void runAdminMode() {
         Connection connection = DatabaseDriverExtender.connectOrCreateDataBase();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -97,7 +97,7 @@ public class Bank {
         ;
     }
 
-    private static void runNormally() {
+    private void runNormally() {
         try {
             accountsMap = new AccountsMap();
             rolesMap = new RolesMap();
@@ -148,7 +148,7 @@ public class Bank {
      * @return an integer
      * @throws IOException
      */
-    private static int getValidInt(BufferedReader br) throws IOException {
+    private int getValidInt(BufferedReader br) throws IOException {
         int userInput = 0;
         do {
             try {
@@ -167,7 +167,7 @@ public class Bank {
      * @return role ID.
      * @throws SQLException
      */
-    private static int getRoleId(String roleName) throws SQLException {
+    private int getRoleId(String roleName) throws SQLException {
         // Find out the Role ID for roleName.
         for (int roleId : DatabaseSelectHelper.getRoles()) {
             if (DatabaseSelectHelper.getRole(roleId).equalsIgnoreCase(roleName)) {
