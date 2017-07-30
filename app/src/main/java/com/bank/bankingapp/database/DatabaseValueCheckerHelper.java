@@ -16,7 +16,7 @@ public class DatabaseValueCheckerHelper {
      * @param roleId
      * @return true if the role Id is valid in database
      */
-    public static boolean roleIdChecker(int roleId) {
+    public boolean roleIdChecker(int roleId) {
         return roleId > 0 && roleId <= Roles.values().length;
     }
 
@@ -27,7 +27,7 @@ public class DatabaseValueCheckerHelper {
      * @param role The role to check
      * @return Whether the given name matches a Roles name
      */
-    public static boolean roleTypeChecker(String role) {
+    public boolean roleTypeChecker(String role) {
         // All of the roles
         Roles[] roles = Roles.values();
         boolean valid = false;
@@ -47,7 +47,7 @@ public class DatabaseValueCheckerHelper {
      * @param typeId
      * @return true if the account type id is in the database
      */
-    public static boolean accountTypeIdChecker(int typeId) {
+    public boolean accountTypeIdChecker(int typeId) {
         return typeId > 0 && typeId <= AccountTypes.values().length;
     }
 
@@ -57,7 +57,7 @@ public class DatabaseValueCheckerHelper {
      *
      * @return Whether the given name matches a AccountTypes name
      */
-    public static boolean accountTypeChecker(String account) {
+    public boolean accountTypeChecker(String account) {
         // All of the account types
         AccountTypes[] accountTypes = AccountTypes.values();
         boolean valid = false;
@@ -80,7 +80,7 @@ public class DatabaseValueCheckerHelper {
      * @return true if the user owns the account
      * @throws SQLException
      */
-    public static boolean userHasAccountChecker(int userId, int accountId) {
+    public boolean userHasAccountChecker(int userId, int accountId) {
         boolean valid = false;
         // Check if input is valid
         List<Integer> IDs = DatabaseSelectHelper.getAccountIds(userId);
@@ -98,7 +98,7 @@ public class DatabaseValueCheckerHelper {
      * @param balance of user
      * @return balance of user rounded to 2 decimal places
      */
-    public static BigDecimal balanceRounding(BigDecimal balance) {
+    public BigDecimal balanceRounding(BigDecimal balance) {
         return balance.setScale(2, RoundingMode.HALF_DOWN);
     }
 
@@ -108,7 +108,7 @@ public class DatabaseValueCheckerHelper {
      * @param address of user
      * @return True is the address is under 100 characters
      */
-    public static boolean addressLengthChecker(String address) {
+    public boolean addressLengthChecker(String address) {
         return address.length() > 0 && address.length() < 100;
     }
 
@@ -118,7 +118,7 @@ public class DatabaseValueCheckerHelper {
      * @param interestRate of the user
      * @return True if the interest rate is valid
      */
-    public static boolean interestRateChecker(BigDecimal interestRate) {
+    public boolean interestRateChecker(BigDecimal interestRate) {
         return interestRate.doubleValue() >= 0 && interestRate.doubleValue() < 1.0;
     }
 
