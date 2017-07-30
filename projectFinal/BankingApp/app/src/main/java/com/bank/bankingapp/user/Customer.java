@@ -1,8 +1,8 @@
 package com.bank.bankingapp.user;
 
-import com.bank.account.Account;
-import com.bank.bank.Bank;
-import com.bank.generics.Roles;
+import com.bank.bankingapp.account.Account;
+import com.bank.bankingapp.bank.Bank;
+import com.bank.bankingapp.generics.Roles;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
