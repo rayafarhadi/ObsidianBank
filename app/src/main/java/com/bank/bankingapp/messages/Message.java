@@ -1,6 +1,9 @@
 package com.bank.bankingapp.messages;
 
-import com.bank.databasehelper.DatabaseUpdateHelper;
+import android.content.Context;
+
+import com.bank.bankingapp.database.DatabaseDriverA;
+import com.bank.bankingapp.database.DatabaseHelper;
 
 public class Message {
 
@@ -16,9 +19,10 @@ public class Message {
     this.viewed = viewed;
   }
 
-  public String viewMessage(){
+  public String viewMessage(Context context){
     this.viewed = true;
-    DatabaseUpdateHelper.updateUserMessageState(this.messageId);
+    DatabaseHelper dbh = new DatabaseHelper(context);
+    dbh.updateUserMessageState(this.messageId);
     return this.message;
   }
 
