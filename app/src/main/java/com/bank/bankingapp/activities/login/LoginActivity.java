@@ -11,7 +11,9 @@ import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
 import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
 import com.bank.bankingapp.activities.terminal.teller.TellerStartingMenuActivity;
+import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
+import com.bank.bankingapp.generics.Roles;
 
 /**
  * A login screen that offers login via email/password.
@@ -35,10 +37,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void logIn(View view) {
-        if (db.getUserRole(Integer.parseInt(idField.getText().toString())) == Bank.) {
+        if (db.getUserRole(Integer.parseInt(idField.getText().toString())) == Bank.rolesMap.get(Roles.ADMIN).getId()) {
             Intent intent = new Intent(this, AdminActivity.class);
             startActivity(intent);
-        } else if (idField.getText().toString().equals("2")) {
+        } else if (db.getUserRole(Integer.parseInt(idField.getText().toString())) == Bank.rolesMap.get(Roles.TELLER).getId()) {
             Intent intent = new Intent(this, TellerStartingMenuActivity.class);
             startActivity(intent);
         } else {
