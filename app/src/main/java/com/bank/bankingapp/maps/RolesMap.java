@@ -1,7 +1,7 @@
 package com.bank.bankingapp.maps;
 
-import com.bank.databasehelper.DatabaseSelectHelper;
-import com.bank.generics.Roles;
+import com.bank.bankingapp.databasehelper.DatabaseSelectHelper;
+import com.bank.bankingapp.generics.Roles;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

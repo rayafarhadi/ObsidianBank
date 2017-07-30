@@ -1,103 +1,108 @@
-package com.bank.bankingapp.account;
+package com.bank.account;
 
-import com.bank.bankingapp.maps.AccountTypeValues;
-
+import java.io.Serializable;
 import java.math.BigDecimal;
+
 import java.sql.SQLException;
 
-public abstract class Account {
+import com.bank.maps.AccountTypeValues;
 
-    // initialize all variables of account
-    protected int id;
-    protected String name;
-    protected BigDecimal balance;
-    protected AccountTypeValues typeInfo;
-    protected BigDecimal interestRate;
+public abstract class Account implements Serializable{
 
-    /**
-     * Returns the id of the account
-     *
-     * @return int id - id of the Account
-     */
-    public int getId() {
-        return this.id;
-    }
+  private static final long serialVersionUID = -623715467042009427L;
 
-    /**
-     * Sets the id of the account
-     *
-     * @param id - id that must be set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
+  // initialize all variables of account
+  protected transient int id;
+  protected String name;
+  protected BigDecimal balance;
+  protected AccountTypeValues typeInfo;
+  protected BigDecimal interestRate;
 
-    /**
-     * Returns the name of the account
-     *
-     * @return String name - name of the account
-     */
-    public String getName() {
-        return this.name;
-    }
+  /**
+   * Returns the id of the account
+   * 
+   * @return int id - id of the Account
+   */
+  public int getId() {
+    return this.id;
+  }
 
-    /**
-     * Sets the name of the account
-     *
-     * @param name - string that must be set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+  /**
+   * Sets the id of the account
+   * 
+   * @param id - id that must be set
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    /**
-     * Gets the balance of the account
-     *
-     * @return BigDecimal balance- balance of the account
-     */
-    public BigDecimal getBalance() {
-        return balance;
-    }
+  /**
+   * Returns the name of the account
+   * 
+   * @return String name - name of the account
+   */
+  public String getName() {
+    return this.name;
+  }
 
-    /**
-     * Sets the balance of the account
-     *
-     * @param BigDecimal balance - balance that must be set
-     */
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
+  /**
+   * Sets the name of the account
+   * 
+   * @param name - string that must be set
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    /**
-     * Gets the type of the account
-     *
-     * @return int type - type of the account
-     */
-    public int getType() {
-        return typeInfo.getId();
-    }
+  /**
+   * Gets the balance of the account
+   * 
+   * @return BigDecimal balance- balance of the account
+   */
+  public BigDecimal getBalance() {
+    return balance;
+  }
 
-    /**
-     * set interest rate
-     *
-     * @throws SQLException
-     */
-    public void findAndSetInterestRate() throws SQLException {
-        interestRate = typeInfo.getInterest();
-    }
+  /**
+   * Sets the balance of the account
+   * 
+   * @param BigDecimal balance - balance that must be set
+   */
+  public void setBalance(BigDecimal balance) {
+    this.balance = balance;
+  }
 
-    /**
-     * Adds interest to the balance
-     *
-     * @throws SQLException
-     */
-    public void addInterest() throws SQLException {
-        // create a BigDecimal of 1
-        BigDecimal One = new BigDecimal("1");
-        // run find and set interest rate
-        findAndSetInterestRate();
-        // multiply balance by (interest rate +1);
-        balance = balance.multiply(One.add(interestRate));
-    }
+  /**
+   * Gets the type of the account
+   * 
+   * @return int type - type of the account
+   */
+  public int getType() {
+    return typeInfo.getId();
+  }
+
+  /**
+   * set interest rate
+   * 
+   * @throws SQLException
+   */
+  public void findAndSetInterestRate() throws SQLException {
+    interestRate = typeInfo.getInterest();
+  }
+
+  /**
+   * Adds interest to the balance
+   * 
+   * @throws SQLException
+   * 
+   */
+  public void addInterest() throws SQLException {
+    // create a BigDecimal of 1
+    BigDecimal One = new BigDecimal("1");
+    // run find and set interest rate
+    findAndSetInterestRate();
+    // multiply balance by (interest rate +1);
+    balance = balance.multiply(One.add(interestRate));
+  }
 
 }

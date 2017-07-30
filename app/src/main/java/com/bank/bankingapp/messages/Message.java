@@ -1,12 +1,12 @@
-package com.bank.bankingapp.messages;
+package com.bank.messages;
 
-import android.content.Context;
+import com.bank.database.DatabaseUpdater;
+import com.bank.databasehelper.DatabaseUpdateHelper;
+import java.io.Serializable;
 
-import com.bank.bankingapp.database.DatabaseDriverA;
-import com.bank.bankingapp.database.DatabaseHelper;
+public class Message implements Serializable{
 
-public class Message {
-
+  private static final long serialVersionUID = 2185744541705762899L;
   private int messageId;
   private int userId;
   private String message;
@@ -19,10 +19,9 @@ public class Message {
     this.viewed = viewed;
   }
 
-  public String viewMessage(Context context){
+  public String viewMessage(){
     this.viewed = true;
-    DatabaseHelper dbh = new DatabaseHelper(context);
-    dbh.updateUserMessageState(this.messageId);
+    DatabaseUpdateHelper.updateUserMessageState(this.messageId);
     return this.message;
   }
 

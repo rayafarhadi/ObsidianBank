@@ -1,18 +1,15 @@
-package com.bank.bankingapp.user;
+package com.bank.user;
 
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.generics.Roles;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A class that represents a bank's customer
  */
-public class Customer extends User {
+public class Customer extends User implements Serializable{
 
+  private static final long serialVersionUID = 7199924054172880898L;
   private List<Account> accounts = new ArrayList<>();
 
 

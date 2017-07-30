@@ -2,7 +2,7 @@ package com.bank.bankingapp.database;
 
 import android.content.Context;
 
-import com.bank.bank.Bank;
+import com.bank.bankingapp.bank.Bank;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
