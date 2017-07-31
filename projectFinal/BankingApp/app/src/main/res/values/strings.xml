@@ -6,6 +6,11 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
 
+    <!-- Strings related to reseting database -->
+    <string name="reset_database">Reset Database</string>
+    <string name="reset_confirmation_title">Reset Database?</string>
+    <string name="reset_confirmation_message">Resetting will result in the loss of all user and account information</string>
+
     <!-- Strings related to admin options -->
     <string name="admin_option_messages">Messages</string>
     <string name="admin_option_balance">Total \nBalance</string>
