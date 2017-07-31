@@ -47,7 +47,7 @@ public class TellerGiveInterestFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         TellerActivity prevActivity = (TellerActivity) this.getActivity();
-        final TellerTerminal tt = prevActivity.getTt();
+        final TellerTerminal tt = (TellerTerminal) prevActivity.getAtm();
         final DatabaseHelper db = new DatabaseHelper(this.getContext());
 
 

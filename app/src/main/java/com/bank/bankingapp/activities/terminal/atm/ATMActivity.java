@@ -10,16 +10,14 @@ import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.login.LoginActivity;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMDepositFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMListAccountsBalancesFragment;
+import com.bank.bankingapp.activities.terminal.atm.fragments.ATMMessagesFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMWithdrawFragment;
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.ATM;
 import com.bank.bankingapp.user.User;
 
-/**
- * Created by rayafarhadi on 26/07/17.
- */
-
 public class ATMActivity extends AppCompatActivity {
-    private ATM atm = new ATM(this);
+    protected ATM atm = new ATM(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +39,8 @@ public class ATMActivity extends AppCompatActivity {
     public void displayATMListAccountsBalances(View view) {
         ATMListAccountsBalancesFragment listAccountsBalancesFragment = new ATMListAccountsBalancesFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        DatabaseHelper db = new DatabaseHelper(this);
+        atm.setCurrentUser(db.getUserDetails(atm.getCurrentUser().getId()));
 
         transaction.replace(R.id.atm_fragment_container, listAccountsBalancesFragment);
         transaction.addToBackStack(null);
@@ -63,6 +63,16 @@ public class ATMActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.atm_fragment_container, depositFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
+    public void displayATMMessages(View view) {
+        ATMMessagesFragment atmMessagesFragment = new ATMMessagesFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.atm_fragment_container, atmMessagesFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();

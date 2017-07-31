@@ -2,18 +2,15 @@ package com.bank.bankingapp.activities.terminal.teller;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesAdapter;
-import com.bank.bankingapp.activities.terminal.teller.fragments.TellerMessagesFragment;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.Teller;
-import com.bank.bankingapp.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
