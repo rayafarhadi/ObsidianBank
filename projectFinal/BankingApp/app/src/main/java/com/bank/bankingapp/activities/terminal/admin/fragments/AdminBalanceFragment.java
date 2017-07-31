@@ -35,14 +35,14 @@ public class AdminBalanceFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         balance = view.findViewById(R.id.admin_user_balance);
 
-        Spinner spinner = (Spinner) view.findViewById(R.id.admin_balance_spinner);
+        Spinner spinner = view.findViewById(R.id.admin_balance_spinner);
 
         DatabaseHelper db = new DatabaseHelper(this.getContext());
         ArrayList<String> users = new ArrayList<>();
 
         for (User user : db.getUsers()) {
             if (user.getRoleId() == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
-                users.add(user.getName() + ", ID: " + user.getId());
+                users.add(user.getId() + ": " + user.getName());
             }
         }
 
@@ -65,11 +65,7 @@ public class AdminBalanceFragment extends Fragment {
     public void updateBalance(int i) {
         AdminTerminal at = new AdminTerminal(this.getContext());
         DatabaseHelper db = new DatabaseHelper(getContext());
-        ArrayList<User> users = new ArrayList<>();
-
-        for (User user : db.getUsers()) {
-            users.add(user);
-        }
+        ArrayList<User> users = db.getUsers();
 
         BigDecimal total_balance = at.addBalances(users.get(i).getId());
         if (total_balance == null) {

@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.terminals.AdminTerminal;
 
@@ -27,7 +28,8 @@ public class AdminMessagesFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         AdminActivity prevActivity = (AdminActivity) this.getActivity();
         AdminTerminal at = prevActivity.getAt();
-        List<Message> messages = at.viewAllMessages();
+        DatabaseHelper db = new DatabaseHelper(getContext());
+        List<Message> messages = db.getAllMessages(at.getCurrentUser().getId());
 
         AdminMessagesAdapter adapter = new AdminMessagesAdapter(getContext(), messages);
         ListView usersInfo = getView().findViewById(R.id.messages);

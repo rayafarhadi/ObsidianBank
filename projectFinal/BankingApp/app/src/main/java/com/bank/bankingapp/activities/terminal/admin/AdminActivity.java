@@ -18,6 +18,7 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminBalanceFragm
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminCreateUserFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
+import com.bank.bankingapp.activities.terminal.admin.fragments.AdminSendMessageFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.AdminTerminal;
@@ -110,6 +111,7 @@ public class AdminActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    //----------- Display Total Balance of All Accounts --------------------------
     public void displayTotalBalance(View view) {
         AdminAllBalanceFragment balanceFragment = new AdminAllBalanceFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -120,6 +122,7 @@ public class AdminActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    //----------- Display Total Balance of Single User-------------------------
     public void displayUserBalance(View view) {
         final AdminBalanceFragment balanceFragment = new AdminBalanceFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -130,6 +133,7 @@ public class AdminActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    //----------- Promote a Teller to Admin -------------------------
     public void displayPromote(View view) {
         AdminPromoteFragment promoteFragment = new AdminPromoteFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -140,6 +144,18 @@ public class AdminActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    //----------- Send Message to User -------------------------
+    public void sendMessage(View view) {
+        final AdminSendMessageFragment sendMessageFragment = new AdminSendMessageFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.admin_fragment_container, sendMessageFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
+    //----------- Log out Admin Terminal-------------------------
     public void logOut(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

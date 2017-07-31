@@ -20,7 +20,7 @@ public class AdminAllBalanceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.view_admin_all_balance, container, false);
-        balance = (TextView) rl.findViewById(R.id.admin_total_balance);
+        balance = rl.findViewById(R.id.admin_total_balance);
 
         AdminTerminal at = new AdminTerminal(this.getContext());
         BigDecimal total_balance = at.addAllBalances();
