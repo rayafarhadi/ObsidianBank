@@ -6,6 +6,7 @@
 
     <!-- Spinner to show a list of all the users accounts -->
     <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />

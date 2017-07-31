@@ -87,10 +87,7 @@ public abstract class Terminal implements Serializable {
 
         BigDecimal sum = new BigDecimal(0);
         int accountId = 1;
-        // Make sure terminal is authenticated
-        if (!authenticated) {
-            return null;
-        }
+
         Account account = db.getAccountDetails(accountId);
         while (account != null) {
             sum = sum.add(account.getBalance());

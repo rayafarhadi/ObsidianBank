@@ -110,7 +110,7 @@ public class DatabaseSelectHelper implements Serializable {
         if (accountId > 0) {
             Cursor results = db.getAccountDetails(accountId);
             String name = "";
-            String balance = "";
+            String balance = "0";
             int type = 0;
 
             if (results.moveToFirst()) {
