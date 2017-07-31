@@ -32,8 +32,9 @@
             android:id="@+id/reset_admin_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="@string/prompt_age"
-            android:maxLines="1" />
+            android:maxLines="1"/>
 
     </android.support.design.widget.TextInputLayout>
 
