@@ -60,11 +60,7 @@ public abstract class Terminal implements Serializable {
      * @return the sum of all balances
      */
     public BigDecimal addBalances(int userId) {
-        // Make sure terminal is authenticated
-        if (!authenticated) {
-            return null;
-        }
-
+        System.out.println("Running");
         BigDecimal sum = new BigDecimal(0);
         User customer = db.getUserDetails(userId);
 
@@ -73,6 +69,7 @@ public abstract class Terminal implements Serializable {
             return null;
         }
         for (Account account : ((Customer) customer).getAccounts()) {
+            System.out.println(account.getBalance());
             sum = sum.add(account.getBalance());
         }
         return sum;
