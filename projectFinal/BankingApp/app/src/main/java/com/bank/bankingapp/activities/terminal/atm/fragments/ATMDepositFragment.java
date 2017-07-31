@@ -1,8 +1,10 @@
 package com.bank.bankingapp.activities.terminal.atm.fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,19 +75,24 @@ public class ATMDepositFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 EditText message_field = getView().findViewById(R.id.deposit_amount);
+                final AlertDialog.Builder idNotification = new AlertDialog.Builder(getContext());
+                idNotification.setTitle(R.string.dialog_create_title);
                 try {
                     atm.makeDeposit(new BigDecimal(message_field.getText().toString()), targetAccount.getId());
+                    idNotification.setMessage(message_field.getText().toString() + "$ has been successfully deposited into from account.");
                 } catch (IllegalAmountException e){
-                    Toast toast = Toast.makeText(getContext(), "Illegal Amount", Toast.LENGTH_SHORT);
-                    toast.show();
+                    idNotification.setMessage("Cannot deposit a negative amount.");
                 } catch (ConnectionFailedException e){
-                    Toast toast = Toast.makeText(getContext(), "Connection Failed", Toast.LENGTH_SHORT);
-                    toast.show();
+                    idNotification.setMessage("Error: Connection to database failed.");
                 }
+                idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
                 message_field.setText("");
+                idNotification.create();
+                idNotification.show();
             }
         });
-
-
     }
 }
