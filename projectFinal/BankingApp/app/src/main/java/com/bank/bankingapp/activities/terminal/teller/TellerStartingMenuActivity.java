@@ -8,10 +8,6 @@ import android.view.View;
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.login.LoginActivity;
 
-/**
- * Created by rayafarhadi on 26/07/17.
- */
-
 public class TellerStartingMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +30,7 @@ public class TellerStartingMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void logOut(View view) {
+    public void teller_logOut(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
