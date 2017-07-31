@@ -19,19 +19,12 @@ import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveIntere
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerMessagesFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerUpdateInfoFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerWithdrawFragment;
-import com.bank.bankingapp.exceptions.ConnectionFailedException;
-import com.bank.bankingapp.exceptions.IllegalAmountException;
 import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.User;
 
 import java.math.BigDecimal;
 
-/**
- * Created by rayafarhadi on 26/07/17.
- */
-
 public class TellerActivity extends AppCompatActivity {
-
 
 
     TellerTerminal tt;
@@ -151,20 +144,34 @@ public class TellerActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void updateInfo(View view){
+    public void updateInfo(View view) {
         TextView nameField = (TextView) findViewById(R.id.teller_update_name);
         String name = nameField.getText().toString();
+
+        if (!name.equals("")) {
+            tt.updateName(name);
+        }
 
         TextView addressField = (TextView) findViewById(R.id.teller_update_address);
         String address = addressField.getText().toString();
 
+        if (!address.equals("")) {
+            tt.updateAddress(address);
+        }
+
         TextView passwordField = (TextView) findViewById(R.id.teller_update_password);
         String password = passwordField.getText().toString();
 
-        TextView ageField = (TextView) findViewById(R.id.teller_update_age);
-        int age = Integer.parseInt(ageField.getText().toString());
+        if (!password.equals("")) {
+            tt.updatePassword(password);
+        }
 
-        tt.updateUserInformation(name, address, password, age);
+        TextView ageField = (TextView) findViewById(R.id.teller_update_age);
+        String age = ageField.getText().toString();
+
+        if (!age.equals("")) {
+            tt.updateAge(Integer.parseInt(age));
+        }
 
         final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
         idNotification.setTitle(R.string.dialog_create_title);
