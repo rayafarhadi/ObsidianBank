@@ -67,6 +67,7 @@ public class TellerTerminal extends ATM implements Serializable {
         }
         return -1;
     }
+
     /**
      * Authenticates the current teller on teller machine.
      *
@@ -145,7 +146,6 @@ public class TellerTerminal extends ATM implements Serializable {
     /**
      */
     public boolean updateUserInformation(String name, String address, String password, int age) {
-
         password = PasswordHelpers.passwordHash(password);
         boolean updatedname = db.updateUserName(name, currentUser.getId());
         boolean updatedaddress = db.updateUserAddress(address, currentUser.getId());
@@ -153,8 +153,23 @@ public class TellerTerminal extends ATM implements Serializable {
                 .updateUserPassword(password, currentUser.getId());
         boolean updatedage = db.updateUserAge(age, currentUser.getId());
         return updatedname && updatedaddress && updatedpassword && updatedage;
+    }
 
+    public void updateName(String name) {
+        db.updateUserName(name, currentUser.getId());
+    }
 
+    public void updateAddress(String address) {
+        db.updateUserAddress(address, currentUser.getId());
+    }
+
+    public void updateAge(int age) {
+        db.updateUserAge(age, currentUser.getId());
+    }
+
+    public void updatePassword(String password) {
+        PasswordHelpers.passwordHash(password);
+        db.updateUserPassword(password, currentUser.getId());
     }
 
     /**

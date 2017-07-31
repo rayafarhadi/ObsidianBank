@@ -93,5 +93,9 @@
 
     <!-- Strings related to updating user info -->
     <string name="action_update_info">Update</string>
+    <string name="action_update_name">Update Name</string>
+    <string name="action_update_age">Update Age</string>
+    <string name="action_update_address">Update Address</string>
+    <string name="action_update_password">Update Password</string>
 
 </resources>

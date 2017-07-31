@@ -4,76 +4,75 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- ID Field -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <EditText
-            android:id="@+id/teller_update_name"
+        <!-- ID Field -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorText"
-            android:hint="@string/prompt_name"
-            android:maxLines="1"
-            android:textColor="@color/colorText" />
+            android:layout_weight="1">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/teller_update_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorText"
+                android:hint="@string/prompt_name"
+                android:maxLines="1"
+                android:textColor="@color/colorText" />
 
-    <!-- ID Field -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/teller_update_age"
+        <!-- Age Field -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorText"
-            android:hint="@string/prompt_age"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textColor="@color/colorText" />
+            android:layout_weight="1">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/teller_update_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorText"
+                android:hint="@string/prompt_age"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textColor="@color/colorText" />
 
-    <!-- ID Field -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/teller_update_address"
+        <!-- Address Field -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorText"
-            android:hint="@string/prompt_address"
-            android:maxLines="1"
-            android:inputType="textPostalAddress"
-            android:textColor="@color/colorText" />
+            android:layout_weight="1">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/teller_update_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorText"
+                android:hint="@string/prompt_address"
+                android:maxLines="1"
+                android:textColor="@color/colorText" />
 
-    <!-- ID Field -->
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/teller_update_password"
+        <!-- Password Field -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorText"
-            android:hint="@string/prompt_password"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:textColor="@color/colorText" />
+            android:layout_weight="1">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/teller_update_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorText"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="@color/colorText" />
+
+        </android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_width="match_parent"
