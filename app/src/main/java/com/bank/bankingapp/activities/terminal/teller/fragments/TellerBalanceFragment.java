@@ -12,7 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
 import com.bank.bankingapp.database.DatabaseHelper;
+import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.Customer;
 import com.bank.bankingapp.user.User;
 
@@ -23,6 +25,7 @@ import java.util.ArrayList;
  */
 
 public class TellerBalanceFragment extends Fragment {
+    protected TellerTerminal tt;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,7 +35,8 @@ public class TellerBalanceFragment extends Fragment {
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        TellerActivity prevActivity = (TellerActivity) this.getActivity();
+        tt = prevActivity.getTt();
         Spinner spinner = view.findViewById(R.id.teller_balance_spinner);
 
         DatabaseHelper db = new DatabaseHelper(this.getContext());
@@ -60,9 +64,9 @@ public class TellerBalanceFragment extends Fragment {
 
     public void checkBalance(int i) {
         TextView balance = (TextView) getView().findViewById(R.id.teller_balance);
+        DatabaseHelper db = new DatabaseHelper(this.getContext());
+        int currUserId = tt.getCurrentUser().getId();
 
-        Customer user = (Customer) getActivity().getIntent().getSerializableExtra("user");
-
-        balance.setText(user.getAccounts().get(i).getBalance().toString());
+        balance.setText(((Customer) db.getUserDetails(currUserId)).getAccounts().get(i).getBalance().toString());
     }
 }
