@@ -70,7 +70,7 @@ public class AdminSendMessageFragment extends Fragment {
             public void onClick(View view) {
                 EditText message_field = getView().findViewById(R.id.admin_message_field);
                 at.leaveMessage(targetUser.getId(), message_field.getText().toString());
-                Toast toast = Toast.makeText(getContext(), db.getAllMessages(targetUser.getId()).get(15).getMessage(), Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getContext(), db.getAllMessages(targetUser.getId()).get(6).getMessage(), Toast.LENGTH_SHORT);
                 toast.show(); //TODO remove
             }
         });

@@ -43,8 +43,8 @@ public class AdminActivity extends AppCompatActivity {
         at.setCurrentUser((Admin) intent.getSerializableExtra("user"));
 
         DatabaseHelper db = new DatabaseHelper(this);
-                Toast toast = Toast.makeText(this, db.getAllMessages(at.getCurrentUser().getId()).size(), Toast.LENGTH_SHORT);
-        toast.show(); //TODO remove
+        //Toast toast = Toast.makeText(this, db.getAllMessages(at.getCurrentUser().getId()).size(), Toast.LENGTH_SHORT);
+        //toast.show(); //TODO remove
 
         createUserFragment = new AdminCreateUserFragment();
 
