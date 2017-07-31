@@ -5,21 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerCreateAccountFragment;
-import com.bank.bankingapp.activities.terminal.teller.fragments.TellerDepositFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveInterestFragment;
-import com.bank.bankingapp.activities.terminal.teller.fragments.TellerListAccountsBalancesFragment;
-import com.bank.bankingapp.activities.terminal.teller.fragments.TellerMessagesFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerProjectEarningsFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerUpdateInfoFragment;
-import com.bank.bankingapp.activities.terminal.teller.fragments.TellerWithdrawFragment;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.Customer;
@@ -27,51 +23,23 @@ import com.bank.bankingapp.user.User;
 
 import java.math.BigDecimal;
 
-public class TellerActivity extends AppCompatActivity {
-
-
-    TellerTerminal tt;
-
-    public TellerTerminal getTt() {
-        return tt;
-    }
+public class TellerActivity extends ATMActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teller);
-        if (findViewById(R.id.teller_fragment_container) != null) {
-            if (savedInstanceState != null) {
-                return;
-            }
-
-            TellerCreateAccountFragment createAccountFragment = new TellerCreateAccountFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.teller_fragment_container, createAccountFragment).commit();
-        }
-        tt = new TellerTerminal(this);
-        User currentCustomer;
-        currentCustomer = (User) getIntent().getSerializableExtra("user");
-        currentCustomer.setId(getIntent().getIntExtra("userId", 0));
-        tt.setCurrentUser(currentCustomer);
-    }
-
-    public void displayTellerListAccountsBalances(View view) {
-        TellerListAccountsBalancesFragment listAccountsBalancesFragment = new TellerListAccountsBalancesFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        DatabaseHelper db = new DatabaseHelper(this);
-        tt.setCurrentUser(db.getUserDetails(tt.getCurrentUser().getId()));
-        transaction.replace(R.id.teller_fragment_container, listAccountsBalancesFragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
+        atm = new TellerTerminal(this);
+        User currentCustomer = (Customer) getIntent().getSerializableExtra("user");
+        atm.setCurrentUser(currentCustomer);
     }
 
     public void displayCreateAccount(View view) {
         TellerCreateAccountFragment createAccountFragment = new TellerCreateAccountFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         DatabaseHelper db = new DatabaseHelper(this);
-        tt.setCurrentUser( db.getUserDetails(tt.getCurrentUser().getId()));
-        transaction.replace(R.id.teller_fragment_container, createAccountFragment);
+        atm.setCurrentUser( db.getUserDetails(atm.getCurrentUser().getId()));
+        transaction.replace(R.id.atm_fragment_container, createAccountFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -87,7 +55,7 @@ public class TellerActivity extends AppCompatActivity {
         EditText typeField = (EditText) findViewById(R.id.teller_Create_account_type);
         long type = Long.parseLong(typeField.getText().toString());
 
-        int accountId = tt.makeNewAccount(name, balance, type);
+        int accountId = ((TellerTerminal) atm).makeNewAccount(name, balance, type);
 
         Toast t = Toast.makeText(this, "AccountId = " + accountId, Toast.LENGTH_LONG);
         t.show();
@@ -97,7 +65,7 @@ public class TellerActivity extends AppCompatActivity {
         TellerGiveInterestFragment giveInterestFragment = new TellerGiveInterestFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.teller_fragment_container, giveInterestFragment);
+        transaction.replace(R.id.atm_fragment_container, giveInterestFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -105,7 +73,7 @@ public class TellerActivity extends AppCompatActivity {
 
 
     public void tellerGiveInterestAll(View view) {
-        tt.giveInterestAll();
+        ((TellerTerminal) atm).giveInterestAll();
         final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
         idNotification.setTitle(R.string.dialog_create_title);
         idNotification.setMessage("Interest has been applied to all accounts.");
@@ -116,37 +84,15 @@ public class TellerActivity extends AppCompatActivity {
 
         idNotification.create();
         idNotification.show();
-        tt.giveInterestAll();
+        ((TellerTerminal) atm).giveInterestAll();
 
-    }
-
-    public void displayTellerDeposit(View view) {
-        TellerDepositFragment depositFragment = new TellerDepositFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        DatabaseHelper db = new DatabaseHelper(this);
-        tt.setCurrentUser(db.getUserDetails(tt.getCurrentUser().getId()));
-        transaction.replace(R.id.teller_fragment_container, depositFragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
-    }
-
-    public void displayTellerWithdraw(View view) {
-        TellerWithdrawFragment withdrawFragment = new TellerWithdrawFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        DatabaseHelper db = new DatabaseHelper(this);
-        tt.setCurrentUser(db.getUserDetails(tt.getCurrentUser().getId()));
-        transaction.replace(R.id.teller_fragment_container, withdrawFragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
     }
 
     public void displayUpdateInfo(View view) {
         TellerUpdateInfoFragment updateInfoFragment = new TellerUpdateInfoFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.teller_fragment_container, updateInfoFragment);
+        transaction.replace(R.id.atm_fragment_container, updateInfoFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -157,28 +103,28 @@ public class TellerActivity extends AppCompatActivity {
         String name = nameField.getText().toString();
 
         if (!name.equals("")) {
-            tt.updateName(name);
+            ((TellerTerminal) atm).updateName(name);
         }
 
         TextView addressField = (TextView) findViewById(R.id.teller_update_address);
         String address = addressField.getText().toString();
 
         if (!address.equals("")) {
-            tt.updateAddress(address);
+            ((TellerTerminal) atm).updateAddress(address);
         }
 
         TextView passwordField = (TextView) findViewById(R.id.teller_update_password);
         String password = passwordField.getText().toString();
 
         if (!password.equals("")) {
-            tt.updatePassword(password);
+            ((TellerTerminal) atm).updatePassword(password);
         }
 
         TextView ageField = (TextView) findViewById(R.id.teller_update_age);
         String age = ageField.getText().toString();
 
         if (!age.equals("")) {
-            tt.updateAge(Integer.parseInt(age));
+            ((TellerTerminal) atm).updateAge(Integer.parseInt(age));
         }
 
         final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
@@ -203,17 +149,7 @@ public class TellerActivity extends AppCompatActivity {
         TellerProjectEarningsFragment earningsFragment = new TellerProjectEarningsFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.teller_fragment_container, earningsFragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
-    }
-
-    public void displayMessages(View view) {
-        TellerMessagesFragment messagesFragment = new TellerMessagesFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        transaction.replace(R.id.teller_fragment_container, messagesFragment);
+        transaction.replace(R.id.atm_fragment_container, earningsFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();

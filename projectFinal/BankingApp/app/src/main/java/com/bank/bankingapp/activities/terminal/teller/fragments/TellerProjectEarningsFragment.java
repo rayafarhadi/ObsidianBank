@@ -49,7 +49,7 @@ public class TellerProjectEarningsFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TellerActivity prevActivity = (TellerActivity) this.getActivity();
-        final TellerTerminal tt = prevActivity.getTt();
+        final TellerTerminal tt = (TellerTerminal) prevActivity.getAtm();;
         spinner = view.findViewById(R.id.teller_projected_earnings_spinner);
 
         DatabaseHelper db = new DatabaseHelper(this.getContext());
