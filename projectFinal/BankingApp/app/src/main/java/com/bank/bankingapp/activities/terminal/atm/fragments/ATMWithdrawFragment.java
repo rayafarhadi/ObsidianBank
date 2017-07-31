@@ -40,7 +40,7 @@ public class ATMWithdrawFragment extends Fragment {
         return inflater.inflate(R.layout.view_withdraw, container, false);
     }
 
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ATMActivity prevActivity = (ATMActivity) this.getActivity();
         final ATM atm = prevActivity.getAtm();
@@ -75,7 +75,7 @@ public class ATMWithdrawFragment extends Fragment {
             public void onClick(View view) {
                 EditText message_field = getView().findViewById(R.id.withdraw_amount);
                 try {
-                    atm.makeWithdrawal(new BigDecimal(message_field.getText().toString()), atm.getCurrentUser().getId());
+                    atm.makeWithdrawal(new BigDecimal(message_field.getText().toString()), targetAccount.getId());
                 } catch (IllegalAmountException e){
                     Toast toast = Toast.makeText(getContext(), "Illegal Amount", Toast.LENGTH_SHORT);
                     toast.show();
