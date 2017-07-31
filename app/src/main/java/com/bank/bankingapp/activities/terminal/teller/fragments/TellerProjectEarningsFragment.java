@@ -78,18 +78,22 @@ public class TellerProjectEarningsFragment extends Fragment {
 
     public void populateGraph(){
         GraphView graph = getView().findViewById(R.id.earnings_graph);
+        graph.setTitle("Projected Earnings");
         graph.removeAllSeries();
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+        series.setDrawBackground(true);
         series.setColor(Color.GREEN);
+        series.setBackgroundColor(Color.GREEN);
         double x;
         BigDecimal y_bigdecimal = targetAccount.getBalance();
-        x = 0;
-        for (int i = 0; i < 12; i++){
-            x = x + 1;
+        for (int i = 0; i < 13; i++){
+            x = i;
             BigDecimal income = Bank.accountsMap.getInterestRates().get(targetAccount.getType() - 1).multiply(y_bigdecimal);
             y_bigdecimal = y_bigdecimal.add(income);
-            series.appendData(new DataPoint(x, y_bigdecimal.doubleValue()), true, 12);
+            series.appendData(new DataPoint(x, y_bigdecimal.doubleValue()), true, 13);
         }
+        graph.getViewport().setMaxX(12);
+        graph.getViewport().setXAxisBoundsManual(true);
         graph.addSeries(series);
     }
 }
