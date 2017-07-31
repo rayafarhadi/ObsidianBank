@@ -4,28 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <ScrollView
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:isScrollContainer="true"
-        android:scrollbarAlwaysDrawHorizontalTrack="true">
+        android:fillViewport="true">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1">
-
-            </Space>
 
             <!-- Create Account Button -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
                 <ImageButton
                     android:id="@+id/teller_create_account_button"
@@ -49,18 +43,13 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1">
-
-            </Space>
-
             <!-- Give Interest Button -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
                 <ImageButton
                     android:id="@+id/teller_give_interest_button"
@@ -83,19 +72,14 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1">
-
-            </Space>
-
             <!-- Deposit Button -->
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
                 <ImageButton
                     android:id="@+id/teller_deposit_button"
@@ -118,19 +102,14 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1">
-
-            </Space>
-
             <!-- Withdraw Button -->
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
                 <ImageButton
                     android:id="@+id/teller_withdraw_button"
@@ -153,19 +132,14 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1">
-
-            </Space>
-
             <!-- Check Balance Button -->
             <!-- TODO: Check Balance for All Accounts -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
                 <ImageButton
                     android:id="@+id/teller_check_balance_button"
@@ -188,18 +162,13 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1">
-
-            </Space>
-
             <!-- Update user info -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
                 <ImageButton
                     android:id="@+id/update_info_button"
@@ -222,25 +191,23 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
             <!-- View Customers Messages -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
                 <ImageButton
                     android:id="@+id/customer_messages_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:layout_marginStart="7dp"
 
                     android:background="@drawable/button_round"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:gravity="center_horizontal"
                     android:onClick="closeSession"
                     android:src="@mipmap/log_out" />
 
@@ -254,16 +221,13 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
             <!-- Close Customer Session Button -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
                 <ImageButton
                     android:id="@+id/teller_log_out_button"
@@ -286,12 +250,7 @@
 
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
         </LinearLayout>
-    </ScrollView>
+    </HorizontalScrollView>
 
 </LinearLayout>

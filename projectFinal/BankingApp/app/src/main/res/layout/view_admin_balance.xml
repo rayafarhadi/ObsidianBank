@@ -19,12 +19,11 @@
     (currently using temp text but should be
     changed to show the actual value in the code) -->
     <TextView
-        android:id="@+id/balance"
+        android:id="@+id/admin_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/total_balance"
-        android:text="@string/temp_balance"
         android:textColor="@color/colorText"
         android:textSize="20sp" />
 </RelativeLayout>

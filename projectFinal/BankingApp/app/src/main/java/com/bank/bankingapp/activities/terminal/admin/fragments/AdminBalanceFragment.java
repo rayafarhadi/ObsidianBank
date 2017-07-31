@@ -12,14 +12,16 @@ import com.bank.bankingapp.terminals.AdminTerminal;
 
 public class AdminBalanceFragment extends Fragment {
 
+    TextView balance;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        balance = (TextView) getView().findViewById(R.id.admin_balance);
         return inflater.inflate(R.layout.view_admin_balance, container, false);
     }
 
     public void updateBalance() {
         AdminTerminal at = new AdminTerminal(this.getContext());
-        TextView balance = (TextView) getView().findViewById(R.id.balance);
         balance.setText(at.addAllBalances().toString());
     }
 }
