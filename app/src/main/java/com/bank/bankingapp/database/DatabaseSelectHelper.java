@@ -232,8 +232,6 @@ public class DatabaseSelectHelper implements Serializable {
         ArrayList<Message> messages = new ArrayList<Message>();
         Cursor res = db.getAllMessages(userId);
 
-
-
         if (res.moveToFirst()) {
             do {
                 int messageId = res.getInt(res.getColumnIndex("ID"));
@@ -250,6 +248,8 @@ public class DatabaseSelectHelper implements Serializable {
                 Message m = new Message(messageId, userId, message, viewed);
                 messages.add(m);
             } while (res.moveToNext());
+        } else {
+            //HELP
         }
 
         return messages;
