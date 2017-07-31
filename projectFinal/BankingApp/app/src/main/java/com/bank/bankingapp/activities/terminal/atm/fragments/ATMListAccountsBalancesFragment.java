@@ -17,9 +17,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by rayafarhadi on 26/07/17.
- */
 
 public class ATMListAccountsBalancesFragment extends Fragment {
     @Override

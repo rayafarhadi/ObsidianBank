@@ -18,6 +18,7 @@
 
     <!-- Strings related to admin options -->
     <string name="admin_option_messages">Messages</string>
+    <string name="admin_option_add_messages">Add\nMessages</string>
     <string name="admin_option_balance">Total \nBalance</string>
     <string name="admin_option_user_balance">User \nBalance</string>
     <string name="admin_option_create">Create \nUser</string>
