@@ -13,16 +13,17 @@ import com.bank.bankingapp.activities.terminal.atm.fragments.ATMDepositFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMListAccountsBalancesFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMWithdrawFragment;
 import com.bank.bankingapp.terminals.ATM;
+import com.bank.bankingapp.user.User;
 
 public class ATMActivity extends AppCompatActivity {
-    private ATM atm;
+    private ATM atm = new ATM(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atm);
         Intent intent = getIntent();
-        atm = (ATM) intent.getSerializableExtra("terminal");
+        atm.setCurrentUser((User) intent.getSerializableExtra("user"));
 
 
         if (findViewById(R.id.atm_fragment_container) != null) {

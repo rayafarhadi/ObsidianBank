@@ -17,15 +17,27 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFrag
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
 import com.bank.bankingapp.terminals.AdminTerminal;
+import com.bank.bankingapp.user.Admin;
+import com.bank.bankingapp.user.User;
 
 public class AdminActivity extends AppCompatActivity {
 
     AdminCreateUserFragment createUserFragment;
 
+
+    private AdminTerminal at = new AdminTerminal(this);
+
+    public AdminTerminal getAt() {
+        return at;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        Intent intent = getIntent();
+        at.setCurrentUser((Admin) intent.getSerializableExtra("user"));
 
         createUserFragment = new AdminCreateUserFragment();
 

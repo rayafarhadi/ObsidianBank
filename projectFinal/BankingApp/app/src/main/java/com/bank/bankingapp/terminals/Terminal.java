@@ -16,9 +16,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 
-public abstract class Terminal implements Serializable{
+public abstract class Terminal implements Serializable {
 
-    private static final long serialVersionUID = 125466293461048940L;
+    private static final long serialVersionUID = 125466293461048941L;
     protected User currentUser;
     protected boolean authenticated;
     protected int designatedUserId;
@@ -31,6 +31,10 @@ public abstract class Terminal implements Serializable{
 
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 
     /**

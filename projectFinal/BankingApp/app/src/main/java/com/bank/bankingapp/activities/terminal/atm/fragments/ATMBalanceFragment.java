@@ -26,5 +26,4 @@ public class ATMBalanceFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.view_atm_balance, container, false);
     }
-
 }

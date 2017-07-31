@@ -56,11 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
             at.logIn(userId, password);
 
-            intent.putExtra("name", at.getCurrentUser().getName());
-            intent.putExtra("roleId", at.getCurrentUser().getRoleId());
-            intent.putExtra("address", at.getCurrentUser().getAddress());
-            intent.putExtra("age", at.getCurrentUser().getAge());
-            intent.putExtra("id", at.getCurrentUser().getId());
+            intent.putExtra("user", at.getCurrentUser());
 
             if (at.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
@@ -72,11 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
             tt.logIn(userId, password);
 
-            intent.putExtra("name", tt.getCurrentUser().getName());
-            intent.putExtra("roleId", tt.getCurrentUser().getRoleId());
-            intent.putExtra("address", tt.getCurrentUser().getAddress());
-            intent.putExtra("age", tt.getCurrentUser().getAge());
-            intent.putExtra("id", tt.getCurrentUser().getId());
+            intent.putExtra("user", tt.getCurrentUser());
 
             if (tt.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
@@ -88,11 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 
             atm.logIn(userId, password);
 
-            intent.putExtra("name", atm.getCurrentUser().getName());
-            intent.putExtra("roleId", atm.getCurrentUser().getRoleId());
-            intent.putExtra("address", atm.getCurrentUser().getAddress());
-            intent.putExtra("age", atm.getCurrentUser().getAge());
-            intent.putExtra("id", atm.getCurrentUser().getId());
+            intent.putExtra("user", atm.getCurrentUser());
 
 
             if (atm.getCurrentUser().authenticate(password, this)) {
