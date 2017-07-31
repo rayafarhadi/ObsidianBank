@@ -52,5 +52,20 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Log Out Button -->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="teller_logOut"
+        android:text="@string/log_out"
+        android:textColor="@color/colorText" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="3" />
 </LinearLayout>
