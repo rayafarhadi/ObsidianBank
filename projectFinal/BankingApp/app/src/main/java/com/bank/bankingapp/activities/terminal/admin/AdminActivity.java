@@ -99,8 +99,6 @@ public class AdminActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
-
-        balanceFragment.updateBalance();
     }
 
     public void displayPromote(View view) {
