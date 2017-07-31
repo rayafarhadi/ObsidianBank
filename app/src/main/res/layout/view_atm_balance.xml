@@ -6,6 +6,7 @@
 
     <!-- Spinner to show a list of all the users accounts -->
     <Spinner
+        android:id="@+id/atm_balance_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
@@ -49,12 +50,4 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- Button that will update the balance based on the account picked in the spinner -->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="@string/action_check_balance"
-        android:textColor="@color/colorText" />
 </LinearLayout>

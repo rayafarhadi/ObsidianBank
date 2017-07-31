@@ -141,10 +141,6 @@ public class TellerActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void tellerCheckBalance(View view){
-
-    }
-
     public void displayUpdateInfo(View view) {
         TellerUpdateInfoFragment updateInfoFragment = new TellerUpdateInfoFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
