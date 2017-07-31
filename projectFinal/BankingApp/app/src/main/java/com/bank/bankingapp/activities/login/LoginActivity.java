@@ -54,18 +54,27 @@ public class LoginActivity extends AppCompatActivity {
      * @param view
      */
     public void logIn(View view) {
+        if (!validate()) {
+            return;
+        }
+
         // get user id and password
         int userId = Integer.parseInt(idField.getText().toString());
         String password = passwordField.getText().toString();
 
         idField.setText("");
         passwordField.setText("");
+
         //check if the user is an admin and log the admin into admin terminal
         if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.ADMIN).getId()) {
             Intent intent = new Intent(this, AdminActivity.class);
             AdminTerminal at = new AdminTerminal(this);
 
-            at.logIn(userId, password);
+            if (!at.logIn(userId, password)){
+                idField.setError("Incorrect ID or Password");
+                passwordField.setError("Incorrect ID or Password");
+                return;
+            }
 
             intent.putExtra("user", at.getCurrentUser());
 
@@ -77,7 +86,11 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, TellerStartingMenuActivity.class);
             TellerTerminal tt = new TellerTerminal(this);
 
-            tt.logIn(userId, password);
+            if (!tt.logIn(userId, password)){
+                idField.setError("Incorrect ID or Password");
+                passwordField.setError("Incorrect ID or Password");
+                return;
+            }
 
             intent.putExtra("user", tt.getCurrentUser());
 
@@ -89,7 +102,11 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ATMActivity.class);
             ATM atm = new ATM(this);
 
-            atm.logIn(userId, password);
+            if (!atm.logIn(userId, password)){
+                idField.setError("Incorrect ID or Password");
+                passwordField.setError("Incorrect ID or Password");
+                return;
+            }
 
             intent.putExtra("user", atm.getCurrentUser());
 
@@ -97,12 +114,31 @@ public class LoginActivity extends AppCompatActivity {
             if (atm.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
+        } else {
+            idField.setError("Incorrect ID or Password");
+            passwordField.setError("Incorrect ID or Password");
         }
     }
 
     public void goToReset(View view) {
         Intent intent = new Intent(this, ResetDatabaseActivity.class);
         startActivity(intent);
+    }
+
+    public boolean validate() {
+        boolean valid = true;
+
+        String id = idField.getText().toString();
+
+        String password = passwordField.getText().toString();
+
+        if (id.isEmpty() || password.isEmpty()) {
+            idField.setError("Incorrect ID or Password");
+            passwordField.setError("Incorrect ID or Password");
+            valid = false;
+        }
+
+        return valid;
     }
 
 }
