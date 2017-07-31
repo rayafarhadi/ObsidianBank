@@ -41,7 +41,8 @@ public class TellerActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().add(R.id.teller_fragment_container, createAccountFragment).commit();
         }
         tt = new TellerTerminal(this);
-        User currentCustomer = (User)getIntent().getSerializableExtra("user");
+        User currentCustomer;
+        currentCustomer = (User)getIntent().getSerializableExtra("user");
         currentCustomer.setId(getIntent().getIntExtra("userId", 0));
         tt.setCurrentUser(currentCustomer);
     }

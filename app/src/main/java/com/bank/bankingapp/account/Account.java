@@ -8,10 +8,10 @@ import java.sql.SQLException;
 
 public abstract class Account implements Serializable {
 
-    private static final long serialVersionUID = -623715467042009428L;
+    private static final long serialVersionUID = -623715467042009431L;
 
     // initialize all variables of account
-    protected transient int id;
+    protected int id;
     protected String name;
     protected BigDecimal balance;
     protected AccountTypeValues typeInfo;
