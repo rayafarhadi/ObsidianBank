@@ -5,13 +5,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 
 import com.bank.bankingapp.R;
 
-/**
- * Created by rayafarhadi on 26/07/17.
- */
 
 public class TellerOptionsFragment extends Fragment {
     @Override
