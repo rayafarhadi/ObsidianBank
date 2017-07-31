@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bank.bankingapp.R;
-import com.bank.bankingapp.activities.login.LoginActivity;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMBalanceFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMDepositFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMListAccountsBalancesFragment;
@@ -15,9 +14,12 @@ import com.bank.bankingapp.activities.terminal.atm.fragments.ATMWithdrawFragment
 import com.bank.bankingapp.terminals.ATM;
 import com.bank.bankingapp.user.User;
 
+/**
+ * Created by rayafarhadi on 26/07/17.
+ */
+
 public class ATMActivity extends AppCompatActivity {
     private ATM atm = new ATM(this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,10 +81,5 @@ public class ATMActivity extends AppCompatActivity {
 
     public ATM getAtm() {
         return atm;
-    }
-
-    public void logOut(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
     }
 }

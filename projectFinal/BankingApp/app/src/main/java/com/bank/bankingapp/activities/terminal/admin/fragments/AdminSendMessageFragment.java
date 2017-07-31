@@ -70,6 +70,7 @@ public class AdminSendMessageFragment extends Fragment {
             public void onClick(View view) {
                 EditText message_field = getView().findViewById(R.id.admin_message_field);
                 at.leaveMessage(targetUser.getId(), message_field.getText().toString());
+                message_field.setText("");
             }
         });
 
