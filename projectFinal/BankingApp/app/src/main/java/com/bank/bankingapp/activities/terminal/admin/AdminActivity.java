@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.login.LoginActivity;
@@ -17,6 +18,7 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFrag
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminSendMessageFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.user.Admin;
 
@@ -39,6 +41,10 @@ public class AdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin);
         Intent intent = getIntent();
         at.setCurrentUser((Admin) intent.getSerializableExtra("user"));
+
+        DatabaseHelper db = new DatabaseHelper(this);
+                Toast toast = Toast.makeText(this, db.getAllMessages(at.getCurrentUser().getId()).size(), Toast.LENGTH_SHORT);
+        toast.show(); //TODO remove
 
         createUserFragment = new AdminCreateUserFragment();
 
