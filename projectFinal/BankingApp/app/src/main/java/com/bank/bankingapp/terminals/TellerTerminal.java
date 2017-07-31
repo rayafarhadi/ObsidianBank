@@ -33,47 +33,40 @@ public class TellerTerminal extends ATM implements Serializable {
      */
     public int makeNewAccount(String name, BigDecimal balance, long type) {
         // Insert the account into the database
-        try {
-            if (!authenticated) {
-                return -1;
-            }
-            // Test for balance owing accounts
-            boolean isNeg = balance.compareTo(new BigDecimal(0)) < 0;
-            if (type != Bank.accountsMap.get(AccountTypes.BOA).getId() && isNeg) {
-                return -1;
-            }
-            if (type == Bank.accountsMap.get(AccountTypes.BOA).getId() && !isNeg) {
-                return -1;
-            }
-            // Insert account
-            int accountId = (int) db.insertAccount(name, balance, type);
-            if (accountId == -1) {
-                return -1;
-            }
-            // Insert user - account relation
-            int result = (int) db.insertUserAccount(this.currentUser.getId(), accountId);
-            if (result != -1) {
-                // If account is Chequing, switch to savings if balance < 1000
-                boolean isSavings =
-                        db.getAccountType(accountId) == Bank.accountsMap
-                                .get(AccountTypes.SAVING)
-                                .getId();
-                if (db.getBalance(accountId).compareTo(new BigDecimal(1000)) < 0
-                        && isSavings) {
-                    db.updateAccountType(Bank.accountsMap.get(AccountTypes.CHEQUING)
-                            .getId(), accountId);
-                    db.insertMessage(currentUser.getId(),
-                            "Your Savings account with account id: " + accountId
-                                    + " has been transitioned into a Chequing account because the accounts balance was less then 1000$.");
-                }
-                return accountId;
-            }
-            return -1;
-        } catch (Exception e) {
+
+        // Test for balance owing accounts
+        boolean isNeg = balance.compareTo(new BigDecimal(0)) < 0;
+        if (type != Bank.accountsMap.get(AccountTypes.BOA).getId() && isNeg) {
             return -1;
         }
+        if (type == Bank.accountsMap.get(AccountTypes.BOA).getId() && !isNeg) {
+            return -1;
+        }
+        // Insert account
+        int accountId = (int) db.insertAccount(name, balance, type);
+        if (accountId == -1) {
+            return -1;
+        }
+        // Insert user - account relation
+        int result = (int) db.insertUserAccount(this.currentUser.getId(), accountId);
+        if (result != -1) {
+            // If account is Chequing, switch to savings if balance < 1000
+            boolean isSavings =
+                    db.getAccountType(accountId) == Bank.accountsMap
+                            .get(AccountTypes.SAVING)
+                            .getId();
+            if (db.getBalance(accountId).compareTo(new BigDecimal(1000)) < 0
+                    && isSavings) {
+                db.updateAccountType(Bank.accountsMap.get(AccountTypes.CHEQUING)
+                        .getId(), accountId);
+                db.insertMessage(currentUser.getId(),
+                        "Your Savings account with account id: " + accountId
+                                + " has been transitioned into a Chequing account because the accounts balance was less then 1000$.");
+            }
+            return accountId;
+        }
+        return -1;
     }
-
     /**
      * Authenticates the current teller on teller machine.
      *

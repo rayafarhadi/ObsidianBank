@@ -1,6 +1,9 @@
 package com.bank.bankingapp.maps;
 
-public class RoleValues {
+import java.io.Serializable;
+
+public class RoleValues implements Serializable {
+    private static final long serialVersionUID = -4636864195653872385L;
     private int id;
     private String name;
 

@@ -34,6 +34,8 @@ public class TellerAuthenticateCustomerActivity extends AppCompatActivity {
         String password = passwordField.getText().toString();
 
         if (tt.logIn(userId, password)){
+            intent.putExtra("user", tt.getCurrentUser());
+            intent.putExtra("userId", userId);
             startActivity(intent);
         }
     }

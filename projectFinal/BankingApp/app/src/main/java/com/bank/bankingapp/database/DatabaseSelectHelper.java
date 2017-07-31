@@ -93,7 +93,7 @@ public class DatabaseSelectHelper implements Serializable {
 
         if (results.moveToFirst()) {
             do {
-                idList.add(results.getInt(results.getColumnIndex("ACCOUNTS")));
+                idList.add(results.getInt(results.getColumnIndex("ACCOUNTID")));
             } while (results.moveToNext());
         }
 
@@ -109,7 +109,6 @@ public class DatabaseSelectHelper implements Serializable {
     public Account getAccountDetails(int accountId) {
         if (accountId > 0) {
             Cursor results = db.getAccountDetails(accountId);
-
             String name = "";
             String balance = "";
             int type = 0;

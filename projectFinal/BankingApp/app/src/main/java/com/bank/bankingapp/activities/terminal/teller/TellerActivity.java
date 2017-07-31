@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerBalanceFragment;
@@ -12,12 +14,19 @@ import com.bank.bankingapp.activities.terminal.teller.fragments.TellerCreateAcco
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerDepositFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveInterestFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerWithdrawFragment;
+import com.bank.bankingapp.terminals.TellerTerminal;
+import com.bank.bankingapp.user.User;
+
+import java.math.BigDecimal;
 
 /**
  * Created by rayafarhadi on 26/07/17.
  */
 
 public class TellerActivity extends AppCompatActivity {
+
+    TellerTerminal tt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +40,10 @@ public class TellerActivity extends AppCompatActivity {
             TellerCreateAccountFragment createAccountFragment = new TellerCreateAccountFragment();
             getSupportFragmentManager().beginTransaction().add(R.id.teller_fragment_container, createAccountFragment).commit();
         }
+        tt = new TellerTerminal(this);
+        User currentCustomer = (User)getIntent().getSerializableExtra("user");
+        currentCustomer.setId(getIntent().getIntExtra("userId", 0));
+        tt.setCurrentUser(currentCustomer);
     }
 
     public void displayCreateAccount(View view) {
@@ -41,6 +54,22 @@ public class TellerActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
+    }
+
+    public void createAccount (View view){
+        EditText nameField = (EditText) findViewById(R.id.teller_create_account_name);
+        String name = nameField.getText().toString();
+
+        EditText balanceField = (EditText) findViewById(R.id.teller_create_account_balance);
+        BigDecimal balance = new BigDecimal(balanceField.getText().toString());
+
+        EditText typeField = (EditText) findViewById(R.id.teller_Create_account_type);
+        long type = Long.parseLong(typeField.getText().toString());
+
+        int accountId = tt.makeNewAccount(name, balance, type);
+
+        Toast t = Toast.makeText(this, "AccountId = " + accountId, Toast.LENGTH_LONG);
+        t.show();
     }
 
     public void displayGiveInterest(View view) {
