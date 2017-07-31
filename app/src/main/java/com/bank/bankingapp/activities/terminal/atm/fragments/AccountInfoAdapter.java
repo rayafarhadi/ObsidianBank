@@ -56,9 +56,9 @@ public class AccountInfoAdapter extends BaseAdapter {
 
         // Set the account
         Account account = (Account) getItem(position);
-        nameTextView.setText(account.getName());
+        nameTextView.setText(account.getId() + ": " + account.getName());
         typeTextView.setText(db.getAccountTypeName(account.getType()));
-        balanceTextView.setText((CharSequence) account.getBalance());
+        balanceTextView.setText(account.getBalance().toString());
 
         return rowView;
     }
