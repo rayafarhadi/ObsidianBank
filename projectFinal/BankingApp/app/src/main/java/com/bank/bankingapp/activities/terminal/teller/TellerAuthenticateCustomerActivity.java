@@ -14,26 +14,53 @@ import com.bank.bankingapp.terminals.TellerTerminal;
  */
 
 public class TellerAuthenticateCustomerActivity extends AppCompatActivity {
+
+    EditText customerIdField;
+    EditText passwordField;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_teller_login_customer);
+
+        customerIdField = (EditText) findViewById(R.id.teller_login_id);
+        passwordField = (EditText) findViewById(R.id.teller_login_password);
     }
 
     public void tellerLogInCustomer(View view) {
         Intent intent = new Intent(this, TellerActivity.class);
         TellerTerminal tt = new TellerTerminal(this);
 
-        EditText customerIdField = (EditText) findViewById(R.id.teller_login_id);
-        int userId = Integer.parseInt(customerIdField.getText().toString());
+        if (!validate()) {
+            return;
+        }
 
-        EditText passwordField = (EditText) findViewById(R.id.teller_login_password);
+        int userId = Integer.parseInt(customerIdField.getText().toString());
         String password = passwordField.getText().toString();
 
         if (tt.logIn(userId, password)) {
             intent.putExtra("user", tt.getCurrentUser());
             intent.putExtra("userId", userId);
             startActivity(intent);
+        } else {
+            customerIdField.setError("Incorrect ID or Password");
+            passwordField.setError("Incorrect ID or Password");
         }
+    }
+
+    public boolean validate() {
+        boolean valid = true;
+
+        String id = customerIdField.getText().toString();
+
+        String password = passwordField.getText().toString();
+
+        if (id.isEmpty() || password.isEmpty()) {
+            customerIdField.setError("Incorrect ID or Password");
+            passwordField.setError("Incorrect ID or Password");
+            valid = false;
+        }
+
+        return valid;
     }
 }
