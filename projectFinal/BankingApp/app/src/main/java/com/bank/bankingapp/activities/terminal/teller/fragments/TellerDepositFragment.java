@@ -22,7 +22,7 @@ public class TellerDepositFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.view_deposit, container, false);
+        return inflater.inflate(R.layout.view_teller_deposit, container, false);
     }
 
     public void tellerDeposit () {

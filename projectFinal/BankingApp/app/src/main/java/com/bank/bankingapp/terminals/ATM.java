@@ -109,7 +109,7 @@ public class ATM extends Terminal {
      * @param withdrawal amount be withdrawn.
      * @return If the funds were withdrawn or not.
      */
-    public boolean makeWithdrawal(BigDecimal withdrawal, int accountId, Context context) throws IllegalAmountException,
+    public boolean makeWithdrawal(BigDecimal withdrawal, int accountId) throws IllegalAmountException,
             ConnectionFailedException, InsuffiecintFundsException {
         currentUser = db.getUserDetails(currentUser.getId());
         // Check to see if customer is authenticated.
