@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public abstract class Account implements Serializable {
 
-    private static final long serialVersionUID = -623715467042009427L;
+    private static final long serialVersionUID = -623715467042009429L;
 
     // initialize all variables of account
     protected transient int id;
@@ -16,11 +16,6 @@ public abstract class Account implements Serializable {
     protected BigDecimal balance;
     protected AccountTypeValues typeInfo;
     protected BigDecimal interestRate;
-
-    public Account() {
-        interestRate = typeInfo.getInterest();
-        id = typeInfo.getId();
-    }
 
     /**
      * Returns the id of the account

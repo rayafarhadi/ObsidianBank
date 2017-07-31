@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class ChequingAccount extends Account implements Serializable {
 
-    private static final long serialVersionUID = 2943743498395307150L;
+    private static final long serialVersionUID = 2943743498395307152L;
 
     /**
      * Constructor for chequing account
@@ -22,5 +22,7 @@ public class ChequingAccount extends Account implements Serializable {
         this.name = name;
         this.balance = balance;
         this.typeInfo = Bank.accountsMap.get(AccountTypes.CHEQUING);
+        this.id = typeInfo.getId();
+        this.interestRate = typeInfo.getInterest();
     }
 }
