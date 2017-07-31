@@ -2,13 +2,15 @@ package com.bank.bankingapp.database;
 
 import android.content.Context;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * Helper class for DatabaseInserter that detaches the user from the database by removing the need
  * for connection to be passed in through the users side.
  */
-public class DatabaseInsertHelper {
+public class DatabaseInsertHelper implements Serializable {
+    private static final long serialVersionUID = 2457254684396748003L;
 
     private DatabaseDriverA db;
     private DatabaseValueCheckerHelper checker = new DatabaseValueCheckerHelper();

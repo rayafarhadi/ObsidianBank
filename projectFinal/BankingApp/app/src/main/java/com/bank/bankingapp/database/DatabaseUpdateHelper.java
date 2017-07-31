@@ -4,10 +4,13 @@ import android.content.Context;
 
 import com.bank.bankingapp.bank.Bank;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class DatabaseUpdateHelper {
+public class DatabaseUpdateHelper implements Serializable {
+
+    private static final long serialVersionUID = -7009983532384992568L;
 
     private DatabaseDriverA db;
     private DatabaseValueCheckerHelper checker = new DatabaseValueCheckerHelper();
@@ -172,7 +175,7 @@ public class DatabaseUpdateHelper {
      * update the account balance.
      *
      * @param balance the new balance for the account.
-     * @param id the id of the account.
+     * @param id      the id of the account.
      * @return true if successful, false otherwise.
      */
     public boolean updateAccountBalance(BigDecimal balance, int id) {

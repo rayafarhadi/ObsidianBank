@@ -9,13 +9,15 @@ import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.user.User;
 import com.bank.bankingapp.user.UserFactory;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-public class DatabaseSelectHelper {
+public class DatabaseSelectHelper implements Serializable {
+
+    private static final long serialVersionUID = -6698968334598438233L;
 
     private DatabaseDriverA db;
     private Context context;
@@ -215,8 +217,8 @@ public class DatabaseSelectHelper {
     public int getUserRole(int userId) {
         try {
             return db.getUserRole(userId);
-        } catch (Exception e){
-            return  -1;
+        } catch (Exception e) {
+            return -1;
         }
     }
 

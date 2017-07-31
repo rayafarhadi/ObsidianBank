@@ -55,9 +55,8 @@ public abstract class User implements Serializable {
      *
      * @param password password to check
      * @return true if correct, false if not
-     * @throws SQLException if connection fails
      */
-    public final boolean authenticate(String password, Context context) throws SQLException {
+    public final boolean authenticate(String password, Context context) {
         DatabaseHelper db = new DatabaseHelper(context);
         String dbPass = db.getPassword(id);
         authenticated = PasswordHelpers.comparePassword(dbPass, password);
