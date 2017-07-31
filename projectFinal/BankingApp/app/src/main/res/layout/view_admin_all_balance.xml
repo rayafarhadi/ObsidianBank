@@ -19,7 +19,7 @@
     (currently using temp text but should be
     changed to show the actual value in the code) -->
     <TextView
-        android:id="@+id/balance"
+        android:id="@+id/admin_total_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

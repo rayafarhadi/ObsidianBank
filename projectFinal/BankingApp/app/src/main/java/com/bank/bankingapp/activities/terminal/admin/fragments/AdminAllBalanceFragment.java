@@ -20,12 +20,8 @@ public class AdminAllBalanceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.view_admin_all_balance, container, false);
-        balance = rl.findViewById(R.id.admin_balance);
-        updateBalance();
-        return rl;
-    }
+        balance = (TextView) rl.findViewById(R.id.admin_total_balance);
 
-    public void updateBalance() {
         AdminTerminal at = new AdminTerminal(this.getContext());
         BigDecimal total_balance = at.addAllBalances();
         if (total_balance == null) {
@@ -33,5 +29,7 @@ public class AdminAllBalanceFragment extends Fragment {
         }
 
         balance.setText(total_balance.toString());
+
+        return rl;
     }
 }
