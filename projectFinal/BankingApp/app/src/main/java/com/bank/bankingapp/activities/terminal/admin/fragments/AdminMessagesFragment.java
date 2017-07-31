@@ -30,9 +30,18 @@ public class AdminMessagesFragment extends Fragment {
         AdminActivity prevActivity = (AdminActivity) this.getActivity();
         AdminTerminal at = prevActivity.getAt();
         DatabaseHelper db = new DatabaseHelper(getContext());
-        List<Message> messages = db.getAllMessages(at.getCurrentUser().getId());
-//        Toast toast = Toast.makeText(getContext(), messages.size(), Toast.LENGTH_SHORT);
-//        toast.show(); //TODO remove
+        List<Message> messages = new ArrayList<>();
+        // Get unread then read messages
+        for (Message message : db.getAllMessages(at.getCurrentUser().getId())){
+            if (!message.isViewed()){
+                messages.add(message);
+            }
+        }
+        for (Message message : db.getAllMessages(at.getCurrentUser().getId())){
+            if (message.isViewed()){
+                messages.add(message);
+            }
+        }
 
         AdminMessagesAdapter adapter = new AdminMessagesAdapter(this.getContext(), messages);
         ListView usersInfo = getView().findViewById(R.id.messages);
