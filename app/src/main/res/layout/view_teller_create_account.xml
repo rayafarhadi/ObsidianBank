@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_account_balance"
-            android:inputType="numberDecimal"
+            android:inputType="numberDecimal|numberSigned"
             android:maxLines="1"
             android:textColor="@color/colorText" />
 
