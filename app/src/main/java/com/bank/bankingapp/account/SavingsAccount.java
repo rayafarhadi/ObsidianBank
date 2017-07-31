@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class SavingsAccount extends Account implements Serializable {
 
-    private static final long serialVersionUID = 553499615876333440L;
+    private static final long serialVersionUID = 553499615876333442L;
 
     /**
      * Constructor for SavingsAccount
@@ -22,5 +22,7 @@ public class SavingsAccount extends Account implements Serializable {
         this.name = name;
         this.balance = balance;
         this.typeInfo = Bank.accountsMap.get(AccountTypes.SAVING);
+        this.id = typeInfo.getId();
+        this.interestRate = typeInfo.getInterest();
     }
 }

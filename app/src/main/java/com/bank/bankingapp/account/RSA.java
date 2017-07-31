@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class RSA extends Account implements Serializable {
 
-    private static final long serialVersionUID = 4335923625922600246L;
+    private static final long serialVersionUID = 4335923625922600248L;
     protected boolean tellerAuthenticated = false;
 
     /**
@@ -23,5 +23,7 @@ public class RSA extends Account implements Serializable {
         this.name = name;
         this.balance = balance;
         this.typeInfo = Bank.accountsMap.get(AccountTypes.RSA);
+        this.id = typeInfo.getId();
+        this.interestRate = typeInfo.getInterest();
     }
 }

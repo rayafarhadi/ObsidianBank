@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 public class TFSA extends Account implements Serializable {
 
-    private static final long serialVersionUID = -1352980863389787560L;
+    private static final long serialVersionUID = -1352980863389787562L;
 
     /**
      * Constructor for TSFA
@@ -22,5 +22,7 @@ public class TFSA extends Account implements Serializable {
         this.name = name;
         this.balance = balance;
         this.typeInfo = Bank.accountsMap.get(AccountTypes.TFSA);
+        this.id = typeInfo.getId();
+        this.interestRate = typeInfo.getInterest();
     }
 }
