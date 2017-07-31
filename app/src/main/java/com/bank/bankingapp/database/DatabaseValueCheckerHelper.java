@@ -5,11 +5,14 @@ import android.content.Context;
 import com.bank.bankingapp.generics.AccountTypes;
 import com.bank.bankingapp.generics.Roles;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-public class DatabaseValueCheckerHelper {
+public class DatabaseValueCheckerHelper implements Serializable {
+
+    private static final long serialVersionUID = -3916639721604189094L;
 
     /**
      * Checks if the roleId is one of the valid Id's in the database

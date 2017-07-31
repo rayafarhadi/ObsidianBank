@@ -1,5 +1,6 @@
 package com.bank.bankingapp.activities.login.reset;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -42,6 +43,18 @@ public class ResetDatabaseActivity extends AppCompatActivity {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.setTitle(R.string.reset_confirmation_title);
         dialogBuilder.setMessage(R.string.reset_confirmation_message);
+
+        dialogBuilder.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+            }
+        });
+        dialogBuilder.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
         dialogBuilder.create();
 
         Intent intent = new Intent(this, LoginActivity.class);

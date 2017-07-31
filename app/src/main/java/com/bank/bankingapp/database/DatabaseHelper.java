@@ -6,12 +6,16 @@ import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.user.User;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseHelper {
+public class DatabaseHelper implements Serializable {
+
+    private static final long serialVersionUID = -7626359737075876388L;
+
     private DatabaseInsertHelper inserter;
     private DatabaseSelectHelper selector;
     private DatabaseUpdateHelper updater;
@@ -367,7 +371,6 @@ public class DatabaseHelper {
     public boolean updateUserMessageState(int messageId) {
         return updater.updateUserMessageState(messageId);
     }
-
 
 
 }

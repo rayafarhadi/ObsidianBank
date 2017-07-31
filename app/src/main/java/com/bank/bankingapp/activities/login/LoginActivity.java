@@ -19,9 +19,6 @@ import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.terminals.ATM;
 import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.terminals.TellerTerminal;
-import com.bank.bankingapp.terminals.Terminal;
-
-import java.io.Serializable;
 
 /**
  * A login screen that offers login via email/password.
@@ -38,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Bank.createMaps(this);
         driver = new DatabaseDriverA(this);
         logInButton = (Button) findViewById(R.id.id_log_in_button);
         idField = (EditText) findViewById(R.id.login_id);
@@ -52,8 +50,16 @@ public class LoginActivity extends AppCompatActivity {
         if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.ADMIN).getId()) {
             Intent intent = new Intent(this, AdminActivity.class);
             AdminTerminal at = new AdminTerminal(this.getBaseContext());
-            intent.putExtra("terminal", at);
-            if (at.logIn(userId, password)) {
+
+            at.logIn(userId, password);
+
+            intent.putExtra("name", at.getCurrentUser().getName());
+            intent.putExtra("roleId", at.getCurrentUser().getRoleId());
+            intent.putExtra("address", at.getCurrentUser().getAddress());
+            intent.putExtra("age", at.getCurrentUser().getAge());
+            intent.putExtra("id", at.getCurrentUser().getId());
+
+            if (at.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
 
@@ -74,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
     public void goToReset(View view) {
         Intent intent = new Intent(this, ResetDatabaseActivity.class);
         startActivity(intent);

@@ -10,6 +10,8 @@
     <string name="reset_database">Reset Database</string>
     <string name="reset_confirmation_title">Reset Database?</string>
     <string name="reset_confirmation_message">Resetting will result in the loss of all user and account information</string>
+    <string name="dialog_ok">Create</string>
+    <string name="dialog_cancel">Cancel</string>
 
     <!-- Strings related to admin options -->
     <string name="admin_option_messages">Messages</string>
