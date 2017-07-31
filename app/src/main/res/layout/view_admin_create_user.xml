@@ -50,7 +50,7 @@
         android:layout_weight="1">
 
         <EditText
-            android:id="@+id/admin_Create_address"
+            android:id="@+id/admin_create_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorText"

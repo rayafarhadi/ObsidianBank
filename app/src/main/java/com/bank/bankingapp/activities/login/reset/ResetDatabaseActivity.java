@@ -42,6 +42,8 @@ public class ResetDatabaseActivity extends AppCompatActivity {
 
         final Intent intent = new Intent(this, LoginActivity.class);
 
+
+        //ID Notification dialog box
         final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
         idNotification.setTitle(R.string.id_notify_title);
         idNotification.setMessage(R.string.id_notify_message);
@@ -52,6 +54,7 @@ public class ResetDatabaseActivity extends AppCompatActivity {
             }
         });
 
+        //Reset Confirmation dialog box
         AlertDialog.Builder resetConfirmation = new AlertDialog.Builder(this);
         resetConfirmation.setTitle(R.string.reset_confirmation_title);
         resetConfirmation.setMessage(R.string.reset_confirmation_message);

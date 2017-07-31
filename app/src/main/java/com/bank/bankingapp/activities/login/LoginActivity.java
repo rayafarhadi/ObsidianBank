@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.ADMIN).getId()) {
             Intent intent = new Intent(this, AdminActivity.class);
-            AdminTerminal at = new AdminTerminal(this.getBaseContext());
+            AdminTerminal at = new AdminTerminal(this);
 
             at.logIn(userId, password);
 
@@ -65,17 +65,33 @@ public class LoginActivity extends AppCompatActivity {
 
         } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.TELLER).getId()) {
             Intent intent = new Intent(this, TellerStartingMenuActivity.class);
-            TellerTerminal tt = new TellerTerminal(this.getBaseContext());
-            intent.putExtra("terminal", tt);
-            if (tt.logIn(userId, password)) {
+            TellerTerminal tt = new TellerTerminal(this);
+
+            tt.logIn(userId, password);
+
+            intent.putExtra("name", tt.getCurrentUser().getName());
+            intent.putExtra("roleId", tt.getCurrentUser().getRoleId());
+            intent.putExtra("address", tt.getCurrentUser().getAddress());
+            intent.putExtra("age", tt.getCurrentUser().getAge());
+            intent.putExtra("id", tt.getCurrentUser().getId());
+
+            if (tt.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
 
         } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
             Intent intent = new Intent(this, ATMActivity.class);
-            ATM atm = new ATM(this.getBaseContext());
-            intent.putExtra("terminal", atm);
-            if (atm.logIn(userId, password)) {
+            ATM atm = new ATM(this);
+
+            atm.logIn(userId, password);
+
+            intent.putExtra("name", atm.getCurrentUser().getName());
+            intent.putExtra("roleId", atm.getCurrentUser().getRoleId());
+            intent.putExtra("address", atm.getCurrentUser().getAddress());
+            intent.putExtra("age", atm.getCurrentUser().getAge());
+            intent.putExtra("id", atm.getCurrentUser().getId());
+
+            if (atm.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
         }
