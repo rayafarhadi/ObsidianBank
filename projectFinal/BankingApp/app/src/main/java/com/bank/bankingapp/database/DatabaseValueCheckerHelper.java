@@ -17,7 +17,7 @@ public class DatabaseValueCheckerHelper {
      * @param roleId
      * @return true if the role Id is valid in database
      */
-    public boolean roleIdChecker(int roleId) {
+    public static boolean roleIdChecker(int roleId) {
         return roleId > 0 && roleId <= Roles.values().length;
     }
 
@@ -28,7 +28,7 @@ public class DatabaseValueCheckerHelper {
      * @param role The role to check
      * @return Whether the given name matches a Roles name
      */
-    public boolean roleTypeChecker(String role) {
+    public static boolean roleTypeChecker(String role) {
         // All of the roles
         Roles[] roles = Roles.values();
         boolean valid = false;
@@ -48,7 +48,7 @@ public class DatabaseValueCheckerHelper {
      * @param typeId
      * @return true if the account type id is in the database
      */
-    public boolean accountTypeIdChecker(int typeId) {
+    public static boolean accountTypeIdChecker(int typeId) {
         return typeId > 0 && typeId <= AccountTypes.values().length;
     }
 
@@ -58,7 +58,7 @@ public class DatabaseValueCheckerHelper {
      *
      * @return Whether the given name matches a AccountTypes name
      */
-    public boolean accountTypeChecker(String account) {
+    public static boolean accountTypeChecker(String account) {
         // All of the account types
         AccountTypes[] accountTypes = AccountTypes.values();
         boolean valid = false;

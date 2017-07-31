@@ -6,12 +6,15 @@ import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.user.User;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class AdminTerminal extends Terminal {
+public class AdminTerminal extends Terminal implements Serializable {
+
+    private static final long serialVersionUID = -2356700862853754756L;
 
     public AdminTerminal(Context context) {
         super(context);

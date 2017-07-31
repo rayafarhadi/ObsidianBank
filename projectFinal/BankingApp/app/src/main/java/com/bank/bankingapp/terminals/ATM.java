@@ -11,11 +11,14 @@ import com.bank.bankingapp.generics.AccountTypes;
 import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.user.Customer;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ATM extends Terminal {
+public class ATM extends Terminal implements Serializable{
+
+    private static final long serialVersionUID = 7013462395707002850L;
 
     public ATM(Context context) {
         super(context);

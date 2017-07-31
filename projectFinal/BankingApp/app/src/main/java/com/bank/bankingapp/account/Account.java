@@ -65,7 +65,7 @@ public abstract class Account implements Serializable {
     /**
      * Sets the balance of the account
      *
-     * @param BigDecimal balance - balance that must be set
+     * @param balance - balance that must be set
      */
     public void setBalance(BigDecimal balance) {
         this.balance = balance;

@@ -16,6 +16,12 @@ import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseDriverA;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.generics.Roles;
+import com.bank.bankingapp.terminals.ATM;
+import com.bank.bankingapp.terminals.AdminTerminal;
+import com.bank.bankingapp.terminals.TellerTerminal;
+import com.bank.bankingapp.terminals.Terminal;
+
+import java.io.Serializable;
 
 /**
  * A login screen that offers login via email/password.
@@ -40,15 +46,32 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void logIn(View view) {
-        if (db.getUserRole(Integer.parseInt(idField.getText().toString())) == Bank.rolesMap.get(Roles.ADMIN).getId()) {
+        int userId = Integer.parseInt(idField.getText().toString());
+        String password = passwordField.getText().toString();
+
+        if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.ADMIN).getId()) {
             Intent intent = new Intent(this, AdminActivity.class);
-            startActivity(intent);
-        } else if (db.getUserRole(Integer.parseInt(idField.getText().toString())) == Bank.rolesMap.get(Roles.TELLER).getId()) {
+            AdminTerminal at = new AdminTerminal(this.getBaseContext());
+            intent.putExtra("terminal", at);
+            if (at.logIn(userId, password)) {
+                startActivity(intent);
+            }
+
+        } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.TELLER).getId()) {
             Intent intent = new Intent(this, TellerStartingMenuActivity.class);
-            startActivity(intent);
-        } else {
+            TellerTerminal tt = new TellerTerminal(this.getBaseContext());
+            intent.putExtra("terminal", tt);
+            if (tt.logIn(userId, password)) {
+                startActivity(intent);
+            }
+
+        } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
             Intent intent = new Intent(this, ATMActivity.class);
-            startActivity(intent);
+            ATM atm = new ATM(this.getBaseContext());
+            intent.putExtra("terminal", atm);
+            if (atm.logIn(userId, password)) {
+                startActivity(intent);
+            }
         }
     }
     public void goToReset(View view) {

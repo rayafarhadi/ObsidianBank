@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class DatabaseSelectHelper {
 
@@ -212,7 +213,11 @@ public class DatabaseSelectHelper {
      * @return the roleId for the user.
      */
     public int getUserRole(int userId) {
-        return db.getUserRole(userId);
+        try {
+            return db.getUserRole(userId);
+        } catch (Exception e){
+            return  -1;
+        }
     }
 
     /**
