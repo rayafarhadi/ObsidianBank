@@ -1,11 +1,11 @@
 package com.bank.bankingapp.activities.terminal.admin.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bank.bankingapp.R;
@@ -19,10 +19,13 @@ public class AdminBalanceFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.view_admin_balance, container, false);
-        balance = rl.findViewById(R.id.admin_balance);
-        updateBalance();
-        return rl;
+        return inflater.inflate(R.layout.view_admin_balance, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        balance = view.findViewById(R.id.admin_user_balance);
     }
 
     public void updateBalance() {

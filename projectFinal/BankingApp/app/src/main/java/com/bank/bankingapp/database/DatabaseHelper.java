@@ -234,6 +234,10 @@ public class DatabaseHelper implements Serializable {
         return selector.getSpecificMessage(messageId);
     }
 
+    public ArrayList<User> getUsers(){
+        return selector.getUsers();
+    }
+
     /**
      * Update the role name of a given role in the role table.
      *
