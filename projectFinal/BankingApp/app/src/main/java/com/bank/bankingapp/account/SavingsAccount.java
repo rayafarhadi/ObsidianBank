@@ -19,7 +19,6 @@ public class SavingsAccount extends Account implements Serializable {
      */
     public SavingsAccount(int id, String name, BigDecimal balance) {
         super();
-        this.id = id;
         this.name = name;
         this.balance = balance;
         this.typeInfo = Bank.accountsMap.get(AccountTypes.SAVING);

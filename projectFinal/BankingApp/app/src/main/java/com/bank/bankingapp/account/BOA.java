@@ -12,7 +12,6 @@ public class BOA extends Account implements Serializable {
 
     public BOA(int id, String name, BigDecimal balance) {
         super();
-        this.id = id;
         this.name = name;
         this.balance = balance;
         this.typeInfo = Bank.accountsMap.get(AccountTypes.BOA);
