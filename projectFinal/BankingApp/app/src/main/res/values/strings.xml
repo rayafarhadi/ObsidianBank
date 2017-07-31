@@ -34,6 +34,7 @@
     <string name="teller_option_check_balance">Check \nBalance</string>
     <string name="teller_option_close_session">Log Out \nUser</string>
     <string name="teller_option_update_info">Update \nInfo</string>
+    <string name="teller_option_projected_earnings">Projected\nEarnings</string>
     <string name="teller_messages">View \nMessages</string>
 
     <!-- Strings related to atm options -->
