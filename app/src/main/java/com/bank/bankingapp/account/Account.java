@@ -17,6 +17,11 @@ public abstract class Account implements Serializable {
     protected AccountTypeValues typeInfo;
     protected BigDecimal interestRate;
 
+    public Account() {
+        interestRate = typeInfo.getInterest();
+        id = typeInfo.getId();
+    }
+
     /**
      * Returns the id of the account
      *

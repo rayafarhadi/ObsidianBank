@@ -18,6 +18,7 @@ public class ChequingAccount extends Account implements Serializable {
      * @param balance of account
      */
     public ChequingAccount(int id, String name, BigDecimal balance) {
+        super();
         this.id = id;
         this.name = name;
         this.balance = balance;

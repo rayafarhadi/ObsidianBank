@@ -2,7 +2,7 @@ package com.bank.bankingapp.maps;
 
 import java.math.BigDecimal;
 
-public class AccountTypeValues {
+public class AccountTypeValues{
     private int id;
     private String name;
     private BigDecimal interest;

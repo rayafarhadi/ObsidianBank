@@ -114,9 +114,11 @@ public class DatabaseSelectHelper implements Serializable {
             String balance = "";
             int type = 0;
 
-            name = results.getString(results.getColumnIndex("NAME"));
-            balance = results.getString(results.getColumnIndex("BALANCE"));
-            type = results.getInt(results.getColumnIndex("TYPE"));
+            if (results.moveToFirst()) {
+                name = results.getString(results.getColumnIndex("NAME"));
+                balance = results.getString(results.getColumnIndex("BALANCE"));
+                type = results.getInt(results.getColumnIndex("TYPE"));
+            }
 
             return AccountFactory.getAccount(type, accountId, name, new BigDecimal(balance));
         } else {

@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <Spinner
+        android:id="@+id/admin_balance_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

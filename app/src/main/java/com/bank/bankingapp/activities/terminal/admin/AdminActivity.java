@@ -130,25 +130,6 @@ public class AdminActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
-
-        Spinner spinner = (Spinner) findViewById(R.id.admin_promote_teller_spinner);
-
-        DatabaseHelper db = new DatabaseHelper(this);
-        ArrayList<String> users = new ArrayList<>();
-
-        for (User user : db.getUsers()) {
-            users.add(user.getName() + ", ID: " + user.getId());
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.view_admin_balance_item, users);
-
-        spinner.setAdapter(adapter);
-        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                balanceFragment.updateBalance();
-            }
-        });
     }
 
     public void displayPromote(View view) {

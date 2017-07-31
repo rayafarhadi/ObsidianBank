@@ -11,6 +11,7 @@ public class BOA extends Account implements Serializable {
     private static final long serialVersionUID = 8624114715497524873L;
 
     public BOA(int id, String name, BigDecimal balance) {
+        super();
         this.id = id;
         this.name = name;
         this.balance = balance;
