@@ -15,18 +15,12 @@ import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
-import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
 import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
-import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
-import com.bank.bankingapp.exceptions.InsuffiecintFundsException;
-import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.terminals.ATM;
-import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.user.Customer;
-import com.bank.bankingapp.user.User;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -80,7 +74,7 @@ public class ATMDepositFragment extends Fragment {
             public void onClick(View view) {
                 EditText message_field = getView().findViewById(R.id.deposit_amount);
                 try {
-                    atm.makeDeposit(new BigDecimal(message_field.getText().toString()), atm.getCurrentUser().getId());
+                    atm.makeDeposit(new BigDecimal(message_field.getText().toString()), targetAccount.getId());
                 } catch (IllegalAmountException e){
                     Toast toast = Toast.makeText(getContext(), "Illegal Amount", Toast.LENGTH_SHORT);
                     toast.show();
