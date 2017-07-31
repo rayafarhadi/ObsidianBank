@@ -31,10 +31,6 @@ public class ATM extends Terminal implements Serializable{
      * @return list of accounts owned by currentUser
      */
     public List<Account> listAccounts() throws SQLException {
-        // Check to see if customer is authenticated.
-        if (!authenticated) {
-            return null;
-        }
         // Return the list of accounts owned by customer
         return ((Customer) currentUser).getAccounts();
     }
