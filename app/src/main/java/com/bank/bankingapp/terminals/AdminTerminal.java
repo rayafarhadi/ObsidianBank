@@ -82,10 +82,6 @@ public class AdminTerminal extends Terminal implements Serializable {
     }
 
     public boolean promoteTeller(int userId) {
-        if (!authenticated) {
-            System.out.println("Admin not authenticated.");
-            return false;
-        }
         if (db.getUserDetails(userId).getRoleId() != Bank.rolesMap.get(Roles.TELLER).getId()) {
             System.out.println("That Id does not belong to a teller.");
             return false;

@@ -76,6 +76,7 @@
         android:layout_marginTop="16dp"
         android:layout_weight="1.03"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="promote"
         android:text="@string/action_promote"
         android:textColor="@color/colorText"
         android:textStyle="bold" />

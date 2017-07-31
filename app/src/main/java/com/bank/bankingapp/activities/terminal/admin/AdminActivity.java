@@ -7,9 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.login.LoginActivity;
@@ -20,12 +17,8 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFrag
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminSendMessageFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
-import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.user.Admin;
-import com.bank.bankingapp.user.User;
-
-import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -125,6 +118,8 @@ public class AdminActivity extends AppCompatActivity {
     //----------- Display Total Balance of Single User-------------------------
     public void displayUserBalance(View view) {
         final AdminBalanceFragment balanceFragment = new AdminBalanceFragment();
+        balanceFragment.setContext(this);
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.admin_fragment_container, balanceFragment);
@@ -160,5 +155,6 @@ public class AdminActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
 
 }

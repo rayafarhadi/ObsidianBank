@@ -1,5 +1,6 @@
 package com.bank.bankingapp.activities.terminal.admin.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 public class AdminBalanceFragment extends Fragment {
 
     TextView balance;
+    Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,9 +64,13 @@ public class AdminBalanceFragment extends Fragment {
         });
     }
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     public void updateBalance(int i) {
-        AdminTerminal at = new AdminTerminal(this.getContext());
-        DatabaseHelper db = new DatabaseHelper(getContext());
+        AdminTerminal at = new AdminTerminal(context);
+        DatabaseHelper db = new DatabaseHelper(context);
         ArrayList<User> users = db.getUsers();
 
         BigDecimal total_balance = at.addBalances(users.get(i).getId());
@@ -72,6 +78,7 @@ public class AdminBalanceFragment extends Fragment {
             total_balance = new BigDecimal(0);
         }
 
+        System.out.println(total_balance.toString());
         balance.setText(total_balance.toString());
     }
 }
