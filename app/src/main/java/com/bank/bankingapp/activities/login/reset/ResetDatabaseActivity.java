@@ -29,7 +29,7 @@ public class ResetDatabaseActivity extends AppCompatActivity {
     }
 
     /**
-     * Resets the database of the app
+     * Resets the database of the app and adds the first admin to it
      * @param view
      */
 

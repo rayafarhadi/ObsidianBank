@@ -45,6 +45,11 @@ public class Bank {
         }
     }
 
+    /**
+     * creates a map for the database and initializes the ROLES and ACCOUNT Types
+     * inside the database
+     * @param context
+     */
     public static void createMaps(Context context) {
 
         DatabaseDriverA driver = new DatabaseDriverA(context);
@@ -66,6 +71,10 @@ public class Bank {
         rolesMap = new RolesMap(context);
     }
 
+    /**
+     *
+     * @param context
+     */
     private void runAdminMode(Context context) {
         DatabaseHelper db = new DatabaseHelper(context);
 
