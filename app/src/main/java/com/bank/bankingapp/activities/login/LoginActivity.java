@@ -31,6 +31,10 @@ public class LoginActivity extends AppCompatActivity {
     DatabaseHelper db;
     DatabaseDriverA driver;
 
+    /**
+     * initializes the login activity and sets the layout of the screen
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +47,18 @@ public class LoginActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
     }
 
+    /**
+     * Prompts users for an id and a password and will log in the user depending on its type
+     * @param view
+     */
     public void logIn(View view) {
+        // get user id and password
         int userId = Integer.parseInt(idField.getText().toString());
         String password = passwordField.getText().toString();
 
         idField.setText("");
         passwordField.setText("");
-
+        //check if the user is an admin and log the admin into admin terminal
         if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.ADMIN).getId()) {
             Intent intent = new Intent(this, AdminActivity.class);
             AdminTerminal at = new AdminTerminal(this);
@@ -61,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             if (at.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
-
+        // check if user is a teller and log the teller into teller terminal
         } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.TELLER).getId()) {
             Intent intent = new Intent(this, TellerStartingMenuActivity.class);
             TellerTerminal tt = new TellerTerminal(this);
@@ -71,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             if (tt.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
-
+        //check if the user is a customer and log the customer into ATM
         } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
             Intent intent = new Intent(this, ATMActivity.class);
             ATM atm = new ATM(this);
