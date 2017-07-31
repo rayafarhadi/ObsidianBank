@@ -169,14 +169,14 @@
 
             android:background="@drawable/button_round"
             android:gravity="center_horizontal|center_vertical"
-            android:onClick="displayUsersTotalBalance"
+            android:onClick="displayUserBalance"
             android:src="@mipmap/balance" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/users_balance"
+            android:text="@string/admin_option_user_balance"
             android:textAlignment="center"
             android:textColor="@color/colorText" />
     </LinearLayout>
@@ -219,7 +219,47 @@
             android:layout_width="5dp"
             android:layout_height="0dp" />
 
-        F
+    </LinearLayout>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1">
+
+    </Space>
+
+
+    <!-- Log Out -->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/admin_log_out_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_round"
+            android:gravity="center_horizontal|center_vertical"
+            android:onClick="logOut"
+            android:src="@mipmap/log_out" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/log_out"
+            android:textAlignment="center"
+            android:textColor="@color/colorText" />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="0dp" />
+
     </LinearLayout>
 
 </LinearLayout>
