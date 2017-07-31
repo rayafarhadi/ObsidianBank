@@ -88,8 +88,8 @@ public abstract class Terminal implements Serializable {
         Account account = db.getAccountDetails(accountId);
         while (account != null) {
             sum = sum.add(account.getBalance());
-            account = db.getAccountDetails(accountId);
             accountId++;
+            account = db.getAccountDetails(accountId);
         }
         return sum;
     }
