@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.login.reset.ResetDatabaseActivity;
 import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
-import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
+import com.bank.bankingapp.activities.terminal.atm.TellerActivity;
 import com.bank.bankingapp.activities.terminal.teller.TellerStartingMenuActivity;
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseDriverA;
@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         //check if the user is a customer and log the customer into ATM
         } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
-            Intent intent = new Intent(this, ATMActivity.class);
+            Intent intent = new Intent(this, TellerActivity.class);
             ATM atm = new ATM(this);
 
             atm.logIn(userId, password);
