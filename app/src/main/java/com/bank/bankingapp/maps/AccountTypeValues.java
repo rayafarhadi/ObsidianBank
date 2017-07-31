@@ -1,8 +1,10 @@
 package com.bank.bankingapp.maps;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class AccountTypeValues{
+public class AccountTypeValues implements Serializable {
+    private static final long serialVersionUID = -9006295502477108278L;
     private int id;
     private String name;
     private BigDecimal interest;

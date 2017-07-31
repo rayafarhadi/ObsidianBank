@@ -21,7 +21,7 @@ public class TFSA extends Account implements Serializable {
         this.name = name;
         this.balance = balance;
         this.typeInfo = Bank.accountsMap.get(AccountTypes.TFSA);
-        this.id = typeInfo.getId();
+        this.id = id;
         this.interestRate = typeInfo.getInterest();
     }
 }
