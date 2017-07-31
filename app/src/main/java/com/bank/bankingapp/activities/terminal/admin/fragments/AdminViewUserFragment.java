@@ -6,18 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.bank.bankingapp.R;
-import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
-import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
-import com.bank.bankingapp.activities.terminal.atm.fragments.AccountInfoAdapter;
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.generics.Roles;
-import com.bank.bankingapp.terminals.ATM;
 import com.bank.bankingapp.terminals.AdminTerminal;
-import com.bank.bankingapp.user.Admin;
 import com.bank.bankingapp.user.User;
 
 import java.sql.SQLException;

@@ -19,7 +19,7 @@ import com.bank.bankingapp.user.User;
  * Created by rayafarhadi on 26/07/17.
  */
 
-public class ATMActivity extends AppCompatActivity {
+public class TellerActivity extends AppCompatActivity {
     private ATM atm = new ATM(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -5,12 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
-import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
+import com.bank.bankingapp.activities.terminal.atm.TellerActivity;
 import com.bank.bankingapp.terminals.ATM;
 
 import java.sql.SQLException;
@@ -27,7 +26,7 @@ public class ATMListAccountsBalancesFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ATMActivity prevActivity = (ATMActivity) this.getActivity();
+        TellerActivity prevActivity = (TellerActivity) this.getActivity();
         ATM atm = prevActivity.getAtm();
         List<Account> accounts = new ArrayList<>();
         try {
