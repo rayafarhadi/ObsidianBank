@@ -101,9 +101,6 @@ public class TellerTerminal extends ATM implements Serializable{
      */
     public int makeNewUser(String name, int age, String address, String password) {
         // Check to see that the teller is authenticated
-        if (!currentTellerAuthenticated) {
-            return -1;
-        }
         // Get the roleId of the CUSTOMER
         int roleId = 0;
         for (int r : Bank.rolesMap.getIds()) {
@@ -123,10 +120,7 @@ public class TellerTerminal extends ATM implements Serializable{
      * @param accountId id of the account
      */
     public void giveInterest(int accountId) {
-        // Check to see that the teller and customer is authenticated
-        if (!currentTellerAuthenticated) {
-            return;
-        }
+        // Check to see that the customer is authenticated
         if (!authenticated) {
             return;
         }
@@ -151,10 +145,7 @@ public class TellerTerminal extends ATM implements Serializable{
      * Gives interest to all accounts of the customer if the customer, teller are authenticated.
      */
     public void giveInterestAll() {
-        // Check to see that the teller and customer is authenticated
-        if (!currentTellerAuthenticated) {
-            return;
-        }
+        // Check to see that the customer is authenticated
         if (!authenticated) {
             return;
         }
@@ -167,9 +158,7 @@ public class TellerTerminal extends ATM implements Serializable{
     /**
      */
     public boolean updateUserInformation(String name, String address, String password, int age) {
-        if (!currentTellerAuthenticated) {
-            return false;
-        } else if (!authenticated) {
+        if (!authenticated) {
             return false;
         } else {
             password = PasswordHelpers.passwordHash(password);
@@ -204,10 +193,6 @@ public class TellerTerminal extends ATM implements Serializable{
      * @return
      */
     public boolean leaveMessage(int customerId, String message) {
-        if (!currentTellerAuthenticated) {
-            System.out.println("Current teller not authenticated");
-            return false;
-        }
         if (db.getUserDetails(customerId) == null) {
             System.out.println("User with user id could not be found in the database.");
             return false;

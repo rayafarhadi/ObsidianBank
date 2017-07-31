@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_name"
+            android:inputType="textPersonName"
             android:maxLines="1" />
 
     </android.support.design.widget.TextInputLayout>
@@ -52,6 +53,7 @@
             android:id="@+id/reset_admin_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
             android:hint="@string/prompt_address"
             android:maxLines="1" />
 
