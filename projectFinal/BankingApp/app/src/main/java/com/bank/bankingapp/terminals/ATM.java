@@ -46,10 +46,6 @@ public class ATM extends Terminal implements Serializable{
      */
     public boolean makeDeposit(BigDecimal deposit, int accountId)
             throws IllegalAmountException, ConnectionFailedException {
-        // Check to see if customer is authenticated.
-        if (!authenticated) {
-            throw new ConnectionFailedException();
-        }
 
         // Check that the account is a RSA, and makes sure a teller is accessing it
         if (db.getAccountType(accountId) == Bank.accountsMap.get(AccountTypes.RSA)
@@ -69,6 +65,7 @@ public class ATM extends Terminal implements Serializable{
         BigDecimal balance = db.getBalance(accountId).add(deposit);
         // Update the account balance in the database
         boolean success = db.updateAccountBalance(balance, accountId);
+        setCurrentUser(db.getUserDetails(getCurrentUser().getId()));
         // Return whether the deposit was successful
         return success;
 
@@ -85,9 +82,6 @@ public class ATM extends Terminal implements Serializable{
 
     public BigDecimal checkBalance(int accountId) throws ConnectionFailedException {
         // Check to see if customer is authenticated.
-        if (!authenticated) {
-            throw new ConnectionFailedException();
-        }
         currentUser = db.getUserDetails(currentUser.getId());
 
         // Check to see if the customer owns the account
@@ -111,10 +105,6 @@ public class ATM extends Terminal implements Serializable{
     public boolean makeWithdrawal(BigDecimal withdrawal, int accountId) throws IllegalAmountException,
             ConnectionFailedException, InsuffiecintFundsException {
         currentUser = db.getUserDetails(currentUser.getId());
-        // Check to see if customer is authenticated.
-        if (!authenticated) {
-            throw new ConnectionFailedException();
-        }
 
         // Check that the account is a RSA, and makes sure a teller is accessing it
         if (db.getAccountType(accountId) == Bank.accountsMap.get(AccountTypes.RSA)
@@ -152,6 +142,7 @@ public class ATM extends Terminal implements Serializable{
                             + " has been transitioned into a Chequing account because the accounts balance was less then 1000$.");
         }
 
+        setCurrentUser(db.getUserDetails(getCurrentUser().getId()));
         // Return whether the deposit was successful
         return success;
 

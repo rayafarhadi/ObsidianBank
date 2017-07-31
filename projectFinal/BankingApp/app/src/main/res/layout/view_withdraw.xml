@@ -10,23 +10,13 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- Id Field -->
-    <android.support.design.widget.TextInputLayout
+    <!-- ID Field -->
+    <Spinner
+        android:id="@+id/withdraw_account_spinner"
+        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/deposit_account_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:backgroundTint="@color/colorText"
-            android:hint="@string/prompt_id"
-            android:maxLines="1"
-            android:textColor="@color/colorText" />
-
-    </android.support.design.widget.TextInputLayout>
 
     <Space
         android:layout_width="match_parent"
@@ -40,7 +30,7 @@
         android:layout_weight="1">
 
         <EditText
-            android:id="@+id/deposit_amount"
+            android:id="@+id/withdraw_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -62,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-
+        android:id="@+id/withdraw_button"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_withdraw"
         android:textColor="@color/colorText" />
