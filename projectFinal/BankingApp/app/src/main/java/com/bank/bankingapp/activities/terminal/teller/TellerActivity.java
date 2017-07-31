@@ -31,13 +31,18 @@ import java.math.BigDecimal;
 
 public class TellerActivity extends AppCompatActivity {
 
+
+
     TellerTerminal tt;
+
+    public TellerTerminal getTt() {
+        return tt;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teller);
-
         if (findViewById(R.id.teller_fragment_container) != null) {
             if (savedInstanceState != null) {
                 return;
