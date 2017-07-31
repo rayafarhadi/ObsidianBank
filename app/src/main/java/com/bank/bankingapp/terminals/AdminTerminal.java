@@ -43,9 +43,6 @@ public class AdminTerminal extends Terminal implements Serializable {
      */
     public List<User> getUserType(int roleId) throws SQLException {
         // make sure admin is authenticated
-        if (!authenticated) {
-            return null;
-        }
         List<User> users = new ArrayList<>();
         int id = 1;
         // get all users

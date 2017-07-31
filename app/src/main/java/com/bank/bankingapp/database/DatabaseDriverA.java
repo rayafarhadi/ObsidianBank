@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.bank.bankingapp.database.PasswordHelpers;
+
 import java.math.BigDecimal;
 
 /**
@@ -18,6 +20,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
 
     public DatabaseDriverA(Context context) {
         super(context, DATABASE_NAME, null, 1);
+
     }
 
     @Override
@@ -46,7 +49,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
                 + "(USERID INTEGER NOT NULL,"
                 + "ACCOUNTID INTEGER NOT NULL,"
                 + "FOREIGN KEY(USERID) REFERENCES USER(ID),"
-                + "FOREIGN KEY(ACCOUNTID) REFERENCES ACCOUNT(ID),"
+                + "FOREIGN KEY(ACCOUNTID) REFERENCES ACOUNT(ID),"
                 + "PRIMARY KEY(USERID, ACCOUNTID))");
         sqLiteDatabase.execSQL("CREATE TABLE USERPW "
                 + "(USERID INTEGER NOT NULL,"
@@ -178,13 +181,13 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
     protected Cursor getUserDetails(int userId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM USERS WHERE ID = ?",
-                new String[]{String.valueOf(userId)});
+                new String[] {String.valueOf(userId)});
     }
 
     protected String getPassword(int userId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT PASSWORD FROM USERPW WHERE USERID = ?",
-                new String[]{String.valueOf(userId)});
+                new String[] {String.valueOf(userId)});
         cursor.moveToFirst();
         String result = cursor.getString(cursor.getColumnIndex("PASSWORD"));
         cursor.close();
@@ -194,20 +197,20 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
     protected Cursor getAccountIds(int userId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT ACCOUNTID FROM USERACCOUNT WHERE USERID = ?",
-                new String[]{String.valueOf(userId)});
+                new String[] {String.valueOf(userId)});
 
     }
 
     protected Cursor getAccountDetails(int accountId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM ACCOUNTS WHERE ID = ?",
-                new String[]{String.valueOf(accountId)});
+                new String[] {String.valueOf(accountId)});
     }
 
     protected BigDecimal getBalance(int accountId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT BALANCE FROM ACCOUNTS WHERE ID = ?",
-                new String[]{String.valueOf(accountId)});
+                new String[] {String.valueOf(accountId)});
         cursor.moveToFirst();
         BigDecimal result = new BigDecimal(cursor.getString(cursor.getColumnIndex("BALANCE")));
         cursor.close();
@@ -217,7 +220,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
     protected int getAccountType(int accountId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT TYPE FROM ACCOUNTS WHERE ID = ?",
-                new String[]{String.valueOf(accountId)});
+                new String[] {String.valueOf(accountId)});
         cursor.moveToFirst();
         int result = cursor.getInt(cursor.getColumnIndex("TYPE"));
         cursor.close();
@@ -227,7 +230,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
     protected String getAccountTypeName(int accountTypeId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT NAME FROM ACCOUNTTYPES WHERE ID = ?",
-                new String[]{String.valueOf(accountTypeId)});
+                new String[] {String.valueOf(accountTypeId)});
         cursor.moveToFirst();
         String result = cursor.getString(cursor.getColumnIndex("NAME"));
         cursor.close();
@@ -242,7 +245,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
     protected BigDecimal getInterestRate(int accountType) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT INTERESTRATE FROM ACCOUNTTYPES WHERE ID = ?",
-                new String[]{String.valueOf(accountType)});
+                new String[] {String.valueOf(accountType)});
         cursor.moveToFirst();
         BigDecimal result = new BigDecimal(cursor.getString(cursor.getColumnIndex("INTERESTRATE")));
         cursor.close();
@@ -252,13 +255,13 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
     protected Cursor getAllMessages(int userId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM USERMESSAGES WHERE USERID = ?",
-                new String[]{String.valueOf(userId)});
+                new String[] {String.valueOf(userId)});
     }
 
-    protected String getSpecificMessage(int messageId) {
+    protected String getSpecificMessage(int messageId){
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT MESSAGE FROM USERMESSAGES WHERE ID = ?",
-                new String[]{String.valueOf(messageId)});
+                new String[] {String.valueOf(messageId)});
         cursor.moveToFirst();
         String result = cursor.getString(cursor.getColumnIndex("MESSAGE"));
         cursor.close();
@@ -270,7 +273,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
-        return sqLiteDatabase.update("ROLES", contentValues, "ID = ?", new String[]{String.valueOf(id)})
+        return sqLiteDatabase.update("ROLES",contentValues,"ID = ?", new String[] {String.valueOf(id)})
                 > 0;
     }
 
@@ -278,7 +281,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
-        return sqLiteDatabase.update("USERS", contentValues, "ID = ?", new String[]{String.valueOf(id)})
+        return sqLiteDatabase.update("USERS",contentValues,"ID = ?", new String[] {String.valueOf(id)})
                 > 0;
     }
 
@@ -286,7 +289,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("AGE", age);
-        return sqLiteDatabase.update("USERS", contentValues, "ID = ?", new String[]{String.valueOf(id)})
+        return sqLiteDatabase.update("USERS",contentValues,"ID = ?", new String[] {String.valueOf(id)})
                 > 0;
     }
 
@@ -294,7 +297,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ROLEID", roleId);
-        return sqLiteDatabase.update("USERS", contentValues, "ID = ?", new String[]{String.valueOf(id)})
+        return sqLiteDatabase.update("USERS",contentValues,"ID = ?", new String[] {String.valueOf(id)})
                 > 0;
     }
 
@@ -302,7 +305,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("ADDRESS", address);
-        return sqLiteDatabase.update("USERS", contentValues, "ID = ?", new String[]{String.valueOf(id)})
+        return sqLiteDatabase.update("USERS",contentValues,"ID = ?", new String[] {String.valueOf(id)})
                 > 0;
     }
 
@@ -310,55 +313,55 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
-        return sqLiteDatabase.update("ACCOUNTS", contentValues, "ID = ?",
-                new String[]{String.valueOf(id)}) > 0;
+        return sqLiteDatabase.update("ACCOUNTS",contentValues,"ID = ?",
+                new String[] {String.valueOf(id)}) > 0;
     }
 
     protected boolean updateAccountBalance(BigDecimal balance, int id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("BALANCE", balance.toPlainString());
-        return sqLiteDatabase.update("ACCOUNTS", contentValues, "ID = ?",
-                new String[]{String.valueOf(id)}) > 0;
+        return sqLiteDatabase.update("ACCOUNTS",contentValues,"ID = ?",
+                new String[] {String.valueOf(id)}) > 0;
     }
 
     protected boolean updateAccountType(int typeId, int id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("TYPE", typeId);
-        return sqLiteDatabase.update("ACCOUNTS", contentValues, "ID = ?",
-                new String[]{String.valueOf(id)}) > 0;
+        return sqLiteDatabase.update("ACCOUNTS",contentValues,"ID = ?",
+                new String[] {String.valueOf(id)}) > 0;
     }
 
     protected boolean updateAccountTypeName(String name, int id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("NAME", name);
-        return sqLiteDatabase.update("ACCOUNTTYPES", contentValues, "ID = ?",
-                new String[]{String.valueOf(id)}) > 0;
+        return sqLiteDatabase.update("ACCOUNTTYPES",contentValues,"ID = ?",
+                new String[] {String.valueOf(id)}) > 0;
     }
 
     protected boolean updateAccountTypeInterestRate(BigDecimal interestRate, int id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("INTERESTRATE", interestRate.toPlainString());
-        return sqLiteDatabase.update("ACCOUNTTYPES", contentValues, "ID = ?",
-                new String[]{String.valueOf(id)}) > 0;
+        return sqLiteDatabase.update("ACCOUNTTYPES",contentValues,"ID = ?",
+                new String[] {String.valueOf(id)}) > 0;
     }
 
     protected boolean updateUserPassword(String password, int id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("PASSWORD", password);
-        return sqLiteDatabase.update("USERPW", contentValues, "USERID = ?",
-                new String[]{String.valueOf(id)}) > 0;
+        return sqLiteDatabase.update("USERPW",contentValues,"USERID = ?",
+                new String[] {String.valueOf(id)}) > 0;
     }
 
     protected boolean updateUserMessageState(int id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("VIEWED", 1);
-        return sqLiteDatabase.update("MESSAGES", contentValues, "ID = ?",
-                new String[]{String.valueOf(id)}) > 0;
+        return sqLiteDatabase.update("USERMESSAGES",contentValues,"ID = ?",
+                new String[] {String.valueOf(id)}) > 0;
     }
 }

@@ -66,15 +66,14 @@ public class DatabaseSelectHelper implements Serializable {
             String address = "";
             int roleId = 0;
 
-            results.moveToFirst();
-            do {
-                name = results.getString(results.getColumnIndex("NAME"));
-                age = results.getInt(results.getColumnIndex("AGE"));
-                address = results.getString(results.getColumnIndex("ADDRESS"));
-                roleId = results.getInt(results.getColumnIndex("ROLEID"));
-            } while (results.moveToNext());
-
-
+            if (results.moveToFirst()) {
+                do {
+                    name = results.getString(results.getColumnIndex("NAME"));
+                    age = results.getInt(results.getColumnIndex("AGE"));
+                    address = results.getString(results.getColumnIndex("ADDRESS"));
+                    roleId = results.getInt(results.getColumnIndex("ROLEID"));
+                } while (results.moveToNext());
+            }
             return UserFactory.getUser(roleId, userId, name, age, address, context);
         } else {
             return null;
@@ -94,7 +93,7 @@ public class DatabaseSelectHelper implements Serializable {
 
         if (results.moveToFirst()) {
             do {
-                idList.add(results.getInt(results.getColumnIndex("ACCOUNTID")));
+                idList.add(results.getInt(results.getColumnIndex("ACCOUNTS")));
             } while (results.moveToNext());
         }
 

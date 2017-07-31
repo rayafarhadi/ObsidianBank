@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
+import com.bank.bankingapp.database.DatabaseHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AccountInfoAdapter extends BaseAdapter {
@@ -41,22 +41,23 @@ public class AccountInfoAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        DatabaseHelper db = new DatabaseHelper(mContext);
         // Get view for row item
-        View rowView = mInflater.inflate(R.layout.view_atm_list_account_balance, parent, false);
+        View rowView = mInflater.inflate(R.layout.view_atm_list_item, parent, false);
 
         // Get title element
-        TextView nameTextView = (TextView) rowView.findViewById(R.id.view_accountName);
+        TextView nameTextView = rowView.findViewById(R.id.view_accountName);
 
         // Get subtitle element
-        TextView typeTextView = (TextView) rowView.findViewById(R.id.view_accountType);
+        TextView typeTextView = rowView.findViewById(R.id.view_accountType);
 
         // Get detail element
-        TextView balanceTextView = (TextView) rowView.findViewById(R.id.view_accountBal);
+        TextView balanceTextView = rowView.findViewById(R.id.view_accountBal);
 
         // Set the account
         Account account = (Account) getItem(position);
         nameTextView.setText(account.getName());
-        typeTextView.setText(account.getType());
+        typeTextView.setText(db.getAccountTypeName(account.getType()));
         balanceTextView.setText((CharSequence) account.getBalance());
 
         return rowView;
