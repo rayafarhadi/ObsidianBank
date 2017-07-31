@@ -54,10 +54,10 @@ public class AdminMessagesAdapter extends BaseAdapter {
         // Get view for row item
         View rowView = mInflater.inflate(R.layout.view_admin_message_item, parent, false);
 
-        // Get Name element
+        // Get message element
         TextView messageView = rowView.findViewById(R.id.view_message);
 
-        // Set the account
+        // Set the message
         final Message message = (Message) getItem(position);
         messageView.setText(message.getMessage());
         if (message.isViewed()){
@@ -66,7 +66,7 @@ public class AdminMessagesAdapter extends BaseAdapter {
             messageView.setTextColor(Color.parseColor("#4CAF50"));
         }
 
-        // Change set to read on click
+        // Set message to read on click
         messageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
