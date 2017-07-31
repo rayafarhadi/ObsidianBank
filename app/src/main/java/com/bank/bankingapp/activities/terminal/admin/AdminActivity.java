@@ -7,6 +7,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.login.LoginActivity;
@@ -16,9 +19,12 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminCreateUserFr
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.user.Admin;
 import com.bank.bankingapp.user.User;
+
+import java.util.ArrayList;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -117,13 +123,32 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     public void displayUserBalance(View view) {
-        AdminBalanceFragment balanceFragment = new AdminBalanceFragment();
+        final AdminBalanceFragment balanceFragment = new AdminBalanceFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.admin_fragment_container, balanceFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
+
+        Spinner spinner = (Spinner) findViewById(R.id.admin_promote_teller_spinner);
+
+        DatabaseHelper db = new DatabaseHelper(this);
+        ArrayList<String> users = new ArrayList<>();
+
+        for (User user : db.getUsers()) {
+            users.add(user.getName() + ", ID: " + user.getId());
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.view_admin_balance_item, users);
+
+        spinner.setAdapter(adapter);
+        spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                balanceFragment.updateBalance();
+            }
+        });
     }
 
     public void displayPromote(View view) {

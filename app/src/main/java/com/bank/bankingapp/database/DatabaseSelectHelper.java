@@ -263,4 +263,29 @@ public class DatabaseSelectHelper implements Serializable {
         Message m = new Message(messageId, -1, s, false);
         return m;
     }
+
+    public ArrayList<User> getUsers() {
+        Cursor results = db.getUsersDetails();
+
+        String name = "";
+        int age = 0;
+        String address = "";
+        int roleId = 0;
+        int userId = 0;
+
+        ArrayList<User> users = new ArrayList<>();
+
+        if (results.moveToFirst()) {
+            do {
+                name = results.getString(results.getColumnIndex("NAME"));
+                age = results.getInt(results.getColumnIndex("AGE"));
+                address = results.getString(results.getColumnIndex("ADDRESS"));
+                roleId = results.getInt(results.getColumnIndex("ROLEID"));
+                userId = results.getInt(results.getColumnIndex("ID"));
+
+                users.add(UserFactory.getUser(roleId, userId, name, age, address, context));
+            } while (results.moveToNext());
+        }
+        return users;
+    }
 }
