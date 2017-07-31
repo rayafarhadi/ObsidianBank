@@ -11,12 +11,14 @@ import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.user.Customer;
 import com.bank.bankingapp.user.User;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
 
-public abstract class Terminal {
+public abstract class Terminal implements Serializable{
 
+    private static final long serialVersionUID = 125466293461048940L;
     protected User currentUser;
     protected boolean authenticated;
     protected int designatedUserId;

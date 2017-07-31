@@ -172,7 +172,7 @@ public class DatabaseUpdateHelper {
      * update the account balance.
      *
      * @param balance the new balance for the account.
-     * @param id      the id of the account.
+     * @param id the id of the account.
      * @return true if successful, false otherwise.
      */
     public boolean updateAccountBalance(BigDecimal balance, int id) {

@@ -368,4 +368,6 @@ public class DatabaseHelper {
         return updater.updateUserMessageState(messageId);
     }
 
+
+
 }

@@ -9,11 +9,13 @@ import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.user.Teller;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class TellerTerminal extends ATM {
+public class TellerTerminal extends ATM implements Serializable{
 
+    private static final long serialVersionUID = -3197891106717343883L;
     private boolean currentTellerAuthenticated;
     private Teller currentTeller;
 
