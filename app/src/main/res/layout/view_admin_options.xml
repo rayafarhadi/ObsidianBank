@@ -4,262 +4,237 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <Space
-        android:layout_width="5dp"
-        android:layout_height="1dp" />
-
-
     <!-- Messages Button -->
     <!-- TODO: Leave Messages and Read Messages -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/admin_messages_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            android:background="@drawable/button_round"
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="displayMessages"
-            android:src="@mipmap/messages" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/admin_option_messages"
-            android:textAlignment="center"
-            android:textColor="@color/colorText" />
+                <ImageButton
+                    android:id="@+id/admin_messages_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
 
-    </LinearLayout>
+                    android:background="@drawable/button_round"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="displayMessages"
+                    android:src="@mipmap/messages" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/admin_option_messages"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
 
-    </Space>
+            </LinearLayout>
 
-    <!-- Create User Button -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            <!-- Create User Button -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
-        <ImageButton
-            android:id="@+id/admin_user_create_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
+                <ImageButton
+                    android:id="@+id/admin_user_create_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
 
-            android:background="@drawable/button_round"
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="displayCreateUser"
-            android:src="@mipmap/create" />
+                    android:background="@drawable/button_round"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="displayCreateUser"
+                    android:src="@mipmap/create" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/admin_option_create"
-            android:textAlignment="center"
-            android:textColor="@color/colorText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/admin_option_create"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
 
-    </LinearLayout>
+            </LinearLayout>
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1">
+            <!-- View Users Button -->
 
-    </Space>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
-    <!-- View Users Button -->
+                <ImageButton
+                    android:id="@+id/admin_view_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_round"
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="displayViewUser"
+                    android:src="@mipmap/list" />
 
-        <ImageButton
-            android:id="@+id/admin_view_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/button_round"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/admin_option_view"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
 
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="displayViewUser"
-            android:src="@mipmap/list" />
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/admin_option_view"
-            android:textAlignment="center"
-            android:textColor="@color/colorText" />
+            <!-- Check Total Bank Balance Button -->
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1">
+                <ImageButton
+                    android:id="@+id/admin_check_balance_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
 
-    </Space>
+                    android:background="@drawable/button_round"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="displayTotalBalance"
+                    android:src="@mipmap/balance" />
 
-    <!-- Check Total Bank Balance Button -->
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:id="@+id/admin_check_balance_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-
-            android:background="@drawable/button_round"
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="displayTotalBalance"
-            android:src="@mipmap/balance" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/admin_option_balance"
-            android:textAlignment="center"
-            android:textColor="@color/colorText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/admin_option_balance"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1">
+            <!-- Check Users Bank Balance Button -->
 
-    </Space>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
-    <!-- Check Users Bank Balance Button -->
+                <ImageButton
+                    android:id="@+id/admin_check_user_balance_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+                    android:background="@drawable/button_round"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="displayUserBalance"
+                    android:src="@mipmap/balance" />
 
-        <ImageButton
-            android:id="@+id/admin_check_user_balance_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/admin_option_user_balance"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
+            </LinearLayout>
 
-            android:background="@drawable/button_round"
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="displayUserBalance"
-            android:src="@mipmap/balance" />
+            <!-- Promote Teller Button -->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/admin_option_user_balance"
-            android:textAlignment="center"
-            android:textColor="@color/colorText" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1">
+                <ImageButton
+                    android:id="@+id/admin_promote_teller_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
 
-    </Space>
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_round"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="displayPromote"
+                    android:src="@mipmap/promote" />
 
-    <!-- Promote Teller Button -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/admin_option_promote"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="0dp" />
 
-        <ImageButton
-            android:id="@+id/admin_promote_teller_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            </LinearLayout>
 
-            android:layout_marginTop="5dp"
-            android:background="@drawable/button_round"
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="displayPromote"
-            android:src="@mipmap/promote" />
+            <!-- Log Out -->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/admin_option_promote"
-            android:textAlignment="center"
-            android:textColor="@color/colorText" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
 
-        <Space
-            android:layout_width="5dp"
-            android:layout_height="0dp" />
+                <ImageButton
+                    android:id="@+id/admin_log_out_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
 
-    </LinearLayout>
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_round"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="logOut"
+                    android:src="@mipmap/log_out" />
 
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/log_out"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
 
-    </Space>
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="0dp" />
 
-
-    <!-- Log Out -->
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:id="@+id/admin_log_out_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-
-            android:layout_marginTop="5dp"
-            android:background="@drawable/button_round"
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="logOut"
-            android:src="@mipmap/log_out" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/log_out"
-            android:textAlignment="center"
-            android:textColor="@color/colorText" />
-
-        <Space
-            android:layout_width="5dp"
-            android:layout_height="0dp" />
-
-    </LinearLayout>
-
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
 </LinearLayout>

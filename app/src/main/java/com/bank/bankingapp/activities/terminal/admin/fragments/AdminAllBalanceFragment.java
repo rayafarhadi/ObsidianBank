@@ -19,7 +19,7 @@ public class AdminAllBalanceFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.view_admin_balance, container, false);
+        RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.view_admin_all_balance, container, false);
         balance = rl.findViewById(R.id.admin_balance);
         updateBalance();
         return rl;

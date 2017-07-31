@@ -3,7 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- "Total Balance: $" -->
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- "User Balance: $" -->
     <TextView
         android:id="@+id/total_balance"
         android:layout_width="wrap_content"
