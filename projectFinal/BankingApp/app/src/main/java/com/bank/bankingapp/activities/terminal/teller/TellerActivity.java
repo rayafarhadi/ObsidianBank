@@ -17,6 +17,7 @@ import com.bank.bankingapp.activities.terminal.teller.fragments.TellerCreateAcco
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerDepositFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveInterestFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerMessagesFragment;
+import com.bank.bankingapp.activities.terminal.teller.fragments.TellerProjectEarningsFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerUpdateInfoFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerWithdrawFragment;
 import com.bank.bankingapp.terminals.TellerTerminal;
@@ -189,6 +190,16 @@ public class TellerActivity extends AppCompatActivity {
         addressField.setText("");
         ageField.setText("");
 
+    }
+
+    public void displayProjectedEarnings(View view){
+        TellerProjectEarningsFragment earningsFragment = new TellerProjectEarningsFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.teller_fragment_container, earningsFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
     }
 
     public void displayMessages(View view) {
