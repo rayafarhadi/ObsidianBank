@@ -128,6 +128,7 @@ public class TellerTerminal extends ATM implements Serializable {
                             .getName() + " which has an account id: " + accountId;
             db.insertMessage(currentUser.getId(), message);
         }
+        setCurrentUser(db.getUserDetails(getCurrentUser().getId()));
     }
 
     /**
@@ -138,6 +139,7 @@ public class TellerTerminal extends ATM implements Serializable {
         for (int accountId : db.getAccountIds(currentUser.getId())) {
             giveInterest(accountId);
         }
+        setCurrentUser(db.getUserDetails(getCurrentUser().getId()));
     }
 
     /**

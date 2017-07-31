@@ -58,7 +58,7 @@ public class AdminPromoteFragment extends Fragment {
      */
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        spinner = (Spinner) view.findViewById(R.id.admin_promote_teller_spinner);
+        spinner =  view.findViewById(R.id.admin_promote_teller_spinner);
 
         DatabaseHelper db = new DatabaseHelper(this.getContext());
         ArrayList<String> users = new ArrayList<>();

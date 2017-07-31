@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.activities.login.LoginActivity;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMBalanceFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMDepositFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMListAccountsBalancesFragment;
@@ -78,6 +79,11 @@ public class ATMActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    //----------- Log out ATM -------------------------
+    public void logOut(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 
     public ATM getAtm() {
         return atm;

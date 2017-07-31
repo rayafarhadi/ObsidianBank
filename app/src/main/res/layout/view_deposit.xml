@@ -11,22 +11,12 @@
         android:layout_weight="1" />
 
     <!-- ID Field -->
-    <android.support.design.widget.TextInputLayout
+    <Spinner
+        android:id="@+id/deposit_account_spinner"
+        android:layout_marginStart="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/deposit_account_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:backgroundTint="@color/colorText"
-            android:hint="@string/prompt_id"
-            android:maxLines="1"
-            android:textColor="@color/colorText" />
-
-    </android.support.design.widget.TextInputLayout>
 
     <Space
         android:layout_width="match_parent"
@@ -62,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-
+        android:id="@+id/deposit_button"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_deposit"
         android:textColor="@color/colorText" />
