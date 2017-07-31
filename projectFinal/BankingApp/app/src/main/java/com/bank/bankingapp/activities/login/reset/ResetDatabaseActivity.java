@@ -15,15 +15,28 @@ import com.bank.bankingapp.database.DatabaseDriverA;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.generics.Roles;
 
+/**
+ * A class that Resets the database in the app
+ */
 public class ResetDatabaseActivity extends AppCompatActivity {
+    /**
+     * Initializes the reset activity and sets the layout of the screen on the app
+     * @param savedInstanceState
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset);
     }
 
-    public void reset(View view) {
-        Bank.createMaps(this);
+    /**
+     * Resets the database of the app
+     * @param view
+     */
 
+    public void reset(View view) {
+        // Creates a map connected to the activity
+        Bank.createMaps(this);
+        //get new admins information
         EditText name = (EditText) findViewById(R.id.reset_admin_name);
         EditText age = (EditText) findViewById(R.id.reset_admin_age);
         EditText address = (EditText) findViewById(R.id.reset_admin_address);
