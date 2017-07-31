@@ -19,7 +19,6 @@ public class TFSA extends Account implements Serializable {
      */
     public TFSA(int id, String name, BigDecimal balance) {
         super();
-        this.id = id;
         this.name = name;
         this.balance = balance;
         this.typeInfo = Bank.accountsMap.get(AccountTypes.TFSA);
