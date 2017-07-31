@@ -46,7 +46,7 @@ public class AdminActivity extends AppCompatActivity {
 
     public void createUser(View view) {
         AdminTerminal at = new AdminTerminal(this);
-        at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(), createUserFragment.getAddress(), createUserFragment.getType(), createUserFragment.getPassword());
+        int id = at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(), createUserFragment.getAddress(), createUserFragment.getType(), createUserFragment.getPassword());
     }
 
     //------------- Display Messages ------------------

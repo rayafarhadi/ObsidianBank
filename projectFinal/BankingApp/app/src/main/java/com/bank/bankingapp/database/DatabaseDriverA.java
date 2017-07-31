@@ -46,7 +46,7 @@ public class DatabaseDriverA extends SQLiteOpenHelper {
                 + "(USERID INTEGER NOT NULL,"
                 + "ACCOUNTID INTEGER NOT NULL,"
                 + "FOREIGN KEY(USERID) REFERENCES USER(ID),"
-                + "FOREIGN KEY(ACCOUNTID) REFERENCES ACOUNT(ID),"
+                + "FOREIGN KEY(ACCOUNTID) REFERENCES ACCOUNT(ID),"
                 + "PRIMARY KEY(USERID, ACCOUNTID))");
         sqLiteDatabase.execSQL("CREATE TABLE USERPW "
                 + "(USERID INTEGER NOT NULL,"
