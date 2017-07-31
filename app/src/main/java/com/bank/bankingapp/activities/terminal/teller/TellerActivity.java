@@ -1,8 +1,10 @@
 package com.bank.bankingapp.activities.terminal.teller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -83,6 +85,22 @@ public class TellerActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
+    }
+
+    public void tellerGiveInterestAll(View view){
+        tt.giveInterestAll();
+        final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
+        idNotification.setTitle(R.string.dialog_create_title);
+        idNotification.setMessage("Interest has been applied to all accounts.");
+        idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+
+        idNotification.create();
+        idNotification.show();
+        tt.giveInterestAll();
+
     }
 
     public void displayTellerDeposit(View view) {

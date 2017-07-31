@@ -113,10 +113,6 @@ public class TellerTerminal extends ATM implements Serializable {
      * @param accountId id of the account
      */
     public void giveInterest(int accountId) {
-        // Check to see that the customer is authenticated
-        if (!authenticated) {
-            return;
-        }
         // Determine the account balance
         BigDecimal balance = db.getBalance(accountId);
         // Determine the account interest rate
@@ -138,10 +134,6 @@ public class TellerTerminal extends ATM implements Serializable {
      * Gives interest to all accounts of the customer if the customer, teller are authenticated.
      */
     public void giveInterestAll() {
-        // Check to see that the customer is authenticated
-        if (!authenticated) {
-            return;
-        }
         // loop through accounts owned by customer, given interest.
         for (int accountId : db.getAccountIds(currentUser.getId())) {
             giveInterest(accountId);
@@ -151,17 +143,15 @@ public class TellerTerminal extends ATM implements Serializable {
     /**
      */
     public boolean updateUserInformation(String name, String address, String password, int age) {
-        if (!authenticated) {
-            return false;
-        } else {
-            password = PasswordHelpers.passwordHash(password);
-            boolean updatedname = db.updateUserName(name, currentUser.getId());
-            boolean updatedaddress = db.updateUserAddress(address, currentUser.getId());
-            boolean updatedpassword = db
-                    .updateUserPassword(password, currentUser.getId());
-            boolean updatedage = db.updateUserAge(age, currentUser.getId());
-            return updatedname && updatedaddress && updatedpassword && updatedage;
-        }
+
+        password = PasswordHelpers.passwordHash(password);
+        boolean updatedname = db.updateUserName(name, currentUser.getId());
+        boolean updatedaddress = db.updateUserAddress(address, currentUser.getId());
+        boolean updatedpassword = db
+                .updateUserPassword(password, currentUser.getId());
+        boolean updatedage = db.updateUserAge(age, currentUser.getId());
+        return updatedname && updatedaddress && updatedpassword && updatedage;
+
 
     }
 
