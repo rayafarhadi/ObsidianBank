@@ -11,13 +11,14 @@ import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AccountInfoAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
-    private ArrayList<Account> mDataSource;
+    private List<Account> mDataSource;
 
-    public AccountInfoAdapter(Context context, ArrayList<Account> items) {
+    public AccountInfoAdapter(Context context, List<Account> items) {
         mContext = context;
         mDataSource = items;
         mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

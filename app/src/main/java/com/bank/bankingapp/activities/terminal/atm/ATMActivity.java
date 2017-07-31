@@ -1,5 +1,6 @@
 package com.bank.bankingapp.activities.terminal.atm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -10,16 +11,21 @@ import com.bank.bankingapp.activities.terminal.atm.fragments.ATMBalanceFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMDepositFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMListAccountsBalancesFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMWithdrawFragment;
+import com.bank.bankingapp.terminals.ATM;
 
 /**
  * Created by rayafarhadi on 26/07/17.
  */
 
 public class ATMActivity extends AppCompatActivity {
+    private ATM atm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atm);
+        Intent intent = getIntent();
+        atm = (ATM) intent.getSerializableExtra("terminal");
+
 
 
         if (findViewById(R.id.atm_fragment_container) != null) {
@@ -73,4 +79,7 @@ public class ATMActivity extends AppCompatActivity {
     }
 
 
+    public ATM getAtm() {
+        return atm;
+    }
 }
