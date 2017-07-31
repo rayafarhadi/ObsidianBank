@@ -44,9 +44,11 @@ public class ResetDatabaseActivity extends AppCompatActivity {
         dialogBuilder.setTitle(R.string.reset_confirmation_title);
         dialogBuilder.setMessage(R.string.reset_confirmation_message);
 
+        final Intent intent = new Intent(this, LoginActivity.class);
+
         dialogBuilder.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
+                startActivity(intent);
             }
         });
         dialogBuilder.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
@@ -56,8 +58,6 @@ public class ResetDatabaseActivity extends AppCompatActivity {
         });
 
         dialogBuilder.create();
-
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        dialogBuilder.show();
     }
 }
