@@ -87,6 +87,7 @@ public class TellerDepositFragment extends Fragment {
                     }
                 });
                 message_field.setText("");
+                //spinner.
                 idNotification.create();
                 idNotification.show();
             }

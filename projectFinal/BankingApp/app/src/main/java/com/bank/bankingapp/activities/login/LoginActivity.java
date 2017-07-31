@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * initializes the login activity and sets the layout of the screen
+     *
      * @param savedInstanceState
      */
     @Override
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Prompts users for an id and a password and will log in the user depending on its type
+     *
      * @param view
      */
     public void logIn(View view) {
@@ -70,17 +72,19 @@ public class LoginActivity extends AppCompatActivity {
             if (at.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
-        // check if user is a teller and log the teller into teller terminal
+            // check if user is a teller and log the teller into teller terminal
         } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.TELLER).getId()) {
             Intent intent = new Intent(this, TellerStartingMenuActivity.class);
             TellerTerminal tt = new TellerTerminal(this);
 
             tt.logIn(userId, password);
 
+            intent.putExtra("user", tt.getCurrentUser());
+
             if (tt.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
-        //check if the user is a customer and log the customer into ATM
+            //check if the user is a customer and log the customer into ATM
         } else if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
             Intent intent = new Intent(this, ATMActivity.class);
             ATM atm = new ATM(this);
