@@ -15,6 +15,8 @@ import com.bank.bankingapp.activities.terminal.teller.fragments.TellerBalanceFra
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerCreateAccountFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerDepositFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveInterestFragment;
+import com.bank.bankingapp.activities.terminal.teller.fragments.TellerMessagesFragment;
+import com.bank.bankingapp.activities.terminal.teller.fragments.TellerUpdateInfoFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerWithdrawFragment;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
@@ -46,7 +48,7 @@ public class TellerActivity extends AppCompatActivity {
         }
         tt = new TellerTerminal(this);
         User currentCustomer;
-        currentCustomer = (User)getIntent().getSerializableExtra("user");
+        currentCustomer = (User) getIntent().getSerializableExtra("user");
         currentCustomer.setId(getIntent().getIntExtra("userId", 0));
         tt.setCurrentUser(currentCustomer);
     }
@@ -61,7 +63,7 @@ public class TellerActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void createAccount (View view){
+    public void createAccount(View view) {
         EditText nameField = (EditText) findViewById(R.id.teller_create_account_name);
         String name = nameField.getText().toString();
 
@@ -87,7 +89,7 @@ public class TellerActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void tellerGiveInterestAll(View view){
+    public void tellerGiveInterestAll(View view) {
         tt.giveInterestAll();
         final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
         idNotification.setTitle(R.string.dialog_create_title);
@@ -113,7 +115,7 @@ public class TellerActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    public void tellerDeposit (View view) {
+    public void tellerDeposit(View view) {
         TellerTerminal tt = new TellerTerminal(this);
 
         EditText accountIdField = (EditText) findViewById(R.id.teller_deposit_account_id);
@@ -126,7 +128,7 @@ public class TellerActivity extends AppCompatActivity {
             tt.makeDeposit(amount, accountId);
         } catch (IllegalAmountException e) {
             System.out.println("Illegal amount Exception");
-        } catch (ConnectionFailedException e){
+        } catch (ConnectionFailedException e) {
             System.out.println("Connection to database failed.");
         }
     }
@@ -146,6 +148,26 @@ public class TellerActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.teller_fragment_container, balanceFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
+    public void displayUpdateInfo(View view) {
+        TellerUpdateInfoFragment updateInfoFragment = new TellerUpdateInfoFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.teller_fragment_container, updateInfoFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
+    public void displayMessages(View view) {
+        TellerMessagesFragment messagesFragment = new TellerMessagesFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.teller_fragment_container, messagesFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
