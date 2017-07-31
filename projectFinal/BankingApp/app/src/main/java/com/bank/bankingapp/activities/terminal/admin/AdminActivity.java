@@ -1,6 +1,7 @@
 package com.bank.bankingapp.activities.terminal.admin;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -8,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.activities.login.LoginActivity;
+import com.bank.bankingapp.activities.terminal.admin.fragments.AdminAllBalanceFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminBalanceFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminCreateUserFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFragment;
@@ -92,6 +95,16 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     public void displayTotalBalance(View view) {
+        AdminAllBalanceFragment balanceFragment = new AdminAllBalanceFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.admin_fragment_container, balanceFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
+    public void displayUserBalance(View view) {
         AdminBalanceFragment balanceFragment = new AdminBalanceFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
@@ -109,6 +122,11 @@ public class AdminActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
+    }
+
+    public void logOut(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
 }

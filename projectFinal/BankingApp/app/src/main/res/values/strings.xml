@@ -19,9 +19,11 @@
     <!-- Strings related to admin options -->
     <string name="admin_option_messages">Messages</string>
     <string name="admin_option_balance">Total \nBalance</string>
+    <string name="admin_option_user_balance">User \nBalance</string>
     <string name="admin_option_create">Create \nUser</string>
     <string name="admin_option_view">View \nUsers</string>
     <string name="admin_option_promote">Promote \nTeller</string>
+    <string name="log_out">Log Out</string>
 
     <!-- Strings related to teller options -->
     <string name="teller_option_create_account">Create \nAccount</string>

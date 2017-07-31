@@ -47,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
         int userId = Integer.parseInt(idField.getText().toString());
         String password = passwordField.getText().toString();
 
+        idField.setText("");
+        passwordField.setText("");
+
         if (db.getUserRole(userId) == Bank.rolesMap.get(Roles.ADMIN).getId()) {
             Intent intent = new Intent(this, AdminActivity.class);
             AdminTerminal at = new AdminTerminal(this);
