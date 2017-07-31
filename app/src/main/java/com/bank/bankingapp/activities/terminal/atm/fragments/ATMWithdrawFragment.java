@@ -13,11 +13,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
-import com.bank.bankingapp.activities.terminal.atm.TellerActivity;
+import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
@@ -44,7 +43,7 @@ public class ATMWithdrawFragment extends Fragment {
 
     public void onViewCreated(View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TellerActivity prevActivity = (TellerActivity) this.getActivity();
+        ATMActivity prevActivity = (ATMActivity) this.getActivity();
         final ATM atm = prevActivity.getAtm();
         spinner = view.findViewById(R.id.withdraw_account_spinner);
 
