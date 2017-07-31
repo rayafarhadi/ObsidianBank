@@ -40,24 +40,36 @@ public class ResetDatabaseActivity extends AppCompatActivity {
                 address.getText().toString(), Bank.rolesMap.get(Roles.ADMIN).getId(),
                 password.getText().toString());
 
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        dialogBuilder.setTitle(R.string.reset_confirmation_title);
-        dialogBuilder.setMessage(R.string.reset_confirmation_message);
-
         final Intent intent = new Intent(this, LoginActivity.class);
 
-        dialogBuilder.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+        final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
+        idNotification.setTitle(R.string.id_notify_title);
+        idNotification.setMessage(R.string.id_notify_message);
+
+        idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 startActivity(intent);
             }
         });
-        dialogBuilder.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+
+        AlertDialog.Builder resetConfirmation = new AlertDialog.Builder(this);
+        resetConfirmation.setTitle(R.string.reset_confirmation_title);
+        resetConfirmation.setMessage(R.string.reset_confirmation_message);
+
+        resetConfirmation.setPositiveButton(R.string.dialog_reset, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
+                idNotification.create();
+                idNotification.show();
             }
         });
 
-        dialogBuilder.create();
-        dialogBuilder.show();
+        resetConfirmation.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+
+        resetConfirmation.create();
+        resetConfirmation.show();
     }
 }

@@ -95,7 +95,7 @@ public class DatabaseSelectHelper implements Serializable {
         results.moveToFirst();
 
         do {
-            idList.add(results.getInt(results.getColumnIndex("ACCOUNTID")));
+            idList.add(results.getInt(results.getColumnIndex("ACCOUNTS")));
         } while (results.moveToNext());
 
         return idList;
