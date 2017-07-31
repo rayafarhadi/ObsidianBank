@@ -23,6 +23,7 @@ import com.bank.bankingapp.user.Admin;
 public class AdminActivity extends AppCompatActivity {
 
     AdminCreateUserFragment createUserFragment;
+    AdminPromoteFragment promoteFragment;
 
 
     private AdminTerminal at = new AdminTerminal(this);
@@ -130,13 +131,18 @@ public class AdminActivity extends AppCompatActivity {
 
     //----------- Promote a Teller to Admin -------------------------
     public void displayPromote(View view) {
-        AdminPromoteFragment promoteFragment = new AdminPromoteFragment();
+        promoteFragment = new AdminPromoteFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.admin_fragment_container, promoteFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
+    }
+
+    public void promote(View view) {
+        promoteFragment.promote(this, (Admin) getIntent().getSerializableExtra("user"));
+        displayPromote(view);
     }
 
     //----------- Send Message to User -------------------------
