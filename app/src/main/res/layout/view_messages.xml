@@ -7,6 +7,7 @@
     <!-- List of messages to be occupied in java class-->
     <ListView
         android:id="@+id/messages"
+        android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

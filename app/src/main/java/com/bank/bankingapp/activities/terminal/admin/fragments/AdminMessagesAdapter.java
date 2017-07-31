@@ -55,7 +55,7 @@ public class AdminMessagesAdapter extends BaseAdapter {
         View rowView = mInflater.inflate(R.layout.view_admin_message_item, parent, false);
 
         // Get message element
-        TextView messageView = rowView.findViewById(R.id.view_message);
+        final TextView messageView = rowView.findViewById(R.id.view_message);
 
         // Set the message
         final Message message = (Message) getItem(position);
@@ -63,14 +63,19 @@ public class AdminMessagesAdapter extends BaseAdapter {
         if (message.isViewed()){
             messageView.setTextColor(Color.parseColor("#616161"));
         }else {
-            messageView.setTextColor(Color.parseColor("#4CAF50"));
+            messageView.setTextColor(Color.parseColor("#43A047"));
         }
 
         // Set message to read on click
-        messageView.setOnClickListener(new View.OnClickListener() {
+        rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message.viewMessage(mContext);
+                if (message.isViewed()){
+                    messageView.setTextColor(Color.parseColor("#616161"));
+                }else {
+                    messageView.setTextColor(Color.parseColor("#43A047"));
+                }
             }
         });
 
