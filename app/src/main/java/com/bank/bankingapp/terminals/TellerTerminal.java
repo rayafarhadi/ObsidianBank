@@ -207,4 +207,16 @@ public class TellerTerminal extends ATM implements Serializable {
             return false;
         }
     }
+
+    public boolean login_teller(int userId, String password) {
+        currentTeller = (Teller) db.getUserDetails(userId);
+        currentTellerAuthenticated = (PasswordHelpers
+                .comparePassword(db.getPassword(userId), password)) && (
+                currentTeller.getRoleId() == Bank.rolesMap.get(Roles.TELLER).getId());
+        return this.currentTellerAuthenticated;
+    }
+
+    public Teller getCurrentTeller() {
+        return currentTeller;
+    }
 }

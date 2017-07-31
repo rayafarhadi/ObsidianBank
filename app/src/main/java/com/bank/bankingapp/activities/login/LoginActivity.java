@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AdminActivity.class);
             AdminTerminal at = new AdminTerminal(this);
 
-            if (!at.logIn(userId, password)){
+            if (!at.logIn(userId, password)) {
                 idField.setError("Incorrect ID or Password");
                 passwordField.setError("Incorrect ID or Password");
                 return;
@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, TellerStartingMenuActivity.class);
             TellerTerminal tt = new TellerTerminal(this);
 
-            if (!tt.logIn(userId, password)){
+            if (!tt.login_teller(userId, password)) {
                 idField.setError("Incorrect ID or Password");
                 passwordField.setError("Incorrect ID or Password");
                 return;
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
 
             intent.putExtra("user", tt.getCurrentUser());
 
-            if (tt.getCurrentUser().authenticate(password, this)) {
+            if (tt.getCurrentTeller().authenticate(password, this)) {
                 startActivity(intent);
             }
             //check if the user is a customer and log the customer into ATM
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ATMActivity.class);
             ATM atm = new ATM(this);
 
-            if (!atm.logIn(userId, password)){
+            if (!atm.logIn(userId, password)) {
                 idField.setError("Incorrect ID or Password");
                 passwordField.setError("Incorrect ID or Password");
                 return;
