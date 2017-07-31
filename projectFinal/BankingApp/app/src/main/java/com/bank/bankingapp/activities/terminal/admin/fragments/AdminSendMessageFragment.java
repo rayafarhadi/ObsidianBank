@@ -41,7 +41,7 @@ public class AdminSendMessageFragment extends Fragment {
     }
 
     /**
-     * Creates a view for the message database
+     * Creates a view for sending messages
      * @param view
      * @param savedInstanceState
      */

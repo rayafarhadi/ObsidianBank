@@ -13,6 +13,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+
+            <!-- List Accounts and Balances Button -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/teller_list_account_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_round"
+
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="displayTellerListAccountsBalances"
+                    android:src="@mipmap/list" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/atm_option_list_account_balance"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
+            </LinearLayout>
+
             <!-- Create Account Button -->
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -132,8 +160,8 @@
 
             </LinearLayout>
 
-            <!-- Check Balance Button -->
-            <!-- TODO: Check Balance for All Accounts -->
+
+            <!-- Give Interest Button -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,51 +170,22 @@
                 android:paddingStart="5dp">
 
                 <ImageButton
-                    android:id="@+id/teller_check_balance_button"
+                    android:id="@+id/teller_projected_earnings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-
                     android:background="@drawable/button_round"
                     android:gravity="center_horizontal|center_vertical"
-                    android:onClick="displayBalance"
-                    android:src="@mipmap/balance" />
+                    android:onClick="displayProjectedEarnings"
+                    android:src="@mipmap/interest" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/teller_option_check_balance"
+                    android:text="@string/teller_option_projected_earnings"
                     android:textAlignment="center"
                     android:textColor="@color/colorText" />
-
-            </LinearLayout>
-
-        <!-- Give Interest Button -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingEnd="5dp"
-            android:paddingStart="5dp">
-
-            <ImageButton
-                android:id="@+id/teller_projected_earnings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/button_round"
-                android:onClick="displayProjectedEarnings"
-                android:gravity="center_horizontal|center_vertical"
-                android:src="@mipmap/interest" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/teller_option_projected_earnings"
-                android:textAlignment="center"
-                android:textColor="@color/colorText" />
 
             </LinearLayout>
 
