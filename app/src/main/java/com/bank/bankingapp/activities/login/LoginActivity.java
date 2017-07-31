@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             intent.putExtra("user", tt.getCurrentUser());
+            intent.putExtra("teller", tt.getCurrentTeller());
 
             if (tt.getCurrentTeller().authenticate(password, this)) {
                 startActivity(intent);

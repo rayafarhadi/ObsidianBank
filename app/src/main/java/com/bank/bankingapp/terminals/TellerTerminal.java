@@ -15,13 +15,17 @@ import java.util.ArrayList;
 
 public class TellerTerminal extends ATM implements Serializable {
 
-    private static final long serialVersionUID = -3197891106717343883L;
+    private static final long serialVersionUID = -3197891106717343881L;
     private boolean currentTellerAuthenticated;
     private Teller currentTeller;
 
     public TellerTerminal(Context context) {
         super(context);
         designatedUserId = Bank.rolesMap.get(Roles.CUSTOMER).getId();
+    }
+
+    public void setCurrentTeller(Teller currentTeller) {
+        this.currentTeller = currentTeller;
     }
 
     /**

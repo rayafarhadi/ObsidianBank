@@ -78,6 +78,17 @@ public class AdminMessagesAdapter extends BaseAdapter {
                 }
             }
         });
+        messageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                message.viewMessage(mContext);
+                if (message.isViewed()){
+                    messageView.setTextColor(Color.parseColor("#616161"));
+                }else {
+                    messageView.setTextColor(Color.parseColor("#43A047"));
+                }
+            }
+        });
 
         return rowView;
     }

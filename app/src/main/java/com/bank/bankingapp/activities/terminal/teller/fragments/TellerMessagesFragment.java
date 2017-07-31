@@ -10,11 +10,10 @@ import android.widget.ListView;
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesAdapter;
 import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
-import com.bank.bankingapp.database.DatabaseHelper;
+import com.bank.bankingapp.activities.terminal.teller.TellerMessagesActivity;
 import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.terminals.TellerTerminal;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,20 +26,9 @@ public class TellerMessagesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         TellerActivity prevActivity = (TellerActivity) this.getActivity();
-        TellerTerminal tt = prevActivity.getTt();
-        DatabaseHelper db = new DatabaseHelper(getContext());
-        List<Message> messages = new ArrayList<>();
-        // Get unread then read messages
-        for (Message message : db.getAllMessages(tt.getCurrentUser().getId())){
-            if (!message.isViewed()){
-                messages.add(message);
-            }
-        }
-        for (Message message : db.getAllMessages(tt.getCurrentUser().getId())){
-            if (message.isViewed()){
-                messages.add(message);
-            }
-        }
+        final TellerTerminal tt = prevActivity.getTt();
+
+        List<Message> messages = TellerMessagesActivity.getMessages(tt.getCurrentUser().getId(), this.getContext());
 
         AdminMessagesAdapter adapter = new AdminMessagesAdapter(this.getContext(), messages);
         ListView usersInfo = getView().findViewById(R.id.messages);

@@ -1,14 +1,18 @@
 package com.bank.bankingapp.activities.terminal.teller;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesAdapter;
+import com.bank.bankingapp.activities.terminal.teller.fragments.TellerMessagesFragment;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.terminals.TellerTerminal;
+import com.bank.bankingapp.user.Teller;
 import com.bank.bankingapp.user.User;
 
 import java.util.ArrayList;
@@ -22,26 +26,30 @@ public class TellerMessagesActivity extends AppCompatActivity {
         setContentView(R.layout.view_messages);
 
         TellerTerminal tt = new TellerTerminal(this);
+        tt.setCurrentTeller((Teller) getIntent().getSerializableExtra("teller"));
 
-        tt.setCurrentUser((User) getIntent().getSerializableExtra("user"));
-
-        DatabaseHelper db = new DatabaseHelper(this);
-        List<Message> messages = new ArrayList<>();
-        // Get unread then read messages
-        for (Message message : db.getAllMessages(tt.getCurrentUser().getId())) {
-            if (!message.isViewed()) {
-                messages.add(message);
-            }
-        }
-        for (Message message : db.getAllMessages(tt.getCurrentUser().getId())) {
-            if (message.isViewed()) {
-                messages.add(message);
-            }
-        }
+        List<Message> messages = getMessages(tt.getCurrentTeller().getId(), this);
 
         AdminMessagesAdapter adapter = new AdminMessagesAdapter(this, messages);
         ListView usersInfo = (ListView) findViewById(R.id.messages);
         usersInfo.setAdapter(adapter);
+    }
+
+    public static ArrayList<Message> getMessages(int userId, Context context){
+        List<Message> messages = new ArrayList<>();
+        DatabaseHelper db = new DatabaseHelper(context);
+        // Get unread then read messages
+        for (Message message : db.getAllMessages(userId)) {
+            if (!message.isViewed()) {
+                messages.add(message);
+            }
+        }
+        for (Message message : db.getAllMessages(userId)) {
+            if (message.isViewed()) {
+                messages.add(message);
+            }
+        }
+        return (ArrayList<Message>) messages;
     }
 
 }

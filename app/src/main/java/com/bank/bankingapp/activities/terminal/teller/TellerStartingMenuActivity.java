@@ -27,7 +27,7 @@ public class TellerStartingMenuActivity extends AppCompatActivity {
 
     public void goToMessages(View view) {
         Intent intent = new Intent(this, TellerMessagesActivity.class);
-        intent.putExtra("user", getIntent().getSerializableExtra("user"));
+        intent.putExtra("teller", getIntent().getSerializableExtra("teller"));
         startActivity(intent);
     }
 
