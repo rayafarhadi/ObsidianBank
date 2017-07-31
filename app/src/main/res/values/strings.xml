@@ -41,6 +41,8 @@
 
     <!-- Strings related to total bank balance fragment -->
     <string name="total_balance">Total Balance: $</string>
+    <string name="users_balance">Users Balance: $</string>
+
     <!-- Temp holder for the balance -->
     <string name="temp_balance">0.00</string>
 
