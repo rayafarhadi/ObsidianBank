@@ -9,10 +9,6 @@ import android.widget.EditText;
 
 import com.bank.bankingapp.R;
 
-/**
- * Created by rayafarhadi on 28/07/17.
- */
-
 public class AdminCreateUserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,7 +27,7 @@ public class AdminCreateUserFragment extends Fragment {
     }
 
     public String getAddress() {
-        EditText address = getView().findViewById(R.id.admin_create_age);
+        EditText address = getView().findViewById(R.id.admin_create_address);
         return address.getText().toString();
     }
 
@@ -43,5 +39,19 @@ public class AdminCreateUserFragment extends Fragment {
     public String getPassword() {
         EditText password = getView().findViewById(R.id.admin_create_password);
         return password.getText().toString();
+    }
+
+    public void resetFields() {
+        EditText username = getView().findViewById(R.id.admin_create_name);
+        EditText age = getView().findViewById(R.id.admin_create_age);
+        EditText address = getView().findViewById(R.id.admin_create_address);
+        EditText type = getView().findViewById(R.id.admin_create_type);
+        EditText password = getView().findViewById(R.id.admin_create_password);
+
+        username.setText("");
+        age.setText("");
+        address.setText("");
+        type.setText("");
+        password.setText("");
     }
 }

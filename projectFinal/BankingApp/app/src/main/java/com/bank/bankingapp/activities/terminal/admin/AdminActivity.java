@@ -1,7 +1,9 @@
 package com.bank.bankingapp.activities.terminal.admin;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -22,6 +24,8 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        createUserFragment = new AdminCreateUserFragment();
+
         if (findViewById(R.id.admin_fragment_container) != null) {
             if (savedInstanceState != null) {
                 return;
@@ -34,8 +38,6 @@ public class AdminActivity extends AppCompatActivity {
 
     //----------------Create User----------------------------
     public void displayCreateUser(View view) {
-        AdminTerminal at = new AdminTerminal(this);
-        createUserFragment = new AdminCreateUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.admin_fragment_container, createUserFragment);
@@ -46,7 +48,23 @@ public class AdminActivity extends AppCompatActivity {
 
     public void createUser(View view) {
         AdminTerminal at = new AdminTerminal(this);
-        int id = at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(), createUserFragment.getAddress(), createUserFragment.getType(), createUserFragment.getPassword());
+        int userId = at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(),
+                createUserFragment.getAddress(), createUserFragment.getType(),
+                createUserFragment.getPassword());
+
+        //ID Notification dialog box
+        final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
+        idNotification.setTitle(R.string.dialog_create_title);
+        idNotification.setMessage("Your User ID is " + userId);
+
+        idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                createUserFragment.resetFields();
+            }
+        });
+
+        idNotification.create();
+        idNotification.show();
     }
 
     //------------- Display Messages ------------------

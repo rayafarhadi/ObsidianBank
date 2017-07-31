@@ -50,6 +50,7 @@
     <string name="prompt_address">Address</string>
     <string name="prompt_type">Type</string>
     <string name="action_create_user">Create User</string>
+    <string name="dialog_create_title">User ID</string>
 
     <!-- Strings related to teller promotion -->
     <string name="teller_names">Tellers</string>
