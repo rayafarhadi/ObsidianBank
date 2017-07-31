@@ -106,12 +106,6 @@ public abstract class Terminal implements Serializable {
      * @return list of messages.
      */
     public ArrayList<Message> viewAllMessages() {
-
-        if (!authenticated) {
-            System.out.println("User not authenticated!");
-            return null;
-        }
-
         return db.getAllMessages(currentUser.getId());
     }
 }

@@ -9,10 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
 import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.terminals.AdminTerminal;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdminMessagesFragment extends Fragment {
     @Override
@@ -21,15 +23,14 @@ public class AdminMessagesFragment extends Fragment {
         return inflater.inflate(R.layout.view_messages, container, false);
     }
 
-    public void occupyList() {
-        AdminTerminal at = new AdminTerminal(this.getContext());
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        AdminActivity prevActivity = (AdminActivity) this.getActivity();
+        AdminTerminal at = prevActivity.getAt();
+        List<Message> messages = at.viewAllMessages();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(), R.layout.view_messages, new ArrayList<String>());
-        for (Message message : at.viewAllMessages()) {
-            adapter.add(message.getMessage());
-        }
-
-        ListView messages = (ListView) getView().findViewById(R.id.messages);
-        messages.setAdapter(adapter);
+        AdminMessagesAdapter adapter = new AdminMessagesAdapter(getContext(), messages);
+        ListView usersInfo = getView().findViewById(R.id.messages);
+        usersInfo.setAdapter(adapter);
     }
 }

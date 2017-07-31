@@ -233,23 +233,25 @@ public class DatabaseSelectHelper implements Serializable {
         ArrayList<Message> messages = new ArrayList<Message>();
         Cursor res = db.getAllMessages(userId);
 
-        res.moveToFirst();
 
-        do {
-            int messageId = res.getInt(res.getColumnIndex("ID"));
-            String message = res.getString(res.getColumnIndex("MESSAGE"));
-            int v = res.getInt(res.getColumnIndex("VIEWED"));
 
-            boolean viewed = false;
-            if (v == 0) {
-                viewed = false;
-            } else if (v == 1) {
-                viewed = true;
-            }
+        if (res.moveToFirst()) {
+            do {
+                int messageId = res.getInt(res.getColumnIndex("ID"));
+                String message = res.getString(res.getColumnIndex("MESSAGE"));
+                int v = res.getInt(res.getColumnIndex("VIEWED"));
 
-            Message m = new Message(messageId, userId, message, viewed);
-            messages.add(m);
-        } while (res.moveToNext());
+                boolean viewed = false;
+                if (v == 0) {
+                    viewed = false;
+                } else if (v == 1) {
+                    viewed = true;
+                }
+
+                Message m = new Message(messageId, userId, message, viewed);
+                messages.add(m);
+            } while (res.moveToNext());
+        }
 
         return messages;
     }

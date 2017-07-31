@@ -97,8 +97,6 @@ public class AdminActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
-
-        messagesFragment.occupyList();
     }
 
     //----------- Display Users --------------------------

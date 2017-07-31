@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <!-- Messages Button -->
-    <!-- TODO: Leave Messages and Read Messages -->
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,6 +13,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
+            <!-- Read Messages Button -->
+            <!-- TODO: Leave Messages and Read Messages -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,6 +39,36 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/admin_option_messages"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
+
+            </LinearLayout>
+
+            <!-- Add Messages Button -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
+
+                <ImageButton
+                    android:id="@+id/admin_add_messages_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+
+                    android:background="@drawable/button_round"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="displayMessages"
+                    android:src="@mipmap/add_message" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/admin_option_add_messages"
                     android:textAlignment="center"
                     android:textColor="@color/colorText" />
 
@@ -137,7 +168,6 @@
             </LinearLayout>
 
             <!-- Check Users Bank Balance Button -->
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
