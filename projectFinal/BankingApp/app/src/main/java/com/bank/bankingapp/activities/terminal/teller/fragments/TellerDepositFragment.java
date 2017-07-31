@@ -24,22 +24,4 @@ public class TellerDepositFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.view_teller_deposit, container, false);
     }
-
-    public void tellerDeposit () {
-        TellerTerminal tt = new TellerTerminal(this.getContext());
-
-        EditText accountIdField = (EditText) getView().findViewById(R.id.teller_deposit_account_id);
-        int accountId = Integer.parseInt(accountIdField.getText().toString());
-
-        EditText amountField = (EditText) getView().findViewById(R.id.teller_deposit_amount);
-        BigDecimal amount = new BigDecimal(amountField.getText().toString());
-
-        try {
-            tt.makeDeposit(amount, accountId);
-        } catch (IllegalAmountException e) {
-            System.out.println("Illegal amount Exception");
-        } catch (ConnectionFailedException e){
-            System.out.println("Connection to database failed.");
-        }
-    }
 }

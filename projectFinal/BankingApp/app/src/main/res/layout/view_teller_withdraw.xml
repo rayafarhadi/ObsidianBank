@@ -20,7 +20,7 @@
             android:id="@+id/teller_withdraw_account_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:inputType="number"
             android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_id"
             android:maxLines="1"
@@ -43,7 +43,6 @@
             android:id="@+id/teller_withdraw_amt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_amount"
             android:inputType="numberDecimal"

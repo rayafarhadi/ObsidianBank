@@ -20,7 +20,7 @@
             android:id="@+id/teller_deposit_account_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:inputType="number"
             android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_id"
             android:maxLines="1"

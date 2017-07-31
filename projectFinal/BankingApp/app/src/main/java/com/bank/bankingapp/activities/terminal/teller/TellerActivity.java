@@ -14,6 +14,8 @@ import com.bank.bankingapp.activities.terminal.teller.fragments.TellerCreateAcco
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerDepositFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveInterestFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerWithdrawFragment;
+import com.bank.bankingapp.exceptions.ConnectionFailedException;
+import com.bank.bankingapp.exceptions.IllegalAmountException;
 import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.User;
 
@@ -91,6 +93,24 @@ public class TellerActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
+    }
+
+    public void tellerDeposit (View view) {
+        TellerTerminal tt = new TellerTerminal(this);
+
+        EditText accountIdField = (EditText) findViewById(R.id.teller_deposit_account_id);
+        int accountId = Integer.parseInt(accountIdField.getText().toString());
+
+        EditText amountField = (EditText) findViewById(R.id.teller_deposit_amount);
+        BigDecimal amount = new BigDecimal(amountField.getText().toString());
+
+        try {
+            tt.makeDeposit(amount, accountId);
+        } catch (IllegalAmountException e) {
+            System.out.println("Illegal amount Exception");
+        } catch (ConnectionFailedException e){
+            System.out.println("Connection to database failed.");
+        }
     }
 
     public void displayTellerWithdraw(View view) {
