@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.login.LoginActivity;
@@ -70,6 +70,42 @@ public class AdminActivity extends AppCompatActivity {
 
     public void createUser(View view) {
         AdminTerminal at = new AdminTerminal(this);
+
+        EditText username = (EditText) findViewById(R.id.admin_create_name);
+        boolean username_valid = !username.getText().toString().equals("");
+        if (!username_valid) {
+            username.setError("Please Enter A Name");
+        }
+
+        EditText age = (EditText) findViewById(R.id.admin_create_age);
+        boolean age_valid = !age.getText().toString().equals("");
+        if (!age_valid) {
+            age.setError("Please Enter An Age");
+        }
+
+        EditText address = (EditText) findViewById(R.id.admin_create_address);
+        boolean address_valid = !address.getText().toString().equals("");
+        if (!address_valid) {
+            address.setError("Please Enter An Address");
+        }
+
+        EditText type = (EditText) findViewById(R.id.admin_create_type);
+        boolean type_valid = !type.getText().toString().equals("");
+        if (!type_valid) {
+            type.setError("Please Enter A Type");
+        }
+
+        EditText password = (EditText) findViewById(R.id.admin_create_password);
+        boolean password_valid = !password.getText().toString().equals("");
+        if (!password_valid) {
+            password.setError("Please Enter A Password");
+        }
+
+        if (!username_valid || !age_valid || !address_valid || !type_valid || !password_valid) {
+            return;
+        }
+
+
         int userId = at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(),
                 createUserFragment.getAddress(), createUserFragment.getType(),
                 createUserFragment.getPassword());
@@ -79,7 +115,9 @@ public class AdminActivity extends AppCompatActivity {
         idNotification.setTitle(R.string.dialog_create_title);
         idNotification.setMessage("Your User ID is " + userId);
 
-        idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+        idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener()
+
+        {
             public void onClick(DialogInterface dialog, int id) {
                 createUserFragment.resetFields();
             }
