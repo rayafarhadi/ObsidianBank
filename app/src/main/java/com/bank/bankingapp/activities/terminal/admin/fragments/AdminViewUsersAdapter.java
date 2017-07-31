@@ -56,7 +56,7 @@ public class AdminViewUsersAdapter extends BaseAdapter {
 
         // Set the account
         User user = (User) getItem(position);
-        nameTextView.setText(user.getName());
+        nameTextView.setText(user.getId() + ": " + user.getName());
         typeTextView.setText(db.getRole(user.getRoleId()));
         ageAddressTextView.setText(user.getAge() + ", " + user.getAddress());
 

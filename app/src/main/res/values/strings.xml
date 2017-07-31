@@ -57,6 +57,10 @@
     <string name="action_create_user">Create User</string>
     <string name="dialog_create_title">User ID</string>
 
+    <!-- Strings related to message creation -->
+    <string name="message_prompt">Message (max 512 chars)</string>
+    <string name="send_message_prompt">Leave Message</string>
+
     <!-- Strings related to teller promotion -->
     <string name="teller_names">Tellers</string>
     <string name="action_promote">Promote</string>

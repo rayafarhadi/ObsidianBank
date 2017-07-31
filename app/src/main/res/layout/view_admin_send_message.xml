@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Spinner that will show the name of accounts -->
+    <Spinner
+        android:id="@+id/admin_send_message_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_weight=".3" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1" />
+
+
+    <!-- Message field-->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <EditText
+            android:id="@+id/admin_message_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorText"
+            android:hint="@string/message_prompt"
+            android:maxLines="10"
+            android:maxLength="512"
+            android:inputType="textMultiLine"
+            android:textColor="@color/colorText" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1" />
+
+    <!-- Promote Teller Button-->
+    <Button
+        android:id="@+id/admin_send_message_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="16sp"
+        android:layout_weight=".5"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/send_message_prompt"
+        android:textColor="@color/colorText"
+        android:textStyle="bold" />
+
+</LinearLayout>

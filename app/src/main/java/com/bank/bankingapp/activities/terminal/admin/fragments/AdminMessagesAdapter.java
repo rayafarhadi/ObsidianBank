@@ -47,7 +47,7 @@ public class AdminMessagesAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         DatabaseHelper db = new DatabaseHelper(mContext);
         // Get view for row item
-        View rowView = mInflater.inflate(R.layout.view_admin_users_list_item, parent, false);
+        View rowView = mInflater.inflate(R.layout.view_admin_message_item, parent, false);
 
         // Get Name element
         TextView messageView = rowView.findViewById(R.id.view_message);
