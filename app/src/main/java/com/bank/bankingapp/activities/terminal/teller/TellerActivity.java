@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bank.bankingapp.R;
@@ -152,6 +153,39 @@ public class TellerActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
+    }
+
+    public void updateInfo(View view){
+        TextView nameField = (TextView) findViewById(R.id.teller_update_name);
+        String name = nameField.getText().toString();
+
+        TextView addressField = (TextView) findViewById(R.id.teller_update_address);
+        String address = addressField.getText().toString();
+
+        TextView passwordField = (TextView) findViewById(R.id.teller_update_password);
+        String password = passwordField.getText().toString();
+
+        TextView ageField = (TextView) findViewById(R.id.teller_update_age);
+        int age = Integer.parseInt(ageField.getText().toString());
+
+        tt.updateUserInformation(name, address, password, age);
+
+        final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
+        idNotification.setTitle(R.string.dialog_create_title);
+        idNotification.setMessage("Account information has been updated.");
+        idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+
+        idNotification.create();
+        idNotification.show();
+
+        ageField.setText("");
+        passwordField.setText("");
+        addressField.setText("");
+        ageField.setText("");
+
     }
 
     public void displayMessages(View view) {

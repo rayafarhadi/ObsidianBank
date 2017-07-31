@@ -293,7 +293,7 @@ public class DatabaseHelper implements Serializable {
      * @return true if successful, false otherwise.
      */
     public boolean updateUserAddress(String address, int id) {
-        return updateUserAddress(address, id);
+        return updater.updateUserAddress(address, id);
     }
 
 
