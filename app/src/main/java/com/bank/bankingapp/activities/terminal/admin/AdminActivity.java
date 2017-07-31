@@ -142,6 +142,8 @@ public class AdminActivity extends AppCompatActivity {
     public void displayViewUser(View view) {
         AdminViewUserFragment viewUserFragment = new AdminViewUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        DatabaseHelper db = new DatabaseHelper(this);
+        at.setCurrentUser(db.getUserDetails(at.getCurrentUser().getId()));
 
         transaction.replace(R.id.admin_fragment_container, viewUserFragment);
         transaction.addToBackStack(null);
@@ -153,7 +155,8 @@ public class AdminActivity extends AppCompatActivity {
     public void displayTotalBalance(View view) {
         AdminAllBalanceFragment balanceFragment = new AdminAllBalanceFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+        DatabaseHelper db = new DatabaseHelper(this);
+        at.setCurrentUser(db.getUserDetails(at.getCurrentUser().getId()));
         transaction.replace(R.id.admin_fragment_container, balanceFragment);
         transaction.addToBackStack(null);
 
@@ -166,7 +169,8 @@ public class AdminActivity extends AppCompatActivity {
         balanceFragment.setContext(this);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+        DatabaseHelper db = new DatabaseHelper(this);
+        at.setCurrentUser(db.getUserDetails(at.getCurrentUser().getId()));
         transaction.replace(R.id.admin_fragment_container, balanceFragment);
         transaction.addToBackStack(null);
 

@@ -12,15 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bank.bankingapp.R;
-import com.bank.bankingapp.activities.terminal.teller.fragments.TellerBalanceFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerCreateAccountFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerDepositFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveInterestFragment;
+import com.bank.bankingapp.activities.terminal.teller.fragments.TellerListAccountsBalancesFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerMessagesFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerProjectEarningsFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerUpdateInfoFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerWithdrawFragment;
+import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.TellerTerminal;
+import com.bank.bankingapp.user.Customer;
 import com.bank.bankingapp.user.User;
 
 import java.math.BigDecimal;
@@ -53,10 +55,22 @@ public class TellerActivity extends AppCompatActivity {
         tt.setCurrentUser(currentCustomer);
     }
 
+    public void displayTellerListAccountsBalances(View view) {
+        TellerListAccountsBalancesFragment listAccountsBalancesFragment = new TellerListAccountsBalancesFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        DatabaseHelper db = new DatabaseHelper(this);
+        tt.setCurrentUser(db.getUserDetails(tt.getCurrentUser().getId()));
+        transaction.replace(R.id.teller_fragment_container, listAccountsBalancesFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
     public void displayCreateAccount(View view) {
         TellerCreateAccountFragment createAccountFragment = new TellerCreateAccountFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+        DatabaseHelper db = new DatabaseHelper(this);
+        tt.setCurrentUser( db.getUserDetails(tt.getCurrentUser().getId()));
         transaction.replace(R.id.teller_fragment_container, createAccountFragment);
         transaction.addToBackStack(null);
 
@@ -89,6 +103,7 @@ public class TellerActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+
     public void tellerGiveInterestAll(View view) {
         tt.giveInterestAll();
         final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
@@ -108,7 +123,8 @@ public class TellerActivity extends AppCompatActivity {
     public void displayTellerDeposit(View view) {
         TellerDepositFragment depositFragment = new TellerDepositFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+        DatabaseHelper db = new DatabaseHelper(this);
+        tt.setCurrentUser(db.getUserDetails(tt.getCurrentUser().getId()));
         transaction.replace(R.id.teller_fragment_container, depositFragment);
         transaction.addToBackStack(null);
 
@@ -118,18 +134,9 @@ public class TellerActivity extends AppCompatActivity {
     public void displayTellerWithdraw(View view) {
         TellerWithdrawFragment withdrawFragment = new TellerWithdrawFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
+        DatabaseHelper db = new DatabaseHelper(this);
+        tt.setCurrentUser(db.getUserDetails(tt.getCurrentUser().getId()));
         transaction.replace(R.id.teller_fragment_container, withdrawFragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
-    }
-
-    public void displayBalance(View view) {
-        TellerBalanceFragment balanceFragment = new TellerBalanceFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        transaction.replace(R.id.teller_fragment_container, balanceFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();

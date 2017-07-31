@@ -38,8 +38,5 @@ public class ATMListAccountsBalancesFragment extends Fragment {
         AccountInfoAdapter adapter = new AccountInfoAdapter(getContext(), accounts);
         ListView accountsInfo = getView().findViewById(R.id.accounts_and_balances);
         accountsInfo.setAdapter(adapter);
-
     }
-
-
 }

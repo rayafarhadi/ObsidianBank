@@ -13,9 +13,6 @@ import android.widget.Toast;
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.terminals.TellerTerminal;
 
-/**
- * Created by rayafarhadi on 26/07/17.
- */
 
 public class TellerCreateAccountFragment extends Fragment {
     @Override

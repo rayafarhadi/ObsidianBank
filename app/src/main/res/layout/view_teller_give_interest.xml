@@ -8,6 +8,8 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:id="@+id/teller_give_interest_spinner"
         android:layout_weight="1" />
 
     <Space
@@ -19,7 +21,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:id="@+id/teller_give_interest_button"
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_give_interest_one"

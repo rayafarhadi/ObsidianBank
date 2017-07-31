@@ -8,7 +8,6 @@ import android.view.View;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.login.LoginActivity;
-import com.bank.bankingapp.activities.terminal.atm.fragments.ATMBalanceFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMDepositFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMListAccountsBalancesFragment;
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMWithdrawFragment;
@@ -39,7 +38,7 @@ public class ATMActivity extends AppCompatActivity {
         }
     }
 
-    public void displayListAccountsBalances(View view) {
+    public void displayATMListAccountsBalances(View view) {
         ATMListAccountsBalancesFragment listAccountsBalancesFragment = new ATMListAccountsBalancesFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
@@ -64,16 +63,6 @@ public class ATMActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.atm_fragment_container, depositFragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
-    }
-
-    public void displayAccountBalance(View view) {
-        ATMBalanceFragment balanceFragment = new ATMBalanceFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        transaction.replace(R.id.atm_fragment_container, balanceFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();

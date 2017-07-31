@@ -17,9 +17,6 @@ import com.bank.bankingapp.terminals.TellerTerminal;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by rayafarhadi on 31/07/17.
- */
 
 public class TellerMessagesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
