@@ -19,6 +19,7 @@ public class RSA extends Account implements Serializable {
      * @param balance of account
      */
     public RSA(int id, String name, BigDecimal balance) {
+        super();
         this.id = id;
         this.name = name;
         this.balance = balance;
