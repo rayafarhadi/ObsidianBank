@@ -9,7 +9,15 @@ import android.widget.EditText;
 
 import com.bank.bankingapp.R;
 
+
 public class AdminCreateUserFragment extends Fragment {
+    /**
+     * Initializes the create user activity and sets layout of the screen
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -41,6 +49,9 @@ public class AdminCreateUserFragment extends Fragment {
         return password.getText().toString();
     }
 
+    /**
+     * when called resets the fields of the input text boxes
+     */
     public void resetFields() {
         EditText username = getView().findViewById(R.id.admin_create_name);
         EditText age = getView().findViewById(R.id.admin_create_age);
