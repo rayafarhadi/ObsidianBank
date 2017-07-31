@@ -19,12 +19,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminMessagesFragment extends Fragment {
+    /**
+     * Initializes the message activity for admin and sets the layout for the screen
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.view_messages, container, false);
     }
 
+    /**
+     * Creates the view for the messages and displays the messages of a user
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         AdminActivity prevActivity = (AdminActivity) this.getActivity();

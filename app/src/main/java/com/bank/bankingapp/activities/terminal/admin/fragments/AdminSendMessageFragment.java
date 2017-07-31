@@ -27,12 +27,24 @@ import java.util.List;
 public class AdminSendMessageFragment extends Fragment {
     private User targetUser;
 
+    /**
+     * Initializes the send message activity and sets the layout for the screen
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.view_admin_send_message, container, false);
     }
 
+    /**
+     * Creates a view for the message database
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         AdminActivity prevActivity = (AdminActivity) this.getActivity();

@@ -28,6 +28,13 @@ public class AdminPromoteFragment extends Fragment {
     Spinner spinner;
     int position = 0;
 
+    /**
+     * Initializes the promotion activity and sets the layout of the screem
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         LinearLayout ll = (LinearLayout) inflater.inflate(R.layout.view_admin_promote_teller, container, false);
@@ -36,11 +43,19 @@ public class AdminPromoteFragment extends Fragment {
         return ll;
     }
 
+    /**
+     * promotes the admin
+     */
     public void adminPromote() {
         AdminTerminal at = new AdminTerminal(this.getContext());
 
     }
 
+    /**
+     * creates the view for the activity and allows admin to promote a teller
+     * @param view
+     * @param savedInstanceState
+     */
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         spinner = (Spinner) view.findViewById(R.id.admin_promote_teller_spinner);
@@ -71,6 +86,10 @@ public class AdminPromoteFragment extends Fragment {
         });
     }
 
+    /**
+     * Sets the fields for the database
+     * @param i
+     */
     public void setFields(int i) {
         DatabaseHelper db = new DatabaseHelper(this.getContext());
         ArrayList<User> users = new ArrayList<>();
@@ -91,6 +110,11 @@ public class AdminPromoteFragment extends Fragment {
         address.setText("Address: " + users.get(i).getAddress());
     }
 
+    /**
+     * Promotes the teller to an admin
+     * @param context
+     * @param admin
+     */
     public void promote(Context context, Admin admin) {
         DatabaseHelper db = new DatabaseHelper(context);
         ArrayList<User> users = new ArrayList<>();

@@ -28,11 +28,23 @@ public class AdminBalanceFragment extends Fragment {
     TextView balance;
     Context context;
 
+    /**
+     * Initializes the balance activity for admin and sets the layout of the screen
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.view_admin_balance, container, false);
     }
 
+    /**
+     * Creates the view for the balance activity and displays the balance of specific users
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

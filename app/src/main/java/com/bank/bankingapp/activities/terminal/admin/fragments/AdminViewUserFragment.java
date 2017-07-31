@@ -29,6 +29,13 @@ import java.util.List;
  */
 
 public class AdminViewUserFragment extends Fragment {
+    /**
+     * Initializes the ViewUser activity and sets the layout of the screen
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -36,6 +43,11 @@ public class AdminViewUserFragment extends Fragment {
         return inflater.inflate(R.layout.view_admin_view_users, container, false);
     }
 
+    /**
+     * Creates the view for viewing users
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         AdminActivity prevActivity = (AdminActivity) this.getActivity();
