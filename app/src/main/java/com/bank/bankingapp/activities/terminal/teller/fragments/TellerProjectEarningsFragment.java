@@ -1,6 +1,7 @@
 package com.bank.bankingapp.activities.terminal.teller.fragments;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,11 +18,16 @@ import android.widget.Spinner;
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
+import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
 import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.Customer;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.Series;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -61,12 +67,29 @@ public class TellerProjectEarningsFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 targetAccount = ((Customer) tt.getCurrentUser()).getAccounts().get(i);
+                populateGraph();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+    }
 
+    public void populateGraph(){
+        GraphView graph = getView().findViewById(R.id.earnings_graph);
+        graph.removeAllSeries();
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+        series.setColor(Color.GREEN);
+        double x;
+        BigDecimal y_bigdecimal = targetAccount.getBalance();
+        x = 0;
+        for (int i = 0; i < 12; i++){
+            x = x + 1;
+            BigDecimal income = Bank.accountsMap.getInterestRates().get(targetAccount.getType() - 1).multiply(y_bigdecimal);
+            y_bigdecimal = y_bigdecimal.add(income);
+            series.appendData(new DataPoint(x, y_bigdecimal.doubleValue()), true, 12);
+        }
+        graph.addSeries(series);
     }
 }
