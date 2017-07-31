@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.bank.bankingapp.R;
-import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.TellerTerminal;
-import com.bank.bankingapp.user.User;
 
 /**
  * Created by rayafarhadi on 28/07/17.
@@ -24,17 +22,15 @@ public class TellerAuthenticateCustomerActivity extends AppCompatActivity {
 
     public void tellerLogInCustomer(View view) {
         Intent intent = new Intent(this, TellerActivity.class);
-        DatabaseHelper dbh = new DatabaseHelper(this);
         TellerTerminal tt = new TellerTerminal(this);
 
         EditText customerIdField = (EditText) findViewById(R.id.teller_login_id);
         int userId = Integer.parseInt(customerIdField.getText().toString());
 
-        EditText passwordField =  (EditText) findViewById(R.id.teller_login_password);
+        EditText passwordField = (EditText) findViewById(R.id.teller_login_password);
         String password = passwordField.getText().toString();
 
-        if (tt.logIn(userId, password)){
-            User usr = tt.getCurrentUser();
+        if (tt.logIn(userId, password)) {
             intent.putExtra("user", tt.getCurrentUser());
             intent.putExtra("userId", userId);
             startActivity(intent);
