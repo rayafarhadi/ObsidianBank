@@ -22,6 +22,11 @@ public class AdminMessagesAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<Message> mDataSource;
 
+    /**
+     * Initializes the admin message and sets layout on screen
+     * @param context
+     * @param items List of messages
+     */
     public AdminMessagesAdapter(Context context, List<Message> items) {
         mContext = context;
         mDataSource = items;
