@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/colorPrimary"
+        android:onClick="tellerLogInCustomer"
         android:text="@string/action_login_customer"
         android:textColor="@color/colorText"
         android:textStyle="bold" />

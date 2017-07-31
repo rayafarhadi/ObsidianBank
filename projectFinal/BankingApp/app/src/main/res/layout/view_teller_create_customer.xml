@@ -19,7 +19,7 @@
             android:id="@+id/teller_create_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:inputType="textPersonName"
             android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_name"
             android:maxLines="1"
@@ -64,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorText"
+            android:inputType="textPostalAddress"
             android:hint="@string/prompt_address"
             android:maxLines="1"
             android:textColor="@color/colorText" />
@@ -106,7 +107,7 @@
         android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
-        android:onClick="create"
+        android:onClick="tellerCreateCustomer"
         android:text="@string/action_create_customer"
         android:textColor="@color/colorText"
         android:textStyle="bold" />

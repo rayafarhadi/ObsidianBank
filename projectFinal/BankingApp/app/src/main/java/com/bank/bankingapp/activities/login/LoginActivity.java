@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             intent.putExtra("age", atm.getCurrentUser().getAge());
             intent.putExtra("id", atm.getCurrentUser().getId());
 
+
             if (atm.getCurrentUser().authenticate(password, this)) {
                 startActivity(intent);
             }
