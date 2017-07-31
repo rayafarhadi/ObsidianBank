@@ -30,7 +30,6 @@ public class Bank {
      */
     public static void createMaps(Context context) {
 
-        DatabaseDriverA driver = new DatabaseDriverA(context);
         DatabaseHelper db = new DatabaseHelper(context);
 
         // Add User Roles to database.
