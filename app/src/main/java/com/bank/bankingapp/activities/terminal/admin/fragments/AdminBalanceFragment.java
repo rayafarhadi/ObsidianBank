@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bank.bankingapp.R;
@@ -18,16 +19,19 @@ public class AdminBalanceFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        balance = (TextView) getView().findViewById(R.id.balance);
-        return inflater.inflate(R.layout.view_admin_balance, container, false);
+        RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.view_admin_balance, container, false);
+        balance = rl.findViewById(R.id.admin_balance);
+        updateBalance();
+        return rl;
     }
 
     public void updateBalance() {
         AdminTerminal at = new AdminTerminal(this.getContext());
         BigDecimal total_balance = at.addAllBalances();
-        if (total_balance == null){
+        if (total_balance == null) {
             total_balance = new BigDecimal(0);
         }
-        balance.setText((CharSequence)total_balance.toString());
+
+        balance.setText(total_balance.toString());
     }
 }
