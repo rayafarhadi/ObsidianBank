@@ -17,6 +17,7 @@ import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.terminals.AdminTerminal;
+import com.bank.bankingapp.user.Customer;
 import com.bank.bankingapp.user.User;
 
 import java.math.BigDecimal;
@@ -73,7 +74,14 @@ public class AdminBalanceFragment extends Fragment {
         DatabaseHelper db = new DatabaseHelper(context);
         ArrayList<User> users = db.getUsers();
 
-        BigDecimal total_balance = at.addBalances(users.get(i).getId());
+        ArrayList<Customer> customers = new ArrayList<>();
+        for (User user : users) {
+            if (user.getRoleId() == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
+                customers.add((Customer) user);
+            }
+        }
+
+        BigDecimal total_balance = at.addBalances(customers.get(i).getId());
         if (total_balance == null) {
             total_balance = new BigDecimal(0);
         }
