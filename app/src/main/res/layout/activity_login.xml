@@ -60,4 +60,20 @@
         android:textColor="@color/colorText"
         android:textStyle="bold" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Reset Database Button-->
+    <Button
+        android:id="@+id/reset_database_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="goToReset"
+        android:text="@string/reset_database"
+        android:textColor="@color/colorText"
+        android:textStyle="bold" />
+
 </LinearLayout>

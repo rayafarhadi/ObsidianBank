@@ -2,6 +2,7 @@ package com.bank.bankingapp.bank;
 
 import android.content.Context;
 
+import com.bank.bankingapp.database.DatabaseDriverA;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.DatabaseInsertException;
@@ -22,53 +23,57 @@ public class Bank {
     public static AccountsMap accountsMap;
     public static RolesMap rolesMap;
 
-    private DatabaseHelper db;
-    private Context context;
-
     /**
      * This is the main method to run your entire program! Follow the Candy Cane instructions to
      * finish this off.
      *
      * @throws IOException
      * @throws DatabaseInsertException
-     * @throws SQLException
      * @throws ConnectionFailedException
      */
     public void main(int mode, Context context)
             throws ConnectionFailedException, DatabaseInsertException, IOException {
 
-        db = new DatabaseHelper(context);
+        //db = new DatabaseHelper(context);
 
         if (mode == -1) {
-            runAdminMode();
+            runAdminMode(context);
         }
         // If anything else - including nothing
         else {
-            runNormally();
+            runNormally(context);
         }
     }
 
-    private void runAdminMode() {
+    public static void createMaps(Context context) {
+
+        DatabaseDriverA driver = new DatabaseDriverA(context);
+        DatabaseHelper db = new DatabaseHelper(context);
+
+        // Add User Roles to database.
+        db.insertRole("ADMIN");
+        db.insertRole("TELLER");
+        db.insertRole("CUSTOMER");
+
+        // Add Account Types to database.
+        db.insertAccountType("CHEQUING", new BigDecimal("0.1"));
+        db.insertAccountType("SAVING", new BigDecimal("0.2"));
+        db.insertAccountType("TFSA", new BigDecimal("0.3"));
+        db.insertAccountType("RSA", new BigDecimal("0.4"));
+        db.insertAccountType("BOA", new BigDecimal("0.2"));
+
+        accountsMap = new AccountsMap(context);
+        rolesMap = new RolesMap(context);
+    }
+
+    private void runAdminMode(Context context) {
+        DatabaseHelper db = new DatabaseHelper(context);
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         try {
-            // Initialize database
-            // Add User Roles to database.
-            db.insertRole("ADMIN");
-            db.insertRole("TELLER");
-            db.insertRole("CUSTOMER");
-            // Add Account Types to database.
-            db.insertAccountType("CHEQUING", new BigDecimal("0.1"));
-            db.insertAccountType("SAVING", new BigDecimal("0.2"));
-            db.insertAccountType("TFSA", new BigDecimal("0.3"));
-            db.insertAccountType("RSA", new BigDecimal("0.4"));
-            db.insertAccountType("BOA", new BigDecimal("0.2"));
-
-
-            accountsMap = new AccountsMap(context);
-            rolesMap = new RolesMap(context);
 
             // Find out the accountTypeId for Administrators.
-            int adminTypeId = getRoleId("ADMIN");
+            int adminTypeId = getRoleId("ADMIN", context);
             for (int typeId : db.getRoles()) {
                 System.out.println(db.getRole(typeId));
                 if (db.getRole(typeId).equals("ADMIN")) {
@@ -101,11 +106,10 @@ public class Bank {
         ;
     }
 
-    private void runNormally() {
-        try {
-            accountsMap = new AccountsMap(context);
-            rolesMap = new RolesMap(context);
+    private void runNormally(Context context) {
+        DatabaseHelper db = new DatabaseHelper(context);
 
+        try {
             int menu = 0;
             do {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -171,7 +175,9 @@ public class Bank {
      * @return role ID.
      * @throws SQLException
      */
-    private int getRoleId(String roleName) throws SQLException {
+    private int getRoleId(String roleName, Context context) throws SQLException {
+        DatabaseHelper db = new DatabaseHelper(context);
+
         // Find out the Role ID for roleName.
         for (int roleId : db.getRoles()) {
             if (db.getRole(roleId).equalsIgnoreCase(roleName)) {

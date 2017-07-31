@@ -8,10 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.activities.login.reset.ResetDatabaseActivity;
 import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
 import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
 import com.bank.bankingapp.activities.terminal.teller.TellerStartingMenuActivity;
 import com.bank.bankingapp.bank.Bank;
+import com.bank.bankingapp.database.DatabaseDriverA;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.generics.Roles;
 
@@ -24,12 +26,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText idField;
     EditText passwordField;
     DatabaseHelper db;
+    DatabaseDriverA driver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        findViewById(R.id.id_login_form);
+        driver = new DatabaseDriverA(this);
         logInButton = (Button) findViewById(R.id.id_log_in_button);
         idField = (EditText) findViewById(R.id.login_id);
         passwordField = (EditText) findViewById(R.id.login_password);
@@ -48,5 +51,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+    public void goToReset(View view) {
+        Intent intent = new Intent(this, ResetDatabaseActivity.class);
+        startActivity(intent);
+    }
+
 }
 
