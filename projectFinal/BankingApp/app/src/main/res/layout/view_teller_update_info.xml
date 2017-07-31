@@ -52,6 +52,7 @@
             android:backgroundTint="@color/colorText"
             android:hint="@string/prompt_address"
             android:maxLines="1"
+            android:inputType="textPostalAddress"
             android:textColor="@color/colorText" />
 
     </android.support.design.widget.TextInputLayout>
@@ -80,6 +81,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_update_info"
+        android:onClick="updateInfo"
         android:textColor="@color/colorText" />
 
 </LinearLayout>

@@ -17,4 +17,5 @@ public class TellerUpdateInfoFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.view_teller_update_info, container, false);
     }
+
 }
