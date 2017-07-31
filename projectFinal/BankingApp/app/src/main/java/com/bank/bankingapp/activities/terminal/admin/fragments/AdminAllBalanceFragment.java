@@ -17,6 +17,13 @@ public class AdminAllBalanceFragment extends Fragment {
 
     TextView balance;
 
+    /**
+     * Displays the balance of all users in the bank
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RelativeLayout rl = (RelativeLayout) inflater.inflate(R.layout.view_admin_all_balance, container, false);
