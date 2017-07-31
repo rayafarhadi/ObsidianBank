@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.activities.login.LoginActivity;
 
 /**
  * Created by rayafarhadi on 26/07/17.
@@ -30,6 +31,11 @@ public class TellerStartingMenuActivity extends AppCompatActivity {
 
     public void goToMessages(View view) {
         Intent intent = new Intent(this, TellerMessagesActivity.class);
+        startActivity(intent);
+    }
+
+    public void logOut(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
 
