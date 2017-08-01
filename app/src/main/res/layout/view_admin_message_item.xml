@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-
+    <!-- Message Field -->
     <TextView
         android:id="@+id/view_message"
         android:clickable="true"

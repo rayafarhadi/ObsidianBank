@@ -18,6 +18,12 @@ import com.bank.bankingapp.user.User;
 
 public class ATMActivity extends AppCompatActivity {
     protected ATM atm = new ATM(this);
+
+    /**
+     * Gets the current user, and sets the list accounts view as the starting layout
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,11 @@ public class ATMActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Displays fragment that shows account information
+     *
+     * @param view
+     */
     public void displayATMListAccountsBalances(View view) {
         ATMListAccountsBalancesFragment listAccountsBalancesFragment = new ATMListAccountsBalancesFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -48,6 +59,11 @@ public class ATMActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    /**
+     * Displays fragment to withdraw from a given account
+     *
+     * @param view
+     */
     public void displayATMWithdraw(View view) {
         ATMWithdrawFragment withdrawFragment = new ATMWithdrawFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -58,6 +74,11 @@ public class ATMActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    /**
+     * Displays fragment to deposit to a given account
+     *
+     * @param view
+     */
     public void displayATMDeposit(View view) {
         ATMDepositFragment depositFragment = new ATMDepositFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -68,6 +89,11 @@ public class ATMActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    /**
+     * Displays fragment that list all messages associate with current user
+     *
+     * @param view
+     */
     public void displayATMMessages(View view) {
         ATMMessagesFragment atmMessagesFragment = new ATMMessagesFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -78,7 +104,11 @@ public class ATMActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    //----------- Log out ATM -------------------------
+    /**
+     * Logs out of ATM
+     *
+     * @param view
+     */
     public void logOut(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

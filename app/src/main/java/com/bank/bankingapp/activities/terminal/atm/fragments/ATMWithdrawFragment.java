@@ -41,6 +41,13 @@ public class ATMWithdrawFragment extends Fragment {
         return inflater.inflate(R.layout.view_withdraw, container, false);
     }
 
+    /**
+     * Sets up a spinner to select an account, and a button that will withdraw amount in text field to
+     * that account.
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     public void onViewCreated(View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ATMActivity prevActivity = (ATMActivity) this.getActivity();
@@ -80,11 +87,11 @@ public class ATMWithdrawFragment extends Fragment {
                 try {
                     atm.makeWithdrawal(new BigDecimal(message_field.getText().toString()), targetAccount.getId());
                     idNotification.setMessage(message_field.getText().toString() + "$ has been successfully withdrawn from account.");
-                } catch (IllegalAmountException e){
+                } catch (IllegalAmountException e) {
                     idNotification.setMessage("Cannot withdraw a negative amount.");
-                } catch (ConnectionFailedException e){
+                } catch (ConnectionFailedException e) {
                     idNotification.setMessage("Error: Connection to database failed.");
-                } catch (InsuffiecintFundsException e){
+                } catch (InsuffiecintFundsException e) {
                     idNotification.setMessage("Cannot withdraw more then current total balance.");
                 }
                 idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
