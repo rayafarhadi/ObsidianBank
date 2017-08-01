@@ -9,7 +9,6 @@ import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesAdapter;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.messages.Message;
-import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.Teller;
 
 import java.util.ArrayList;
@@ -23,17 +22,15 @@ public class TellerMessagesActivity extends AppCompatActivity {
         setContentView(R.layout.view_messages);
         // actionBar
         getSupportActionBar().setTitle("Teller Messages");
-        TellerTerminal tt = new TellerTerminal(this);
-        tt.setCurrentTeller((Teller) getIntent().getSerializableExtra("teller"));
-
-        List<Message> messages = getMessages(tt.getCurrentTeller().getId(), this);
+        
+        List<Message> messages = getMessages(((Teller) getIntent().getSerializableExtra("teller")).getId(), this);
 
         AdminMessagesAdapter adapter = new AdminMessagesAdapter(this, messages);
         ListView usersInfo = (ListView) findViewById(R.id.messages);
         usersInfo.setAdapter(adapter);
     }
 
-    public static ArrayList<Message> getMessages(int userId, Context context){
+    public static ArrayList<Message> getMessages(int userId, Context context) {
         List<Message> messages = new ArrayList<>();
         DatabaseHelper db = new DatabaseHelper(context);
         // Get unread then read messages
