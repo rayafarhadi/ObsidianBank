@@ -61,9 +61,25 @@ public class TellerActivity extends ATMActivity {
      */
     public void createAccount(View view) {
         EditText nameField = (EditText) findViewById(R.id.teller_create_account_name);
-        String name = nameField.getText().toString();
-
         EditText balanceField = (EditText) findViewById(R.id.teller_create_account_balance);
+
+        boolean valid = true;
+
+        if (nameField.getText().length() == 0) {
+            nameField.setError("Enter Account Name");
+            valid = false;
+        }
+
+        if (balanceField.getText().length() == 0) {
+            balanceField.setError("Enter Account's Starting Balance");
+            valid = false;
+        }
+
+        if (!valid) {
+            return;
+        }
+
+        String name = nameField.getText().toString();
         BigDecimal balance = new BigDecimal(balanceField.getText().toString());
 
         int accountId = ((TellerTerminal) atm).makeNewAccount(name, balance, createAccountFragment.getType());
@@ -158,8 +174,11 @@ public class TellerActivity extends ATMActivity {
         TextView nameField = (TextView) findViewById(R.id.teller_update_name);
         String name = nameField.getText().toString();
 
+        boolean updated = false;
+
         if (!name.equals("")) {
             ((TellerTerminal) atm).updateName(name);
+            updated = true;
         }
 
         TextView addressField = (TextView) findViewById(R.id.teller_update_address);
@@ -167,6 +186,7 @@ public class TellerActivity extends ATMActivity {
 
         if (!address.equals("")) {
             ((TellerTerminal) atm).updateAddress(address);
+            updated = true;
         }
 
         TextView passwordField = (TextView) findViewById(R.id.teller_update_password);
@@ -174,6 +194,7 @@ public class TellerActivity extends ATMActivity {
 
         if (!password.equals("")) {
             ((TellerTerminal) atm).updatePassword(password);
+            updated = true;
         }
 
         TextView ageField = (TextView) findViewById(R.id.teller_update_age);
@@ -181,15 +202,22 @@ public class TellerActivity extends ATMActivity {
 
         if (!age.equals("")) {
             ((TellerTerminal) atm).updateAge(Integer.parseInt(age));
+            updated = true;
         }
 
         final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
-        idNotification.setTitle(R.string.dialog_create_title);
-        idNotification.setMessage("Account information has been updated.");
+        if (!updated) {
+            idNotification.setTitle("Nothing To Update");
+            idNotification.setMessage("No information was entered to be updated");
+        } else {
+            idNotification.setTitle("User Updated");
+            idNotification.setMessage("Account information has been updated");
+        }
         idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
             }
         });
+
 
         idNotification.create();
         idNotification.show();
