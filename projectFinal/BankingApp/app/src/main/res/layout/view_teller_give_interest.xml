@@ -25,7 +25,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_give_interest_one"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorWhite" />
 
     <!-- Give Interest to All Accounts Button -->
     <Button
@@ -35,6 +35,6 @@
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_give_interest_all"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorWhite" />
 
 </LinearLayout>

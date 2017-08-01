@@ -83,6 +83,6 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="updateInfo"
         android:text="@string/action_update_info"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorWhite" />
 
 </LinearLayout>
