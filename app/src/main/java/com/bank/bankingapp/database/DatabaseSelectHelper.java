@@ -76,6 +76,7 @@ public class DatabaseSelectHelper implements Serializable {
             }
             return UserFactory.getUser(roleId, userId, name, age, address, context);
         } else {
+            System.out.println("USER NULL: ID: " + userId);
             return null;
         }
 

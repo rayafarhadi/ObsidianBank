@@ -251,22 +251,16 @@ public class AdminActivity extends TellerActivity {
                 DatabaseHelper db = new DatabaseHelper(this);
 
                 // get all users
-                List<User> users = new ArrayList<>();
-                int id = 1;
+                List<User> users = db.getUsers();
 
                 HashMap<Customer, List<Account>> userAccounts = new HashMap<>();
 
-                User currUser = db.getUserDetails(id);
-                while (currUser != null) {
-                    users.add(currUser);
-                    id++;
-                    currUser = db.getUserDetails(id);
+                for (User currUser : users) {
                     if (currUser.getRoleId() == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
                         Customer currCustomer = (Customer) currUser;
                         userAccounts.put(currCustomer, currCustomer.getAccounts());
                     }
                 }
-
 
                 // get all accounts
                 List<Account> accounts = new ArrayList<>();

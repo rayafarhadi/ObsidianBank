@@ -17,7 +17,6 @@ import android.widget.Spinner;
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
-import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
 import com.bank.bankingapp.terminals.TellerTerminal;

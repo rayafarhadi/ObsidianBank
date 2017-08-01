@@ -40,6 +40,8 @@ public class UserFactory {
 
             // Otherwise return an exception
         } else {
+            System.out.println("ROLES INCORRECT: ROLEID: " + roleId);
+            System.out.println("ID: " + userId);
             return null;
         }
     }
