@@ -60,11 +60,8 @@ public class AdminActivity extends TellerActivity {
         atm = new AdminTerminal(this);
         atm.setCurrentUser((Admin) intent.getSerializableExtra("user"));
 
-//        // actionBar
-//        final ActionBar actionBar = getActionBar();
-//        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//        TextView titleTextView = new TextView(actionBar.getThemedContext());
-//        titleTextView.setText("Admin Terminal");
+        // actionBar
+        getSupportActionBar().setTitle("Admin Terminal");
 
     }
 

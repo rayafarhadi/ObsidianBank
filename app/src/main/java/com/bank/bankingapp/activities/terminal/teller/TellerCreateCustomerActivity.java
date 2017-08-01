@@ -23,6 +23,8 @@ public class TellerCreateCustomerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_teller_create_customer);
+        // actionBar
+        getSupportActionBar().setTitle("Create Customer");
     }
 
     public void tellerCreateCustomer(View view) {

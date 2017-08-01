@@ -23,6 +23,8 @@ public class TellerAuthenticateCustomerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_teller_login_customer);
 
+        // actionBar
+        getSupportActionBar().setTitle("Authenticate Customer");
         customerIdField = (EditText) findViewById(R.id.teller_login_id);
         passwordField = (EditText) findViewById(R.id.teller_login_password);
     }

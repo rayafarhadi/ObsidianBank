@@ -21,7 +21,8 @@ public class TellerMessagesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_messages);
-
+        // actionBar
+        getSupportActionBar().setTitle("Teller Messages");
         TellerTerminal tt = new TellerTerminal(this);
         tt.setCurrentTeller((Teller) getIntent().getSerializableExtra("teller"));
 
