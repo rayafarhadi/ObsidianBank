@@ -24,6 +24,11 @@ public class ATMListAccountsBalancesFragment extends Fragment {
         return inflater.inflate(R.layout.view_atm_list_account_balance, container, false);
     }
 
+    /**
+     * Displays a list of all accounts associated with the given user
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ATMActivity prevActivity = (ATMActivity) this.getActivity();

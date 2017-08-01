@@ -34,6 +34,10 @@ public class TellerActivity extends ATMActivity {
         atm.setCurrentUser(currentCustomer);
     }
 
+    /**
+     * Fragment that displays input fields for current user to create account
+     * @param view
+     */
     public void displayCreateAccount(View view) {
         TellerCreateAccountFragment createAccountFragment = new TellerCreateAccountFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -45,6 +49,10 @@ public class TellerActivity extends ATMActivity {
         transaction.commit();
     }
 
+    /**
+     * Creates an account for the current user
+     * @param view
+     */
     public void createAccount(View view) {
         EditText nameField = (EditText) findViewById(R.id.teller_create_account_name);
         String name = nameField.getText().toString();
@@ -61,6 +69,10 @@ public class TellerActivity extends ATMActivity {
         t.show();
     }
 
+    /**
+     * Fragment that allows users to either give interest to specific, or all accounts
+     * @param view
+     */
     public void displayGiveInterest(View view) {
         TellerGiveInterestFragment giveInterestFragment = new TellerGiveInterestFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -71,7 +83,10 @@ public class TellerActivity extends ATMActivity {
         transaction.commit();
     }
 
-
+    /**
+     * Gives interest to all of the current user's accounts
+     * @param view
+     */
     public void tellerGiveInterestAll(View view) {
         ((TellerTerminal) atm).giveInterestAll();
         final AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
@@ -88,6 +103,10 @@ public class TellerActivity extends ATMActivity {
 
     }
 
+    /**
+     * Fragment that allows current user to update their data
+     * @param view
+     */
     public void displayUpdateInfo(View view) {
         TellerUpdateInfoFragment updateInfoFragment = new TellerUpdateInfoFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -98,6 +117,10 @@ public class TellerActivity extends ATMActivity {
         transaction.commit();
     }
 
+    /**
+     * Updates current user's data based off input fields
+     * @param view
+     */
     public void updateInfo(View view) {
         TextView nameField = (TextView) findViewById(R.id.teller_update_name);
         String name = nameField.getText().toString();
@@ -145,6 +168,10 @@ public class TellerActivity extends ATMActivity {
 
     }
 
+    /**
+     * Displays a graph that takes into account to show project account balance in the future
+     * @param view
+     */
     public void displayProjectedEarnings(View view){
         TellerProjectEarningsFragment earningsFragment = new TellerProjectEarningsFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -155,6 +182,10 @@ public class TellerActivity extends ATMActivity {
         transaction.commit();
     }
 
+    /**
+     * Leaves user session
+     * @param view
+     */
     public void closeSession(View view) {
         Intent intent = new Intent(this, TellerStartingMenuActivity.class);
         startActivity(intent);

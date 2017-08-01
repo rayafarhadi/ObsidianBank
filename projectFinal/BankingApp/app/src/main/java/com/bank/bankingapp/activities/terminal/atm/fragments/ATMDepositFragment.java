@@ -26,9 +26,6 @@ import com.bank.bankingapp.user.Customer;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-/**
- * Created by rayafarhadi on 28/07/17.
- */
 
 public class ATMDepositFragment extends Fragment {
     private Spinner spinner;
@@ -40,6 +37,13 @@ public class ATMDepositFragment extends Fragment {
         return inflater.inflate(R.layout.view_deposit, container, false);
     }
 
+    /**
+     * Sets up a spinner to select and account, and a button that will deposit amount in text field to
+     * that account.
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ATMActivity prevActivity = (ATMActivity) this.getActivity();
@@ -79,9 +83,9 @@ public class ATMDepositFragment extends Fragment {
                 try {
                     atm.makeDeposit(new BigDecimal(message_field.getText().toString()), targetAccount.getId());
                     idNotification.setMessage(message_field.getText().toString() + "$ has been successfully deposited into from account.");
-                } catch (IllegalAmountException e){
+                } catch (IllegalAmountException e) {
                     idNotification.setMessage("Cannot deposit a negative amount.");
-                } catch (ConnectionFailedException e){
+                } catch (ConnectionFailedException e) {
                     idNotification.setMessage("Error: Connection to database failed.");
                 }
                 idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="10dp">
 
-
+    <!-- Name Field -->
     <TextView
         android:id="@+id/view_accountName"
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@android:color/black" />
 
-
+    <!-- Type Field -->
     <TextView
         android:id="@+id/view_accountType"
         android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_marginTop="5dp"
         android:text="Account Type" />
 
-
+    <!-- Balance Field -->
     <TextView
         android:id="@+id/view_accountBal"
         android:layout_width="wrap_content"

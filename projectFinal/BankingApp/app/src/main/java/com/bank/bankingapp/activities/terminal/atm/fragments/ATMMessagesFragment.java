@@ -23,6 +23,11 @@ public class ATMMessagesFragment extends Fragment {
         return inflater.inflate(R.layout.view_messages, container, false);
     }
 
+    /**
+     * Displays a list of all messages associate with given user
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ATMActivity prevActivity = (ATMActivity) getActivity();

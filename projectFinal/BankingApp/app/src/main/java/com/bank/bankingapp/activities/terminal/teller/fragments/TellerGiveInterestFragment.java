@@ -8,25 +8,17 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
-import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
 import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
-import com.bank.bankingapp.database.DatabaseHelper;
-import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.Customer;
-import com.bank.bankingapp.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by rayafarhadi on 28/07/17.
- */
 
 public class TellerGiveInterestFragment extends Fragment {
     private Spinner spinner;
@@ -40,7 +32,7 @@ public class TellerGiveInterestFragment extends Fragment {
 
 
     /**
-     * Creates a view for sending messages
+     * Creates a view for giving interest to either a selected account, or all accounts
      * @param view
      * @param savedInstanceState
      */
@@ -48,8 +40,6 @@ public class TellerGiveInterestFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         TellerActivity prevActivity = (TellerActivity) this.getActivity();
         final TellerTerminal tt = (TellerTerminal) prevActivity.getAtm();
-        final DatabaseHelper db = new DatabaseHelper(this.getContext());
-
 
         // Get users to put into Spinner
         List<String> accounts = new ArrayList<>();
@@ -57,7 +47,7 @@ public class TellerGiveInterestFragment extends Fragment {
         for (Account account : ((Customer) tt.getCurrentUser()).getAccounts()) {
             accounts.add(account.getId() + ": " + account.getName() + "   " + account.getBalance());
         }
-        Spinner spinner = view.findViewById(R.id.teller_give_interest_spinner);
+        spinner = view.findViewById(R.id.teller_give_interest_spinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), R.layout.view_admin_balance_item, accounts);
 

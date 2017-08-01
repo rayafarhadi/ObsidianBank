@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- Name Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +17,6 @@
             android:hint="@string/prompt_name"
             android:inputType="textPersonName"
             android:maxLines="1" />
-
     </android.support.design.widget.TextInputLayout>
 
     <Space
@@ -24,6 +24,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Age Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +37,6 @@
             android:inputType="number"
             android:hint="@string/prompt_age"
             android:maxLines="1"/>
-
     </android.support.design.widget.TextInputLayout>
 
     <Space
@@ -44,6 +44,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Address Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +57,6 @@
             android:inputType="textPostalAddress"
             android:hint="@string/prompt_address"
             android:maxLines="1" />
-
     </android.support.design.widget.TextInputLayout>
 
     <Space
@@ -64,6 +64,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Password Field -->
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,7 +77,6 @@
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
             android:maxLines="1" />
-
     </android.support.design.widget.TextInputLayout>
 
     <Space
@@ -84,6 +84,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Reset Button -->
     <Button
         android:id="@+id/reset_database_button"
         android:layout_width="match_parent"

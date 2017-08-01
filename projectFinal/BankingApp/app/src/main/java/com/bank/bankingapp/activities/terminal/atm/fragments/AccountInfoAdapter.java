@@ -39,6 +39,14 @@ public class AccountInfoAdapter extends BaseAdapter {
         return position;
     }
 
+    /**
+     * Sets up a field for the account name, account type, and account balance in each list item.
+     *
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         DatabaseHelper db = new DatabaseHelper(mContext);
