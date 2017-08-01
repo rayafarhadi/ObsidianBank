@@ -13,15 +13,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
+import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
 import com.bank.bankingapp.exceptions.InsuffiecintFundsException;
+import com.bank.bankingapp.generics.AccountTypes;
 import com.bank.bankingapp.terminals.ATM;
 import com.bank.bankingapp.user.Customer;
 
@@ -35,8 +36,10 @@ import java.util.ArrayList;
 public class ATMWithdrawFragment extends Fragment {
     private Spinner spinner;
     private Account targetAccount;
+
     /**
      * Creates the view of the activity
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -91,14 +94,18 @@ public class ATMWithdrawFragment extends Fragment {
                 EditText message_field = getView().findViewById(R.id.withdraw_amount);
                 final AlertDialog.Builder idNotification = new AlertDialog.Builder(getContext());
                 String text = message_field.getText().toString();
-                if (text.length() == 0){
-                    Toast toast = Toast.makeText(getContext(), "Empty Field", Toast.LENGTH_SHORT);
-                    toast.show();
+                if (text.length() == 0) {
+                    message_field.setError("Enter Dollar Amount To Withdraw");
                 } else {
                     idNotification.setTitle(R.string.dialog_create_title);
                     try {
                         atm.makeWithdrawal(new BigDecimal(text), targetAccount.getId());
-                        idNotification.setMessage(text + "$ has been successfully withdrawn from account.");
+                        if (targetAccount.getType() == Bank.accountsMap.get(AccountTypes.RSA).getId()) {
+                            idNotification.setTitle("Restricted Savings Account");
+                            idNotification.setMessage("Money is not allowed to be withdrawn from this account using an atm.");
+                        } else {
+                            idNotification.setMessage(text + "$ has been successfully withdrawn from account.");
+                        }
                     } catch (IllegalAmountException e) {
                         idNotification.setMessage("Cannot withdraw a negative amount.");
                     } catch (ConnectionFailedException e) {

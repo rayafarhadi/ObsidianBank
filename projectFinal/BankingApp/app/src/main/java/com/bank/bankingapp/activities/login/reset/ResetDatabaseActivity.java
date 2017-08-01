@@ -75,6 +75,32 @@ public class ResetDatabaseActivity extends AppCompatActivity {
         //Set versions to 1 since the database is being reset
         driver.onUpgrade(driver.getReadableDatabase(), 1, 1);
 
+        boolean valid = true;
+
+        if (name.getText().toString().length() == 0) {
+            name.setError("Enter The Admin's Name");
+            valid = false;
+        }
+
+        if (age.getText().toString().length() == 0) {
+            age.setError("Enter The Admin's Age");
+            valid = false;
+        }
+
+        if (address.getText().toString().length() == 0) {
+            address.setError("Enter The Admin's Address");
+            valid = false;
+        }
+
+        if (password.getText().toString().length() == 0) {
+            password.setError("Enter The Admin's Password");
+            valid = false;
+        }
+
+        if (!valid) {
+            return;
+        }
+
         //Create admin
         db.insertNewUser(name.getText().toString(), Integer.parseInt(age.getText().toString()),
                 address.getText().toString(), Bank.rolesMap.get(Roles.ADMIN).getId(),

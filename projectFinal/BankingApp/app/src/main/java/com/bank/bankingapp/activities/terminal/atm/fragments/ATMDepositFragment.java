@@ -13,14 +13,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
+import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.exceptions.ConnectionFailedException;
 import com.bank.bankingapp.exceptions.IllegalAmountException;
+import com.bank.bankingapp.generics.AccountTypes;
 import com.bank.bankingapp.terminals.ATM;
 import com.bank.bankingapp.user.Customer;
 
@@ -34,6 +35,7 @@ public class ATMDepositFragment extends Fragment {
 
     /**
      * Creates the view of the activity
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -90,13 +92,17 @@ public class ATMDepositFragment extends Fragment {
                 idNotification.setTitle(R.string.dialog_create_title);
 
                 String text = message_field.getText().toString();
-                if (text.length() == 0){
-                    Toast toast = Toast.makeText(getContext(), "Empty Field", Toast.LENGTH_SHORT);
-                    toast.show();
+                if (text.length() == 0) {
+                    message_field.setError("Enter Dollar Amount To Deposit");
                 } else {
                     try {
                         atm.makeDeposit(new BigDecimal(text), targetAccount.getId());
-                        idNotification.setMessage(text + "$ has been successfully deposited into from account.");
+                        if (targetAccount.getType() == Bank.accountsMap.get(AccountTypes.RSA).getId()) {
+                            idNotification.setTitle("Restricted Savings Account");
+                            idNotification.setMessage("Money is not allowed to be deposited into this account using an atm.");
+                        } else {
+                            idNotification.setMessage(text + "$ has been successfully deposited into from account.");
+                        }
                     } catch (IllegalAmountException e) {
                         idNotification.setMessage("Cannot deposit a negative amount.");
                     } catch (ConnectionFailedException e) {
