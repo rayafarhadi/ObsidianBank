@@ -33,6 +33,8 @@ public class TellerActivity extends ATMActivity {
         atm = new TellerTerminal(this);
         User currentCustomer = (User) getIntent().getSerializableExtra("user");
         atm.setCurrentUser(currentCustomer);
+        // actionBar
+        getSupportActionBar().setTitle("Teller Terminal");
     }
 
     /**

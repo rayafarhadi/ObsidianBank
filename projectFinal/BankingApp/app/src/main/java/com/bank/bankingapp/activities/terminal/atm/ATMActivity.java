@@ -33,7 +33,8 @@ public class ATMActivity extends AppCompatActivity {
         Intent intent = getIntent();
         atm = new ATM(this);
         atm.setCurrentUser((User) intent.getSerializableExtra("user"));
-
+        // actionBar
+        getSupportActionBar().setTitle("ATM");
 
         if (findViewById(R.id.atm_fragment_container) != null) {
             if (savedInstanceState != null) {
