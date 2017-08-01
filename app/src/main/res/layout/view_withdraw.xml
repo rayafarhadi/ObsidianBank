@@ -55,7 +55,7 @@
         android:id="@+id/withdraw_button"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/action_withdraw"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorWhite" />
 
 
 </LinearLayout>
