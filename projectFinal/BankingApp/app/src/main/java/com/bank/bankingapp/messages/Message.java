@@ -15,6 +15,13 @@ public class Message implements Serializable {
     private String message;
     private boolean viewed;
 
+    /**
+     * Constructor for a message
+     * @param messageId
+     * @param userId
+     * @param message
+     * @param viewed
+     */
     public Message(int messageId, int userId, String message, boolean viewed) {
         this.messageId = messageId;
         this.userId = userId;
@@ -22,6 +29,11 @@ public class Message implements Serializable {
         this.viewed = viewed;
     }
 
+    /**
+     * method to view the message
+     * @param context
+     * @return
+     */
     public String viewMessage(Context context) {
 
         DatabaseHelper db = new DatabaseHelper(context);
