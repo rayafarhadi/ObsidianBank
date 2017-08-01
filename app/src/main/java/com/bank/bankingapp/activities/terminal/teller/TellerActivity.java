@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
@@ -68,8 +67,18 @@ public class TellerActivity extends ATMActivity {
 
         int accountId = ((TellerTerminal) atm).makeNewAccount(name, balance, createAccountFragment.getType());
 
-        Toast t = Toast.makeText(this, "AccountId = " + accountId, Toast.LENGTH_LONG);
-        t.show();
+        AlertDialog.Builder idNotification = new AlertDialog.Builder(this);
+        idNotification.setTitle(R.string.dialog_create_title);
+        idNotification.setMessage("The ID for this account is: " + accountId);
+        idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+
+        idNotification.create();
+        idNotification.show();
+
+        createAccountFragment.clearFields();
     }
 
     /**
