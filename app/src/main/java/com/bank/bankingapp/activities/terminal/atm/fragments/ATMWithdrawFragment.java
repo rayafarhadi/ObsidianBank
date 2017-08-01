@@ -51,7 +51,7 @@ public class ATMWithdrawFragment extends Fragment {
     public void onViewCreated(View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ATMActivity prevActivity = (ATMActivity) this.getActivity();
-        final ATM atm = prevActivity.getAtm();
+        final ATM atm = (ATM) prevActivity.getAtm();
         spinner = view.findViewById(R.id.withdraw_account_spinner);
 
         DatabaseHelper db = new DatabaseHelper(this.getContext());
