@@ -20,6 +20,7 @@ import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.terminals.TellerTerminal;
+import com.bank.bankingapp.user.Admin;
 import com.bank.bankingapp.user.User;
 
 import java.sql.SQLException;
@@ -49,9 +50,8 @@ public class SendMessageFragment extends Fragment {
      */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        TellerActivity prevActivity = (TellerActivity) this.getActivity();
-        final TellerTerminal tt = (TellerTerminal) prevActivity.getAtm();
         final DatabaseHelper db = new DatabaseHelper(this.getContext());
+        final AdminTerminal at = new AdminTerminal(this.getContext());
 
 
         // Get users to put into Spinner
@@ -83,7 +83,7 @@ public class SendMessageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 EditText message_field = getView().findViewById(R.id.admin_message_field);
-                tt.leaveMessage(targetUser.getId(), message_field.getText().toString());
+                at.leaveMessage(targetUser.getId(), message_field.getText().toString());
                 message_field.setText("");
             }
         });
