@@ -14,10 +14,12 @@ import com.bank.bankingapp.activities.terminal.atm.fragments.ATMMessagesFragment
 import com.bank.bankingapp.activities.terminal.atm.fragments.ATMWithdrawFragment;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.ATM;
+import com.bank.bankingapp.terminals.Terminal;
 import com.bank.bankingapp.user.User;
 
 public class ATMActivity extends AppCompatActivity {
-    protected ATM atm = new ATM(this);
+    protected Terminal atm = new Terminal(this) {
+    };
 
     /**
      * Gets the current user, and sets the list accounts view as the starting layout
@@ -114,7 +116,7 @@ public class ATMActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public ATM getAtm() {
+    public Terminal getAtm() {
         return atm;
     }
 }

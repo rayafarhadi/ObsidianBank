@@ -31,7 +31,7 @@ public class ATMMessagesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ATMActivity prevActivity = (ATMActivity) getActivity();
-        ATM atm = prevActivity.getAtm();
+        ATM atm = (ATM) prevActivity.getAtm();
 
         List<Message> messages = TellerMessagesActivity.getMessages(atm.getCurrentUser().getId(), this.getContext());
 
