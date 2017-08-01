@@ -83,6 +83,10 @@ public class AdminBalanceFragment extends Fragment {
         this.context = context;
     }
 
+    /**
+     * updates the balance of the user
+     * @param i
+     */
     public void updateBalance(int i) {
         AdminTerminal at = new AdminTerminal(context);
         DatabaseHelper db = new DatabaseHelper(context);
