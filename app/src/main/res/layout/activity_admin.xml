@@ -14,7 +14,7 @@
         tools:layout="@layout/view_admin_options" />
 
     <FrameLayout
-        android:id="@+id/admin_fragment_container"
+        android:id="@+id/atm_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4.75" />

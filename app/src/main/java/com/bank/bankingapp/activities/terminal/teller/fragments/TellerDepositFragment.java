@@ -41,7 +41,7 @@ public class TellerDepositFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TellerActivity prevActivity = (TellerActivity) this.getActivity();
-        tt = prevActivity.getTt();
+        tt = (TellerTerminal) prevActivity.getAtm();
         spinner = view.findViewById(R.id.deposit_account_spinner);
 
         ArrayList<String> accounts = new ArrayList<>();

@@ -25,6 +25,7 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFrag
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminSendMessageFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
+import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.generics.Roles;
@@ -41,42 +42,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AdminActivity extends AppCompatActivity {
+public class AdminActivity extends TellerActivity {
 
     AdminCreateUserFragment createUserFragment;
     AdminPromoteFragment promoteFragment;
     private final int MY_PERMISSION_WRITE_EXTERNAL_STORAGE = 0;
 
     boolean typeValid;
-    int spinnerPos;
 
-    private AdminTerminal at = new AdminTerminal(this);
-
-    public AdminTerminal getAt() {
-        return at;
-    }
-
-
-    @Override
+    //@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         Intent intent = getIntent();
-        at.setCurrentUser((Admin) intent.getSerializableExtra("user"));
+        atm = new AdminTerminal(this);
+        atm.setCurrentUser((Admin) intent.getSerializableExtra("user"));
 
-        DatabaseHelper db = new DatabaseHelper(this);
-        //Toast toast = Toast.makeText(this, db.getAllMessages(at.getCurrentUser().getId()).size(), Toast.LENGTH_SHORT);
-        //toast.show(); //TODO remove
 
         createUserFragment = new AdminCreateUserFragment();
 
-        if (findViewById(R.id.admin_fragment_container) != null) {
+        if (findViewById(R.id.atm_fragment_container) != null) {
             if (savedInstanceState != null) {
                 return;
             }
-
             AdminMessagesFragment messagesFragment = new AdminMessagesFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.admin_fragment_container, messagesFragment).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.atm_fragment_container, messagesFragment).commit();
         }
     }
 
@@ -84,7 +74,7 @@ public class AdminActivity extends AppCompatActivity {
     public void displayCreateUser(View view) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.admin_fragment_container, createUserFragment);
+        transaction.replace(R.id.atm_fragment_container, createUserFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -147,7 +137,7 @@ public class AdminActivity extends AppCompatActivity {
         AdminMessagesFragment messagesFragment = new AdminMessagesFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.admin_fragment_container, messagesFragment);
+        transaction.replace(R.id.atm_fragment_container, messagesFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -158,9 +148,9 @@ public class AdminActivity extends AppCompatActivity {
         AdminViewUserFragment viewUserFragment = new AdminViewUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         DatabaseHelper db = new DatabaseHelper(this);
-        at.setCurrentUser(db.getUserDetails(at.getCurrentUser().getId()));
+        atm.setCurrentUser(db.getUserDetails(atm.getCurrentUser().getId()));
 
-        transaction.replace(R.id.admin_fragment_container, viewUserFragment);
+        transaction.replace(R.id.atm_fragment_container, viewUserFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -171,8 +161,8 @@ public class AdminActivity extends AppCompatActivity {
         AdminAllBalanceFragment balanceFragment = new AdminAllBalanceFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         DatabaseHelper db = new DatabaseHelper(this);
-        at.setCurrentUser(db.getUserDetails(at.getCurrentUser().getId()));
-        transaction.replace(R.id.admin_fragment_container, balanceFragment);
+        atm.setCurrentUser(db.getUserDetails(atm.getCurrentUser().getId()));
+        transaction.replace(R.id.atm_fragment_container, balanceFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -185,8 +175,8 @@ public class AdminActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         DatabaseHelper db = new DatabaseHelper(this);
-        at.setCurrentUser(db.getUserDetails(at.getCurrentUser().getId()));
-        transaction.replace(R.id.admin_fragment_container, balanceFragment);
+        atm.setCurrentUser(db.getUserDetails(atm.getCurrentUser().getId()));
+        transaction.replace(R.id.atm_fragment_container, balanceFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -197,7 +187,7 @@ public class AdminActivity extends AppCompatActivity {
         promoteFragment = new AdminPromoteFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.admin_fragment_container, promoteFragment);
+        transaction.replace(R.id.atm_fragment_container, promoteFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -213,7 +203,7 @@ public class AdminActivity extends AppCompatActivity {
         final AdminSendMessageFragment sendMessageFragment = new AdminSendMessageFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.admin_fragment_container, sendMessageFragment);
+        transaction.replace(R.id.atm_fragment_container, sendMessageFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();

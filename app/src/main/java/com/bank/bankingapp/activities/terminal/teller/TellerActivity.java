@@ -30,7 +30,7 @@ public class TellerActivity extends ATMActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teller);
         atm = new TellerTerminal(this);
-        User currentCustomer = (Customer) getIntent().getSerializableExtra("user");
+        User currentCustomer = (User) getIntent().getSerializableExtra("user");
         atm.setCurrentUser(currentCustomer);
     }
 

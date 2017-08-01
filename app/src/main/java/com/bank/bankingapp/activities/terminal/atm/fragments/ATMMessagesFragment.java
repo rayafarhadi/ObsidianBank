@@ -13,6 +13,7 @@ import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
 import com.bank.bankingapp.activities.terminal.teller.TellerMessagesActivity;
 import com.bank.bankingapp.messages.Message;
 import com.bank.bankingapp.terminals.ATM;
+import com.bank.bankingapp.terminals.Terminal;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class ATMMessagesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ATMActivity prevActivity = (ATMActivity) getActivity();
-        ATM atm = (ATM) prevActivity.getAtm();
+        Terminal atm = prevActivity.getAtm();
 
         List<Message> messages = TellerMessagesActivity.getMessages(atm.getCurrentUser().getId(), this.getContext());
 

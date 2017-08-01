@@ -21,15 +21,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:padding="10dp">
 
         <com.jjoe64.graphview.GraphView
+            android:id="@+id/earnings_graph"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:id="@+id/earnings_graph"/>
+            android:layout_marginTop="@dimen/activity_vertical_margin" />
     </RelativeLayout>
 
     <Space
