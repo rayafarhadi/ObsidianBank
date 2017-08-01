@@ -21,7 +21,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="confirmDeserialize"
         android:text="Deserialize"
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold" />
 
     <Space
@@ -126,7 +126,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="reset"
         android:text="@string/reset_database"
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold" />
 
 </LinearLayout>

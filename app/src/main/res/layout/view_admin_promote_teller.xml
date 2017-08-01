@@ -82,7 +82,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="promote"
         android:text="@string/action_promote"
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold" />
 
 </LinearLayout>
