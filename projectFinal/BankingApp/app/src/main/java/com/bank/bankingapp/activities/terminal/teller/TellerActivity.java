@@ -19,12 +19,13 @@ import com.bank.bankingapp.activities.terminal.teller.fragments.TellerProjectEar
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerUpdateInfoFragment;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.TellerTerminal;
-import com.bank.bankingapp.user.Customer;
 import com.bank.bankingapp.user.User;
 
 import java.math.BigDecimal;
 
 public class TellerActivity extends ATMActivity {
+
+    TellerCreateAccountFragment createAccountFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +40,14 @@ public class TellerActivity extends ATMActivity {
 
     /**
      * Fragment that displays input fields for current user to create account
+     *
      * @param view
      */
     public void displayCreateAccount(View view) {
-        TellerCreateAccountFragment createAccountFragment = new TellerCreateAccountFragment();
+        createAccountFragment = new TellerCreateAccountFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         DatabaseHelper db = new DatabaseHelper(this);
-        atm.setCurrentUser( db.getUserDetails(atm.getCurrentUser().getId()));
+        atm.setCurrentUser(db.getUserDetails(atm.getCurrentUser().getId()));
         transaction.replace(R.id.atm_fragment_container, createAccountFragment);
         transaction.addToBackStack(null);
 
@@ -54,6 +56,7 @@ public class TellerActivity extends ATMActivity {
 
     /**
      * Creates an account for the current user
+     *
      * @param view
      */
     public void createAccount(View view) {
@@ -63,10 +66,7 @@ public class TellerActivity extends ATMActivity {
         EditText balanceField = (EditText) findViewById(R.id.teller_create_account_balance);
         BigDecimal balance = new BigDecimal(balanceField.getText().toString());
 
-        EditText typeField = (EditText) findViewById(R.id.teller_Create_account_type);
-        long type = Long.parseLong(typeField.getText().toString());
-
-        int accountId = ((TellerTerminal) atm).makeNewAccount(name, balance, type);
+        int accountId = ((TellerTerminal) atm).makeNewAccount(name, balance, createAccountFragment.getType());
 
         Toast t = Toast.makeText(this, "AccountId = " + accountId, Toast.LENGTH_LONG);
         t.show();
@@ -74,6 +74,7 @@ public class TellerActivity extends ATMActivity {
 
     /**
      * Fragment that allows users to either give interest to specific, or all accounts
+     *
      * @param view
      */
     public void displayGiveInterest(View view) {
@@ -88,6 +89,7 @@ public class TellerActivity extends ATMActivity {
 
     /**
      * Gives interest to all of the current user's accounts
+     *
      * @param view
      */
     public void tellerGiveInterestAll(View view) {
@@ -108,6 +110,7 @@ public class TellerActivity extends ATMActivity {
 
     /**
      * Fragment that allows current user to update their data
+     *
      * @param view
      */
     public void displayUpdateInfo(View view) {
@@ -122,6 +125,7 @@ public class TellerActivity extends ATMActivity {
 
     /**
      * Updates current user's data based off input fields
+     *
      * @param view
      */
     public void updateInfo(View view) {
@@ -173,9 +177,10 @@ public class TellerActivity extends ATMActivity {
 
     /**
      * Displays a graph that takes into account to show project account balance in the future
+     *
      * @param view
      */
-    public void displayProjectedEarnings(View view){
+    public void displayProjectedEarnings(View view) {
         TellerProjectEarningsFragment earningsFragment = new TellerProjectEarningsFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
@@ -198,6 +203,7 @@ public class TellerActivity extends ATMActivity {
 
     /**
      * Leaves user session
+     *
      * @param view
      */
     public void closeSession(View view) {
