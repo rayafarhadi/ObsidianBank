@@ -1,6 +1,7 @@
 package com.bank.bankingapp.activities.terminal.admin;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bank.bankingapp.R;
@@ -57,23 +59,20 @@ public class AdminActivity extends TellerActivity {
         atm = new AdminTerminal(this);
         atm.setCurrentUser((Admin) intent.getSerializableExtra("user"));
 
+//        // actionBar
+//        final ActionBar actionBar = getActionBar();
+//        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+//        TextView titleTextView = new TextView(actionBar.getThemedContext());
+//        titleTextView.setText("Admin Terminal");
 
-        createUserFragment = new AdminCreateUserFragment();
-
-        if (findViewById(R.id.atm_fragment_container) != null) {
-            if (savedInstanceState != null) {
-                return;
-            }
-            AdminMessagesFragment messagesFragment = new AdminMessagesFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.atm_fragment_container, messagesFragment).commit();
-        }
     }
 
     //----------------Create User----------------------------
     public void displayCreateUser(View view) {
+        AdminCreateUserFragment adminCreateUserFragment = new AdminCreateUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.atm_fragment_container, createUserFragment);
+        transaction.replace(R.id.atm_fragment_container, adminCreateUserFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
