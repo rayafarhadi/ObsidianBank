@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public abstract class User implements Serializable {
 
-    private static final long serialVersionUID = -6186838150151744131L;
+    private static final long serialVersionUID = -6186838150151744132L;
     protected int id;
     protected String name;
     protected int age;

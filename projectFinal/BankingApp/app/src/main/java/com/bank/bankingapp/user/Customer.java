@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Customer extends User implements Serializable {
 
-    private static final long serialVersionUID = 7182684841252904050L;
+    private static final long serialVersionUID = 7182684841252904051L;
     private List<Account> accounts = new ArrayList<>();
 
     /**
