@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.bank.bankingapp.R;
@@ -66,5 +67,13 @@ public class TellerCreateAccountFragment extends Fragment {
         }
 
         return 0;
+    }
+
+    public void clearFields() {
+        EditText nameField = (EditText) getView().findViewById(R.id.teller_create_account_name);
+        EditText balanceField = (EditText) getView().findViewById(R.id.teller_create_account_balance);
+
+        nameField.setText("");
+        balanceField.setText("");
     }
 }

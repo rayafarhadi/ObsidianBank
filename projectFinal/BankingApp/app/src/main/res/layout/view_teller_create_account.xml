@@ -94,7 +94,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="createAccount"
         android:text="@string/action_create_account"
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold" />
 
 </LinearLayout>
