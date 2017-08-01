@@ -17,6 +17,7 @@ import com.bank.bankingapp.activities.terminal.admin.AdminActivity;
 import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
 import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
+import com.bank.bankingapp.generics.AccountTypes;
 import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.terminals.TellerTerminal;
@@ -32,6 +33,7 @@ public class SendMessageFragment extends Fragment {
 
     /**
      * Initializes the send message activity and sets the layout for the screen
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -45,6 +47,7 @@ public class SendMessageFragment extends Fragment {
 
     /**
      * Creates a view for sending messages
+     *
      * @param view
      * @param savedInstanceState
      */
@@ -55,11 +58,13 @@ public class SendMessageFragment extends Fragment {
 
 
         // Get users to put into Spinner
-        List<String> users = new ArrayList<>();
-
-        for (User user : db.getUsers()) {
-            users.add(user.getId() + ": " + user.getName());
+        List<String> users;
+        if (this.getActivity() instanceof AdminActivity) {
+            users = getUserType(0, db);
+        }else {
+            users = getUserType(Bank.rolesMap.get(Roles.CUSTOMER).getId() , db);
         }
+
         Spinner spinner = view.findViewById(R.id.admin_send_message_spinner);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(), R.layout.view_admin_balance_item, users);
@@ -71,6 +76,7 @@ public class SendMessageFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 targetUser = db.getUsers().get(i);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -83,10 +89,28 @@ public class SendMessageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 EditText message_field = getView().findViewById(R.id.admin_message_field);
-                at.leaveMessage(targetUser.getId(), message_field.getText().toString());
-                message_field.setText("");
+                String text = message_field.getText().toString();
+                if (text.length() == 0) {
+                    Toast toast = Toast.makeText(getContext(), "Empty Field", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    at.leaveMessage(targetUser.getId(), message_field.getText().toString());
+                    message_field.setText("");
+                }
             }
         });
 
+    }
+
+    public List<String> getUserType(int typeId, DatabaseHelper db) {
+        List<String> res = new ArrayList<>();
+        for (User user : db.getUsers()) {
+            if (typeId == 0) {
+                res.add(user.getId() + ": " + user.getName());
+            } else if (user.getRoleId() == typeId) {
+                res.add(user.getId() + ": " + user.getName());
+            }
+        }
+        return res;
     }
 }
