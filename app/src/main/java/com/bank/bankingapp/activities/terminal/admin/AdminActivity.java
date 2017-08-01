@@ -46,7 +46,7 @@ public class AdminActivity extends TellerActivity {
     AdminPromoteFragment promoteFragment;
     private final int MY_PERMISSION_WRITE_EXTERNAL_STORAGE = 0;
 
-    boolean typeValid;
+    boolean typeValid = true;
 
     //@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +63,10 @@ public class AdminActivity extends TellerActivity {
 
     //----------------Create User----------------------------
     public void displayCreateUser(View view) {
-        AdminCreateUserFragment adminCreateUserFragment = new AdminCreateUserFragment();
+        createUserFragment = new AdminCreateUserFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.atm_fragment_container, adminCreateUserFragment);
+        transaction.replace(R.id.atm_fragment_container, createUserFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
@@ -99,7 +99,7 @@ public class AdminActivity extends TellerActivity {
             password.setError("Please Enter A Password");
         }
 
-        if (!usernameValid || !ageValid || !addressValid || !typeValid || !password_valid) {
+        if (username.getText().length() == 0 || age.getText().length() == 0 || address.getText().length() == 0 || !typeValid || password.getText().length() == 0) {
             return;
         }
 
