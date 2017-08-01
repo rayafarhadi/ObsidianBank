@@ -18,6 +18,11 @@ public class AccountInfoAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<Account> mDataSource;
 
+    /**
+     * Initializes the account info activity and sets layout for screen
+     * @param context
+     * @param items
+     */
     public AccountInfoAdapter(Context context, List<Account> items) {
         mContext = context;
         mDataSource = items;

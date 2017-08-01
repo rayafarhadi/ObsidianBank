@@ -19,6 +19,13 @@ import java.util.List;
 
 
 public class ATMMessagesFragment extends Fragment {
+    /**
+     * Creates the view of the activity
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.view_messages, container, false);
