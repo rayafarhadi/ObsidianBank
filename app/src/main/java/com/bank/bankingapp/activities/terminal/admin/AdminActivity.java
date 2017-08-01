@@ -10,7 +10,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,7 +22,7 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminBalanceFragm
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminCreateUserFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
-import com.bank.bankingapp.activities.terminal.admin.fragments.AdminSendMessageFragment;
+import com.bank.bankingapp.activities.terminal.teller.fragments.SendMessageFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
 import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
 import com.bank.bankingapp.bank.Bank;
@@ -196,17 +195,6 @@ public class AdminActivity extends TellerActivity {
     public void promote(View view) {
         promoteFragment.promote(this, (Admin) getIntent().getSerializableExtra("user"));
         displayPromote(view);
-    }
-
-    //----------- Send Message to User -------------------------
-    public void sendMessage(View view) {
-        final AdminSendMessageFragment sendMessageFragment = new AdminSendMessageFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        transaction.replace(R.id.atm_fragment_container, sendMessageFragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
     }
 
     //----------------Serialize----------------------------
