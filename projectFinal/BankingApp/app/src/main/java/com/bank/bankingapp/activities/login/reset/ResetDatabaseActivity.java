@@ -38,6 +38,7 @@ import java.util.List;
 public class ResetDatabaseActivity extends AppCompatActivity {
 
     private final int MY_PERMISSION_READ_EXTERNAL_STORAGE = 0;
+    private int num_upgrades = 1;
 
     /**
      * Initializes the reset activity and sets the layout of the screen on the app
@@ -56,6 +57,8 @@ public class ResetDatabaseActivity extends AppCompatActivity {
      */
 
     public void reset(View view) {
+        num_upgrades = 1;
+
         // Creates a map connected to the activity
         Bank.createMaps(this);
         //get new admins information
@@ -139,6 +142,9 @@ public class ResetDatabaseActivity extends AppCompatActivity {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSION_READ_EXTERNAL_STORAGE);
             }
 
+            DatabaseDriverA driver = new DatabaseDriverA(this);
+            driver.onUpgrade(driver.getWritableDatabase(), num_upgrades, ++num_upgrades);
+
             File root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
             File file = new File(root, "database.ser");
@@ -146,6 +152,7 @@ public class ResetDatabaseActivity extends AppCompatActivity {
             ObjectInputStream in = new ObjectInputStream(fileIn);
 
             DatabaseHelper db = new DatabaseHelper(this);
+            Bank.createMaps(this);
 
             List<User> users = (ArrayList<User>) in.readObject();
             List<Account> accounts = (ArrayList<Account>) in.readObject();
@@ -173,6 +180,10 @@ public class ResetDatabaseActivity extends AppCompatActivity {
 
             in.close();
             fileIn.close();
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "database.ser File Not Found", Toast.LENGTH_SHORT).show();
