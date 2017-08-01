@@ -44,12 +44,9 @@ public class TellerViewTotalBalance extends Fragment {
         balance = view.findViewById(R.id.teller_user_balance);
         TellerActivity prevActivity = (TellerActivity) this.getActivity();
         TellerTerminal tt = (TellerTerminal) prevActivity.getAtm();
-        AdminTerminal at = new AdminTerminal(context);
-//        try {
-            balance.setText(at.addBalances(tt.getCurrentUser().getId()).toString());
-//        } catch (Exception e){
-//            balance.setText("0");
-//        }
+        AdminTerminal at = new AdminTerminal(this.getContext());
+        balance.setText(at.addBalances(tt.getCurrentUser().getId()).toString());
+
     }
 
     public void setContext(Context context) {
