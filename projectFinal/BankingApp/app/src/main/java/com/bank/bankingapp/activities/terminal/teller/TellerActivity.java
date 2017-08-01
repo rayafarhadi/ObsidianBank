@@ -16,6 +16,7 @@ import com.bank.bankingapp.activities.terminal.teller.fragments.TellerCreateAcco
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveInterestFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerProjectEarningsFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerUpdateInfoFragment;
+import com.bank.bankingapp.activities.terminal.teller.fragments.TellerViewTotalBalance;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.terminals.TellerTerminal;
 import com.bank.bankingapp.user.User;
@@ -91,6 +92,22 @@ public class TellerActivity extends ATMActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.atm_fragment_container, giveInterestFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
+    /**
+     * Fragment that shows current user total balance
+     *
+     * @param view
+     */
+    public void displayTotalUserBalance(View view) {
+        TellerViewTotalBalance tellerViewTotalBalance = new TellerViewTotalBalance();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        DatabaseHelper db = new DatabaseHelper(this);
+        atm.setCurrentUser(db.getUserDetails(atm.getCurrentUser().getId()));
+        transaction.replace(R.id.atm_fragment_container, tellerViewTotalBalance);
         transaction.addToBackStack(null);
 
         transaction.commit();

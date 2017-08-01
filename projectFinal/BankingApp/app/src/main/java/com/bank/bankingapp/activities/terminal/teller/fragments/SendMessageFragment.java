@@ -102,6 +102,12 @@ public class SendMessageFragment extends Fragment {
 
     }
 
+    /**
+     * Returns a list of all user's if typeId is 0, otherwise return the users of typeId
+     * @param typeId role id to look for
+     * @param db database helpers
+     * @return
+     */
     public List<String> getUserType(int typeId, DatabaseHelper db) {
         List<String> res = new ArrayList<>();
         for (User user : db.getUsers()) {
