@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.account.Account;
@@ -87,21 +88,28 @@ public class ATMDepositFragment extends Fragment {
                 EditText message_field = getView().findViewById(R.id.deposit_amount);
                 final AlertDialog.Builder idNotification = new AlertDialog.Builder(getContext());
                 idNotification.setTitle(R.string.dialog_create_title);
-                try {
-                    atm.makeDeposit(new BigDecimal(message_field.getText().toString()), targetAccount.getId());
-                    idNotification.setMessage(message_field.getText().toString() + "$ has been successfully deposited into from account.");
-                } catch (IllegalAmountException e) {
-                    idNotification.setMessage("Cannot deposit a negative amount.");
-                } catch (ConnectionFailedException e) {
-                    idNotification.setMessage("Error: Connection to database failed.");
-                }
-                idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+
+                String text = message_field.getText().toString();
+                if (text.length() == 0){
+                    Toast toast = Toast.makeText(getContext(), "Empty Field", Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    try {
+                        atm.makeDeposit(new BigDecimal(text), targetAccount.getId());
+                        idNotification.setMessage(text + "$ has been successfully deposited into from account.");
+                    } catch (IllegalAmountException e) {
+                        idNotification.setMessage("Cannot deposit a negative amount.");
+                    } catch (ConnectionFailedException e) {
+                        idNotification.setMessage("Error: Connection to database failed.");
                     }
-                });
-                message_field.setText("");
-                idNotification.create();
-                idNotification.show();
+                    idNotification.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }
+                    });
+                    message_field.setText("");
+                    idNotification.create();
+                    idNotification.show();
+                }
             }
         });
     }
