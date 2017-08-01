@@ -226,6 +226,41 @@
                     android:layout_height="0dp" />
             </LinearLayout>
 
+            <!-- Serialize Button -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="5dp"
+                android:paddingStart="5dp">
+
+                <ImageButton
+                    android:id="@+id/admin_serialize_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/button_round"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="confirmSerialize"
+                    android:src="@mipmap/serialize" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Serialize"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText" />
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="0dp" />
+
+            </LinearLayout>
+
             <!-- Log Out -->
             <LinearLayout
                 android:layout_width="wrap_content"

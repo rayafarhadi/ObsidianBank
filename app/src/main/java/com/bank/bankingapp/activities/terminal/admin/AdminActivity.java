@@ -1,15 +1,22 @@
 package com.bank.bankingapp.activities.terminal.admin;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bank.bankingapp.R;
+import com.bank.bankingapp.account.Account;
 import com.bank.bankingapp.activities.login.LoginActivity;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminAllBalanceFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminBalanceFragment;
@@ -18,15 +25,30 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFrag
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminSendMessageFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
+import com.bank.bankingapp.bank.Bank;
 import com.bank.bankingapp.database.DatabaseHelper;
+import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.terminals.AdminTerminal;
 import com.bank.bankingapp.user.Admin;
+import com.bank.bankingapp.user.Customer;
+import com.bank.bankingapp.user.User;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class AdminActivity extends AppCompatActivity {
 
     AdminCreateUserFragment createUserFragment;
     AdminPromoteFragment promoteFragment;
+    private final int MY_PERMISSION_WRITE_EXTERNAL_STORAGE = 0;
 
+    boolean typeValid;
+    int spinnerPos;
 
     private AdminTerminal at = new AdminTerminal(this);
 
@@ -72,27 +94,21 @@ public class AdminActivity extends AppCompatActivity {
         AdminTerminal at = new AdminTerminal(this);
 
         EditText username = (EditText) findViewById(R.id.admin_create_name);
-        boolean username_valid = !username.getText().toString().equals("");
-        if (!username_valid) {
+        boolean usernameValid = !username.getText().toString().equals("");
+        if (!usernameValid) {
             username.setError("Please Enter A Name");
         }
 
         EditText age = (EditText) findViewById(R.id.admin_create_age);
-        boolean age_valid = !age.getText().toString().equals("");
-        if (!age_valid) {
+        boolean ageValid = !age.getText().toString().equals("");
+        if (!ageValid) {
             age.setError("Please Enter An Age");
         }
 
         EditText address = (EditText) findViewById(R.id.admin_create_address);
-        boolean address_valid = !address.getText().toString().equals("");
-        if (!address_valid) {
+        boolean addressValid = !address.getText().toString().equals("");
+        if (!addressValid) {
             address.setError("Please Enter An Address");
-        }
-
-        EditText type = (EditText) findViewById(R.id.admin_create_type);
-        boolean type_valid = !type.getText().toString().equals("");
-        if (!type_valid) {
-            type.setError("Please Enter A Type");
         }
 
         EditText password = (EditText) findViewById(R.id.admin_create_password);
@@ -101,10 +117,9 @@ public class AdminActivity extends AppCompatActivity {
             password.setError("Please Enter A Password");
         }
 
-        if (!username_valid || !age_valid || !address_valid || !type_valid || !password_valid) {
+        if (!usernameValid || !ageValid || !addressValid || !typeValid || !password_valid) {
             return;
         }
-
 
         int userId = at.createUser(createUserFragment.getUsername(), createUserFragment.getAge(),
                 createUserFragment.getAddress(), createUserFragment.getType(),
@@ -202,6 +217,117 @@ public class AdminActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
 
         transaction.commit();
+    }
+
+    //----------------Serialize----------------------------
+    public void confirmSerialize(View view) {
+        //Serialize Confirmation dialog box
+        AlertDialog.Builder resetConfirmation = new AlertDialog.Builder(this);
+        resetConfirmation.setTitle(R.string.serialize_confirmation_title);
+        resetConfirmation.setMessage(R.string.serialize_confirmation_message);
+
+        resetConfirmation.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                serialize();
+            }
+        });
+
+        resetConfirmation.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+
+        resetConfirmation.create();
+        resetConfirmation.show();
+    }
+
+    public void serialize() {
+        try {
+
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_WRITE_EXTERNAL_STORAGE);
+            }
+
+            if (isExternalStorageWritable() && isExternalStorageReadable()) {
+                File root = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+                File file = new File(root, "database.ser");
+
+                FileOutputStream fileOut = new FileOutputStream(file);
+
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+
+                DatabaseHelper db = new DatabaseHelper(this);
+
+                // get all users
+                List<User> users = new ArrayList<>();
+                int id = 1;
+
+                HashMap<Customer, List<Account>> userAccounts = new HashMap<>();
+
+                User currUser = db.getUserDetails(id);
+                while (currUser != null) {
+                    users.add(currUser);
+                    id++;
+                    currUser = db.getUserDetails(id);
+                    if (currUser.getRoleId() == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
+                        Customer currCustomer = (Customer) currUser;
+                        userAccounts.put(currCustomer, currCustomer.getAccounts());
+                    }
+                }
+
+
+                // get all accounts
+                List<Account> accounts = new ArrayList<>();
+
+                for (User user : users) {
+                    if (user.getRoleId() == Bank.rolesMap.get(Roles.CUSTOMER).getId()) {
+                        for (Integer accountId : db.getAccountIds(user.getId())) {
+                            accounts.add(db.getAccountDetails(accountId));
+                        }
+                    }
+                }
+
+                //get all passwords
+                List<String> passwords = new ArrayList<>();
+
+                for (User user : users) {
+                    passwords.add(db.getPassword(user.getId()));
+                }
+
+                out.writeObject(users);
+                out.writeObject(accounts);
+                out.writeObject(passwords);
+                out.writeObject(userAccounts);
+
+                out.close();
+                fileOut.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Failed to create .ser file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /* Checks if external storage is available for read and write */
+
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+    /* Checks if external storage is available to at least read */
+    public boolean isExternalStorageReadable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            return true;
+        }
+        return false;
     }
 
     //----------- Log out Admin Terminal-------------------------

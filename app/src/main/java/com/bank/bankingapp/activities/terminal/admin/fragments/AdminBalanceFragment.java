@@ -30,6 +30,7 @@ public class AdminBalanceFragment extends Fragment {
 
     /**
      * Initializes the balance activity for admin and sets the layout of the screen
+     *
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -42,6 +43,7 @@ public class AdminBalanceFragment extends Fragment {
 
     /**
      * Creates the view for the balance activity and displays the balance of specific users
+     *
      * @param view
      * @param savedInstanceState
      */
@@ -98,7 +100,6 @@ public class AdminBalanceFragment extends Fragment {
             total_balance = new BigDecimal(0);
         }
 
-        System.out.println(total_balance.toString());
         balance.setText(total_balance.toString());
     }
 }
