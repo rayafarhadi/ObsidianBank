@@ -7,6 +7,7 @@
     <string name="action_sign_in">Sign in</string>
 
     <!-- Strings related to reseting database -->
+    <string name="reset_database_title">Create New Database</string>
     <string name="reset_database">Reset Database</string>
     <string name="reset_confirmation_title">Reset Database?</string>
     <string name="reset_confirmation_message">Resetting will result in the loss of all user and account information</string>
@@ -24,6 +25,7 @@
     <string name="admin_option_create">Create \nUser</string>
     <string name="admin_option_view">View \nUsers</string>
     <string name="admin_option_promote">Promote \nTeller</string>
+    <string name="admin_option_serialize">Serialize</string>
     <string name="log_out">Log Out</string>
 
     <!-- Strings related to teller options -->
@@ -107,5 +109,7 @@
     <!-- Strings related to deserializing -->
     <string name="deserialize_confirmation_title">Deserialize Database?</string>
     <string name="deserialize_confirmation_message">The database will be reset and replaced with the information in database.ser</string>
+    <string name="deserialize_title">Deserialize Existing Database</string>
+    <string name="action_deserialize">Deserialize</string>
 
 </resources>

@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/customer_login_form"
 
     android:layout_width="match_parent"
@@ -12,8 +11,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
 
-    android:theme="@style/LoginTheme"
-    tools:context=".activities.terminal.teller.TellerStartingMenuActivity">
+    android:theme="@style/LoginTheme">
 
     <!-- ID Field -->
     <android.support.design.widget.TextInputLayout

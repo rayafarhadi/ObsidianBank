@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingTop="10dp"
-        android:text="Deserialize Existing Database"
+        android:text="@string/deserialize_title"
         android:textAlignment="center"
         android:textColor="@color/colorText"
         android:textSize="20sp" />
@@ -20,7 +20,7 @@
         android:layout_weight="1"
         android:backgroundTint="@color/colorPrimary"
         android:onClick="confirmDeserialize"
-        android:text="Deserialize"
+        android:text="@string/action_deserialize"
         android:textColor="@color/colorWhite"
         android:textStyle="bold" />
 
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Create New Database"
+        android:text="@string/reset_database_title"
         android:textAlignment="center"
         android:textColor="@color/colorText"
         android:textSize="20sp" />
