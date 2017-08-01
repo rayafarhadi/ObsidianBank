@@ -82,8 +82,14 @@ public class TellerProjectEarningsFragment extends Fragment {
         graph.removeAllSeries();
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
         series.setDrawBackground(true);
-        series.setColor(Color.GREEN);
-        series.setBackgroundColor(Color.GREEN);
+        if (targetAccount.getBalance().longValue() >= 0){
+            series.setColor(Color.GREEN);
+            series.setBackgroundColor(Color.GREEN);
+        }
+        else {
+            series.setColor(Color.RED);
+            series.setBackgroundColor(Color.RED);
+        }
         double x;
         BigDecimal y_bigdecimal = targetAccount.getBalance();
         for (int i = 0; i < 13; i++){
