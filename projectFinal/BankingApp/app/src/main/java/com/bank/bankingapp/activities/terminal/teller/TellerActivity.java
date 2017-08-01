@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.bank.bankingapp.R;
 import com.bank.bankingapp.activities.terminal.atm.ATMActivity;
+import com.bank.bankingapp.activities.terminal.teller.fragments.SendMessageFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerCreateAccountFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerGiveInterestFragment;
 import com.bank.bankingapp.activities.terminal.teller.fragments.TellerProjectEarningsFragment;
@@ -177,6 +178,17 @@ public class TellerActivity extends ATMActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.atm_fragment_container, earningsFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+    }
+
+    //----------- Send Message to User -------------------------
+    public void sendMessage(View view) {
+        final SendMessageFragment sendMessageFragment = new SendMessageFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.atm_fragment_container, sendMessageFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
