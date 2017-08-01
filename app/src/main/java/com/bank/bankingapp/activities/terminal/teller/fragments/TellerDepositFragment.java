@@ -31,12 +31,24 @@ public class TellerDepositFragment extends Fragment {
     private Account targetAccount;
     TellerTerminal tt;
 
+    /**
+     * Inflates layout into fragment.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.view_deposit, container, false);
     }
 
+    /**
+     * When view is created populates spinner with accounts owned by current user.
+     * @param view
+     * @param savedInstanceState
+     */
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TellerActivity prevActivity = (TellerActivity) this.getActivity();

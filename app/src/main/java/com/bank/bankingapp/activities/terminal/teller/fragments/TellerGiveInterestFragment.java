@@ -24,6 +24,14 @@ public class TellerGiveInterestFragment extends Fragment {
     private Spinner spinner;
     private Account targetAccount;
 
+    /**
+     * Inflates the current layout to fill in fragment.
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -32,7 +40,9 @@ public class TellerGiveInterestFragment extends Fragment {
 
 
     /**
-     * Creates a view for giving interest to either a selected account, or all accounts
+     * Creates a view for giving interest to either a selected account, or all accounts once current layout is
+     * inflated.
+     *
      * @param view
      * @param savedInstanceState
      */
@@ -58,6 +68,7 @@ public class TellerGiveInterestFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 targetAccount = ((Customer) tt.getCurrentUser()).getAccounts().get(i);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 

@@ -41,15 +41,30 @@ public class TellerProjectEarningsFragment extends Fragment {
     private Spinner spinner;
     private Account targetAccount;
 
+    /**
+     * Inflates current layout into fragment.
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.teller_projected_earnings, container, false);
     }
 
+    /**
+     * When layout is inflated creates a graph for the current account selected in spinner.
+     *
+     * @param view
+     * @param savedInstanceState
+     */
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TellerActivity prevActivity = (TellerActivity) this.getActivity();
-        final TellerTerminal tt = (TellerTerminal) prevActivity.getAtm();;
+        final TellerTerminal tt = (TellerTerminal) prevActivity.getAtm();
+        ;
         spinner = view.findViewById(R.id.teller_projected_earnings_spinner);
 
         DatabaseHelper db = new DatabaseHelper(this.getContext());
@@ -76,23 +91,25 @@ public class TellerProjectEarningsFragment extends Fragment {
         });
     }
 
-    public void populateGraph(){
+    /**
+     * Populates the graph with data.
+     */
+    public void populateGraph() {
         GraphView graph = getView().findViewById(R.id.earnings_graph);
         graph.setTitle("Projected Earnings");
         graph.removeAllSeries();
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
         series.setDrawBackground(true);
-        if (targetAccount.getBalance().longValue() >= 0){
+        if (targetAccount.getBalance().longValue() >= 0) {
             series.setColor(Color.parseColor("#4CAF50"));
             series.setBackgroundColor(Color.parseColor("#4CAF50"));
-        }
-        else {
+        } else {
             series.setColor(Color.parseColor("#F44336"));
             series.setBackgroundColor(Color.parseColor("#F44336"));
         }
         double x;
         BigDecimal y_bigdecimal = targetAccount.getBalance();
-        for (int i = 0; i < 13; i++){
+        for (int i = 0; i < 13; i++) {
             x = i;
             BigDecimal income = Bank.accountsMap.getInterestRates().get(targetAccount.getType() - 1).multiply(y_bigdecimal);
             y_bigdecimal = y_bigdecimal.add(income);
