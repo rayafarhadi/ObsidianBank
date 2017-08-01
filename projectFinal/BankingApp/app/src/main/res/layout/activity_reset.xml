@@ -4,7 +4,40 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- Name Field -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingTop="10dp"
+        android:text="Deserialize Existing Database"
+        android:textAlignment="center"
+        android:textColor="@color/colorText"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="@color/colorPrimary"
+        android:onClick="confirmDeserialize"
+        android:text="Deserialize"
+        android:textColor="@color/colorText"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Create New Database"
+        android:textAlignment="center"
+        android:textColor="@color/colorText"
+        android:textSize="20sp" />
+
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,9 +67,9 @@
             android:id="@+id/reset_admin_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
             android:hint="@string/prompt_age"
-            android:maxLines="1"/>
+            android:inputType="number"
+            android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 
     <Space
@@ -54,8 +87,8 @@
             android:id="@+id/reset_admin_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
             android:hint="@string/prompt_address"
+            android:inputType="textPostalAddress"
             android:maxLines="1" />
     </android.support.design.widget.TextInputLayout>
 

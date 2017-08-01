@@ -55,6 +55,7 @@
     <string name="prompt_age">Age</string>
     <string name="prompt_address">Address</string>
     <string name="prompt_type">Type</string>
+    <string name="prompt_type_spinner">Type:</string>
     <string name="action_create_user">Create User</string>
     <string name="dialog_create_title">User ID</string>
 
@@ -98,5 +99,13 @@
     <string name="action_update_age">Update Age</string>
     <string name="action_update_address">Update Address</string>
     <string name="action_update_password">Update Password</string>
+
+    <!-- Strings related to serializing -->
+    <string name="serialize_confirmation_title">Serialize Database?</string>
+    <string name="serialize_confirmation_message">The database will be serialized and placed in a file called database.ser</string>
+
+    <!-- Strings related to deserializing -->
+    <string name="deserialize_confirmation_title">Deserialize Database?</string>
+    <string name="deserialize_confirmation_message">The database will be reset and replaced with the information in database.ser</string>
 
 </resources>
