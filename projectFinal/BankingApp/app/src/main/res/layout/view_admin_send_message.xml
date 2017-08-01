@@ -52,7 +52,7 @@
         android:layout_weight=".5"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/send_message_prompt"
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold" />
 
 </LinearLayout>

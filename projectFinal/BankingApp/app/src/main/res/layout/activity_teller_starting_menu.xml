@@ -17,7 +17,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="goToAuthenticateCustomer"
         android:text="@string/action_login_customer"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorWhite" />
 
     <Space
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="goToCreateCustomer"
         android:text="@string/action_create_customer"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorWhite" />
 
     <Space
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="goToMessages"
         android:text="@string/action_teller_messages"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorWhite" />
 
     <Space
         android:layout_width="match_parent"
@@ -62,7 +62,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:onClick="teller_logOut"
         android:text="@string/log_out"
-        android:textColor="@color/colorText" />
+        android:textColor="@color/colorWhite" />
 
     <Space
         android:layout_width="match_parent"
