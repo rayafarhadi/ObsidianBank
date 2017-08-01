@@ -33,6 +33,11 @@ public class AdminCreateUserFragment extends Fragment {
         return inflater.inflate(R.layout.view_admin_create_user, container, false);
     }
 
+    /**
+     * creates the view for the activity and creates a new user
+     * @param view
+     * @param savedInstanceState
+     */
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

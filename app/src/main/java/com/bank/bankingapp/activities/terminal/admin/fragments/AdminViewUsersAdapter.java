@@ -18,6 +18,11 @@ public class AdminViewUsersAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private List<User> mDataSource;
 
+    /**
+     * Initializes the view users activity and sets layout for screen
+     * @param context
+     * @param items
+     */
     public AdminViewUsersAdapter(Context context, List<User> items) {
         mContext = context;
         mDataSource = items;
