@@ -45,7 +45,7 @@ public class AdminViewUserFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         AdminActivity prevActivity = (AdminActivity) this.getActivity();
-        AdminTerminal at = prevActivity.getAt();
+        AdminTerminal at = (AdminTerminal) prevActivity.getAtm();
         List<User> users = new ArrayList<>();
         try {
             users = at.getUserType(Bank.rolesMap.get(Roles.ADMIN).getId());

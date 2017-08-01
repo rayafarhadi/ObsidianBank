@@ -40,7 +40,7 @@ public class AdminMessagesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         AdminActivity prevActivity = (AdminActivity) this.getActivity();
-        AdminTerminal at = prevActivity.getAt();
+        AdminTerminal at = (AdminTerminal) prevActivity.getAtm();
         DatabaseHelper db = new DatabaseHelper(getContext());
         List<Message> messages = new ArrayList<>();
         // Get unread then read messages

@@ -39,8 +39,8 @@ public class ATMActivity extends AppCompatActivity {
                 return;
             }
 
-            ATMListAccountsBalancesFragment listAccountsBalancesFragment = new ATMListAccountsBalancesFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.atm_fragment_container, listAccountsBalancesFragment).commit();
+            ATMMessagesFragment atmMessagesFragment = new ATMMessagesFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.atm_fragment_container, atmMessagesFragment).commit();
         }
     }
 

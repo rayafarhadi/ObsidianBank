@@ -48,7 +48,7 @@ public class AdminSendMessageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         AdminActivity prevActivity = (AdminActivity) this.getActivity();
-        final AdminTerminal at = prevActivity.getAt();
+        final AdminTerminal at = (AdminTerminal) prevActivity.getAtm();
         final DatabaseHelper db = new DatabaseHelper(this.getContext());
 
 
