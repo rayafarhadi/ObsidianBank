@@ -1,7 +1,6 @@
 package com.bank.bankingapp.activities.terminal.admin;
 
 import android.Manifest;
-import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,7 +12,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bank.bankingapp.R;
@@ -24,11 +22,9 @@ import com.bank.bankingapp.activities.terminal.admin.fragments.AdminBalanceFragm
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminCreateUserFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminMessagesFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminPromoteFragment;
-import com.bank.bankingapp.activities.terminal.teller.fragments.SendMessageFragment;
 import com.bank.bankingapp.activities.terminal.admin.fragments.AdminViewUserFragment;
 import com.bank.bankingapp.activities.terminal.teller.TellerActivity;
 import com.bank.bankingapp.bank.Bank;
-import com.bank.bankingapp.database.DatabaseDriverA;
 import com.bank.bankingapp.database.DatabaseHelper;
 import com.bank.bankingapp.generics.Roles;
 import com.bank.bankingapp.terminals.AdminTerminal;
@@ -199,7 +195,7 @@ public class AdminActivity extends TellerActivity {
         //Serialize Confirmation dialog box
         AlertDialog.Builder resetConfirmation = new AlertDialog.Builder(this);
         resetConfirmation.setTitle(R.string.serialize_confirmation_title);
-        resetConfirmation.setMessage(R.string.serialize_confirmation_message);
+        resetConfirmation.setMessage("The database will be serialized and placed in a file called database.ser in folder: " + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
 
         resetConfirmation.setPositiveButton(R.string.dialog_ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
