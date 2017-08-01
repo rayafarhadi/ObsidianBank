@@ -18,8 +18,8 @@ import com.bank.bankingapp.terminals.Terminal;
 import com.bank.bankingapp.user.User;
 
 public class ATMActivity extends AppCompatActivity {
-    protected Terminal atm = new Terminal(this) {
-    };
+    protected Terminal atm;
+
 
     /**
      * Gets the current user, and sets the list accounts view as the starting layout
@@ -31,6 +31,7 @@ public class ATMActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atm);
         Intent intent = getIntent();
+        atm = new ATM(this);
         atm.setCurrentUser((User) intent.getSerializableExtra("user"));
 
 
